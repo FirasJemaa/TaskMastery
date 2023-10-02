@@ -38,6 +38,10 @@
         <a id="Btn-begin" href="#">Commencer 🚀</a>
     </header>
 
+    <section id="presentation-container" class="container-fluid">
+
+
+    </section>
     <script src="{{ asset('js/accueil.js') }}"></script>
 </body>
 </html>
