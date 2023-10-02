@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="{{ asset('css/accueil.css') }}" rel="stylesheet">
+    <!--<link href="{{ asset('css/accueil.css') }}" rel="stylesheet">-->
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
     <title>Task Mastery</title>
 </head>
 <body>
