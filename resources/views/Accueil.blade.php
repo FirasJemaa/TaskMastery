@@ -38,8 +38,13 @@
         <a id="Btn-begin" href="#">Commencer 🚀</a>
     </header>
 
-    <section id="presentation-container" class="container-fluid">
-
+    <section id="presentation-container" class="container-fluid column">
+        <ul class="row">
+            <li id="text1" class="soulignage">Le projet consiste à ?</li>
+            <li id="text2" class="soulignage">Correspond a qui ?</li>
+        </ul>
+        <p id="para1">Le projet consiste en un gestionnaire de tâches convivial qui permet aux utilisateurs de créer, suivre et gérer des tâches individuellement ou en équipe. Cette solution simplifie la planification du travail quotidien et améliore la productivité.</p>
+        <p id="para2">Les professionnels, les étudiants, les équipes de travail, et toute personne cherchant à mieux organiser ses tâches.</p>
 
     </section>
     <script src="{{ asset('js/accueil.js') }}"></script>
