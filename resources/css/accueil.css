@@ -7,7 +7,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    
+
 }
 
 body {
@@ -18,17 +18,22 @@ body {
     color: var(--clr-black);
 }
 
-html, body, .full-height {
+html,
+body,
+.full-height {
     height: 100%;
     min-height: 100% !important;
 }
 
-header, section{
+header,
+section {
     height: 100%;
     width: 100%;
 }
 
-h1,h2,h3{
+h1,
+h2,
+h3 {
     color: var(--clr-black);
 }
 
@@ -40,7 +45,7 @@ h1,h2,h3{
     margin: 0px auto;
     padding-left: var(--container-padding);
     padding-right: var(--container-padding);
-    margin-top:1.5rem;
+    margin-top: 1.5rem;
     margin-bottom: 1.5rem;
 }
 
@@ -50,27 +55,27 @@ h1,h2,h3{
     max-width: 100%;
     padding-left: calc(50% - var(--container-width)/2 + var(--container-padding)*2);
     padding-right: calc(50% - var(--container-width)/2 + var(--container-padding)*2);
-    margin-top:1.5rem;
+    margin-top: 1.5rem;
     margin-bottom: 1.5rem;
-  }
-  
-  @media only screen and (max-width: 1000px) {
+}
+
+@media only screen and (max-width: 1000px) {
     .container-fluid {
-      padding-left: 40px;
-      padding-right: 40px;
+        padding-left: 40px;
+        padding-right: 40px;
     }
-  }
+}
 
 /*************Container**************/
 
-.column{
+.column {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
 }
 
-.row{
+.row {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -86,6 +91,7 @@ h1,h2,h3{
     --container-width: 1000px;
     --container-padding: 20px;
 }
+
 /**************souligage************/
 
 .soulignage {
@@ -124,10 +130,10 @@ nav {
     position: relative;
     width: 100%;
     display: flex;
-    justify-content : space-evenly;
+    justify-content: space-evenly;
     align-items: center;
     padding: 15px 25px;
-    
+
 }
 
 
@@ -173,29 +179,29 @@ nav {
     margin-left: auto;
 }
 
-#presentation-header{
+#presentation-header {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
 }
 
-#presentation-header h1{
+#presentation-header h1 {
     text-transform: uppercase;
     text-align: center;
-    color : var(--clr-yellow);
+    color: var(--clr-yellow);
     font-size: 25px;
 }
 
-#presentation-header p{
-    margin-top : 20px;
-    margin-bottom : 20px;
+#presentation-header p {
+    margin-top: 20px;
+    margin-bottom: 20px;
     text-align: justify;
     font-weight: bold;
     color: var(--clr-black);
 }
 
-header #Btn-begin{
+header #Btn-begin {
     text-align: center;
     display: block;
     margin: 50px auto;
@@ -216,42 +222,44 @@ header #Btn-begin{
     transition: all .5s;
 }
 
-header #Btn-begin:hover{
+header #Btn-begin:hover {
     background-color: #333533;
     color: #F5CB5C;
 }
 
 /*******Presentation**********/
-#presentation-container{
+#presentation-container {
     background-color: var(--clr-black);
     box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.25);
 }
 
-#presentation-container li{
-    color :var(--clr-first);
-    text-decoration: none;
-    list-style-type: none;
-    margin : 50px;
+#presentation-container h2 {
+    color: var(--clr-first);
+    margin: 50px;
     font-size: 20px;
+    align-items: start;
 }
 
-#presentation-container p{
-    color :var(--clr-first);
-}
-
-#para1,#para2 {
-    display: none;
+#para1,
+#para2 {
     transition: opacity 0.5s;
-  }
+    color: var(--clr-first);
+    position: absolute;
+}
+
+#para2 {
+    visibility: hidden;
+}
 
 @media (max-width: 900px) {
+
     /*container*/
-    .column{
+    .column {
         flex-direction: column;
         align-items: center;
     }
-    
-    .row{
+
+    .row {
         flex-direction: column;
         align-items: center;
     }
@@ -336,7 +344,8 @@ header #Btn-begin:hover{
         transform: translate(-100%);
         height: 100vh;
         padding: 15px 50px 15px 20px;
-        border-right: 1px solid var(--clr-second);/*ligne horizontal*/
+        border-right: 1px solid var(--clr-second);
+        /*ligne horizontal*/
     }
 
     .open {
@@ -352,28 +361,34 @@ header #Btn-begin:hover{
         order: 3;
         margin-left: 0;
     }
-    
-    #presentation-header{
+
+    #presentation-header {
         display: flex;
         flex-direction: column;
         justify-content: space-between;
     }
 
-    #presentation{
+    #presentation {
         margin-top: 1.5rem;
         margin-bottom: 1.5rem;
     }
-    #SVG{
+
+    #SVG {
         width: 350px;
-        height: 250px; 
+        height: 250px;
     }
 
-    header #Btn-begin{
+    header #Btn-begin {
         z-index: -1;
     }
 
-    #presentation-container li {
+    #presentation-container h2 {
         font-size: 15px;
-        margin: 5px;
+        margin-bottom: 0px;
+    }
+
+    #para1,
+    #para2 {
+        margin: 50px;
     }
 }

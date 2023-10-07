@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('Accueil');
+    return view('accueil');
 });
 
 //Route::get('/', [AccueilController::class, 'index'])->name('accueil');
