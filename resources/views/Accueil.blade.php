@@ -40,8 +40,8 @@
         <a id="Btn-begin" href="{{ route('identification') }}">Commencer 🚀</a>
     </header>
 
-    <section id="presentation-container" class="container-fluid">
-        <div class="container">
+    <section id="presentation-container" class="container-fluid column">
+        <div class=""><!--penser a mettre une class-->
             <div class="row">
                 <h2 id="text1" class="soulignage">Le projet consiste à ?</h2>
                 <h2 id="text2" class="soulignage">Correspond a qui ?</h2>
