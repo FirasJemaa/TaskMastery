@@ -41,14 +41,34 @@
     </header>
 
     <section id="presentation-container" class="container-fluid">
-        <div class="row">
-            <h2 id="text1" class="soulignage">Le projet consiste à ?</h2>
-            <h2 id="text2" class="soulignage">Correspond a qui ?</h2>
+        <div class="container">
+            <div class="row">
+                <h2 id="text1" class="soulignage">Le projet consiste à ?</h2>
+                <h2 id="text2" class="soulignage">Correspond a qui ?</h2>
+            </div>
+            <p id="para1">Le projet consiste en un gestionnaire de tâches convivial qui permet aux utilisateurs de créer, suivre et gérer des tâches individuellement ou en équipe. Cette solution simplifie la planification du travail quotidien et améliore la productivité.</p>
+            <p id="para2">Les professionnels, les étudiants, les équipes de travail, et toute personne cherchant à mieux organiser ses tâches.</p>
         </div>
-        <p id="para1" class="container">Le projet consiste en un gestionnaire de tâches convivial qui permet aux utilisateurs de créer, suivre et gérer des tâches individuellement ou en équipe. Cette solution simplifie la planification du travail quotidien et améliore la productivité.</p>
-        <p id="para2" class="container">Les professionnels, les étudiants, les équipes de travail, et toute personne cherchant à mieux organiser ses tâches.</p>
+        <div id="fonctionnement" class="container row">
+            <div class="column">
+                <div class="box play">
+                    <p>Create a project, and insert different tasks for your project.</p>
+                </div>
+                <div class="box">
+                    <p>Add someone in the project for work with you</p>
+                </div>
+                <div class="box">
+                    <p>Edit and share with your friends</p>
+                </div>
+            </div>
 
+            <img src="{{ asset('image/macbook.png') }}" alt="EcranPortable">
+
+        </div>
     </section>
+    <footer style="padding: 100px;">
+        <p>footer</p>
+    </footer>
     <script src="{{ asset('js/accueil.js') }}"></script>
 </body>
 

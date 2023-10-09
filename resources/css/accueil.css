@@ -106,6 +106,7 @@ header #Btn-begin:hover {
 #presentation-container {
     background-color: var(--clr-black);
     box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.25);
+    height: auto;
 }
 
 #presentation-container h2 {
@@ -119,11 +120,43 @@ header #Btn-begin:hover {
 #para2 {
     transition: opacity 0.5s;
     color: var(--clr-first);
-    position: absolute;
+    position: static;
 }
 
 #para2 {
     visibility: hidden;
+}
+
+/*fonctionnement*/
+#fonctionnement{
+    padding-bottom: 50px;
+}
+#fonctionnement p {
+    color:var(--clr-first);
+    cursor: pointer;
+}
+
+#fonctionnement img{
+    height: 300px;
+    width: 500px;
+}
+
+.box {
+    height: 100px;
+    width: 250px;
+    padding : 20px;
+    margin: 10px;
+    text-align: justify;
+    display: flex; 
+    justify-content : center;
+    align-items: center;
+    background-color: var(--clr-dark);
+    border-radius: 15px;
+}   
+
+.play{
+    box-shadow: 0 0 15px 4px rgba(232, 237, 223, 0.3);
+    transition: 0.3s ease-in-out ;
 }
 
 @media (max-width: 900px) {
@@ -261,9 +294,13 @@ header #Btn-begin:hover {
         font-size: 15px;
         margin-bottom: 0px;
     }
-
-    #para1,
-    #para2 {
-        margin: 50px;
+    #fonctionnement img{
+        margin-top: 50px;
     }
+
+    /*#para1,
+    #para2 {
+
+        padding-right: 50px;
+    }*/
 }
