@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('pseudo', 70)->unique()->nullable(false);
             $table->date('date_naissance')->nullable(false);
             $table->string('mail', 100)->nullable(false);
-            $table->string('password',190)->nullable(false);
+            $table->string('password',150)->nullable(false);
             $table->timestamps();
 
             //indexer pour rechercher plus rapidement

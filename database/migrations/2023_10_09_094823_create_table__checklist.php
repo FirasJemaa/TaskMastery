@@ -11,8 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('table__checklist', function (Blueprint $table) {
+        Schema::create('checklist', function (Blueprint $table) {
             $table->id();
+            $table->string('designation', 50)->nullable(false);
+            $table->boolean('checked');
+            $table->unsignedBigInteger('id_tache')->nullable(false);
+            $table->foreign('id_tache')->references('id')->on('tache');
             $table->timestamps();
         });
     }
@@ -22,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('table__checklist');
+        Schema::dropIfExists('checklist');
     }
 };

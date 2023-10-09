@@ -11,8 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('table__dependance', function (Blueprint $table) {
-            $table->id();
+        Schema::create('dependance', function (Blueprint $table) {
+            $table->unsignedBigInteger('id_tache_1')->nullable(false);
+            $table->unsignedBigInteger('id_tache_2')->nullable(false);
+            $table->primary(['id_tache_1', 'id_tache_2']);
+            $table->foreign('id_tache_1')->references('id')->on('tache');
+            $table->foreign('id_tache_2')->references('id')->on('tache');
             $table->timestamps();
         });
     }
@@ -22,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('table__dependance');
+        Schema::dropIfExists('dependance');
     }
 };

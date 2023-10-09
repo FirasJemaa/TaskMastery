@@ -11,8 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('table__conversation', function (Blueprint $table) {
+        Schema::create('conversation', function (Blueprint $table) {
             $table->id();
+            $table->date('Date_Creation_')->nullable(false);
+            $table->unsignedBigInteger('id_tache')->nullable(false);
+            $table->foreign('id_tache')->references('id')->on('tache');
             $table->timestamps();
         });
     }
@@ -22,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('table__conversation');
+        Schema::dropIfExists('conversation');
     }
 };

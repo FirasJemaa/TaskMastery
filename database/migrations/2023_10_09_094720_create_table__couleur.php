@@ -11,8 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('table__couleur', function (Blueprint $table) {
+        Schema::create('couleur', function (Blueprint $table) {
             $table->id();
+            $table->string('CodeCouleur', 50)->nullable(false);
             $table->timestamps();
         });
     }
@@ -22,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('table__couleur');
+        Schema::dropIfExists('couleur');
     }
 };

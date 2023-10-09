@@ -11,8 +11,22 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('table__tache', function (Blueprint $table) {
+        Schema::create('tache', function (Blueprint $table) {
             $table->id();
+            $table->string('priorite_liste', 50)->nullable(false);
+            $table->string('Designation', 190)->nullable();
+            $table->string('etiquette', 50)->nullable();
+            $table->date('date_creation_')->nullable(false);
+            $table->date('date_cloture_')->nullable();
+            $table->boolean('Notification');
+            $table->unsignedBigInteger('id_couleur')->nullable(false);
+            $table->unsignedBigInteger('id_projet')->nullable();
+            $table->unsignedBigInteger('id_etiquette')->nullable();
+            $table->unsignedBigInteger('id_statut')->nullable(false);
+            $table->foreign('id_couleur')->references('id')->on('couleur');
+            $table->foreign('id_projet')->references('id')->on('projet');
+            $table->foreign('id_etiquette')->references('id')->on('etiquette');
+            $table->foreign('id_statut')->references('id')->on('statut');
             $table->timestamps();
         });
     }
@@ -22,6 +36,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('table__tache');
+        Schema::dropIfExists('tache');
     }
 };

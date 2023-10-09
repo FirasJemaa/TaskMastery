@@ -11,8 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('table__etiquette', function (Blueprint $table) {
+        Schema::create('etiquette', function (Blueprint $table) {
             $table->id();
+            $table->string('designation', 100)->nullable(false)->unique();
             $table->timestamps();
         });
     }
@@ -22,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('table__etiquette');
+        Schema::dropIfExists('etiquette');
     }
 };

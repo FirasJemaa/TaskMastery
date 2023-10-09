@@ -11,8 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('table_statut', function (Blueprint $table) {
+        Schema::create('statut', function (Blueprint $table) {
             $table->id();
+            $table->string('designation', 100)->nullable(false)->unique();
             $table->timestamps();
         });
     }
@@ -22,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('table_statut');
+        Schema::dropIfExists('statut');
     }
 };

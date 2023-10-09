@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\accueilController;
-use App\Http\Controllers\sessionController;
+use App\Http\Controllers\identificationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,4 +19,4 @@ use App\Http\Controllers\sessionController;
 Route::get('/', [accueilController::class, 'index'])->name('accueil');
 
 //Session : va me permettre de relier a la vu Connexion et Inscription
-Route::get('/session', [sessionController::class, 'index'])->name('session');
+Route::get('/identification', [identificationController::class, 'index'])->name('identification');
