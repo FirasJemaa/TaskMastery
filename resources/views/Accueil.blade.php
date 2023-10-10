@@ -23,10 +23,10 @@
                     <span></span>
                 </button>
                 <div class="navlinks-container">
-                    <a class="soulignage" href="#" aria-current="page">Présentation</a>
-                    <a class="soulignage" href="#">Fonctionnement</a>
-                    <a class="soulignage" href="#">Objectif</a>
-                    <a class="soulignage" href="#">Avantage</a>
+                    <a class="soulignage" href="#presentation-container" aria-current="page">Présentation</a>
+                    <a class="soulignage" href="#presentation-container">Fonctionnement</a>
+                    <!--<a class="soulignage" href="#presentation-container">Objectif</a>-->
+                    <a class="soulignage" href="#avantage">Avantage</a>
                 </div>
             </div>
         </nav>
@@ -66,9 +66,21 @@
 
         </div>
     </section>
-    <footer style="padding: 100px;">
-        <p>footer</p>
-    </footer>
+    <section id="avantage" class="container column">
+        <div class="row">
+            <p>Travailler en <strong>équipe !</strong><br>Cela vous permettre de partager les tâches</p>
+            <img src="{{ asset('image/avantage1.svg') }}" alt="équipe">
+        </div>
+        <div class="row">
+            <img src="{{ asset('image/avantage2.svg') }}" alt="communication">
+            <p>Pouvoir <strong>communiquer !</strong><br>Ca vous donnera la possibilité de vous coordonnés</p>
+        </div>
+        <div class="row">
+            <p><strong>Réussir ensemble !</strong><br>Franchissez tous les étapes en équipe</p>
+            <img src="{{ asset('image/avantage3.svg') }}" alt="ensemble">
+        </div>
+    </section>
+
     <script src="{{ asset('js/accueil.js') }}"></script>
 </body>
 

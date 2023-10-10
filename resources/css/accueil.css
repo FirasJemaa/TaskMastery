@@ -159,6 +159,28 @@ header #Btn-begin:hover {
     transition: 0.3s ease-in-out ;
 }
 
+/******Avantage******/
+#avantage{
+    width: auto;
+}
+#avantage strong{
+    color:var(--clr-yellow);
+}
+
+#avantage img{
+    width: 600px;
+    height: 400px;
+}
+
+#avantage > div {
+    margin: 100px 0 100px 0;
+}
+
+#avantage p {
+    text-align: center;
+    font-size: 22px;
+}
+
 @media (max-width: 900px) {
 
     /*container*/
@@ -306,5 +328,23 @@ header #Btn-begin:hover {
 
     #presentation-container h2 {
         margin: 20px;
+    }
+
+    #avantage img{
+        width: 300px;
+        height: 200px;
+    }
+    
+    #avantage > div {
+        margin: 50px 0 50px 0;
+    }
+
+    #avantage div:nth-child(2){
+        flex-direction: column-reverse;
+    }
+    
+    #avantage p {
+        text-align: center;
+        font-size: 18px;
     }
 }
