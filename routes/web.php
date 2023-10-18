@@ -1,8 +1,7 @@
 <?php
 
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\accueilController;
-use App\Http\Controllers\identificationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,8 +14,18 @@ use App\Http\Controllers\identificationController;
 |
 */
 
-//Accueil : qui relie page d'accueil
-Route::get('/', [accueilController::class, 'index'])->name('accueil');
+Route::get('/', function () {
+    return view('welcome');
+});
 
-//Session : va me permettre de relier a la vu Connexion et Inscription
-Route::get('/identification', [identificationController::class, 'index'])->name('identification');
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+require __DIR__.'/auth.php';
