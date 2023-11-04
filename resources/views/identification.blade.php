@@ -13,9 +13,10 @@
         <img src="{{ asset('image/logo.png') }}" alt="logo">
         <div id="container" class="column">
             <h1>Connexion</h1>
-            <form method="POST">
+            <form method="POST" action="{{ route('login') }}">
+                @csrf
                 <div class="column">
-                    <input type="mail" placeholder="Mail" required>
+                    <input type="mail" placeholder="Mail" :value="__('Email')" required>
                     <input type="password" placeholder="Mot de passe" required>
                     <input type="submit">
                 </div>
