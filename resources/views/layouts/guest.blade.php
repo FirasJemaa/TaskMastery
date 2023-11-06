@@ -23,7 +23,7 @@
             </div>
 
             <div class="Login w-full sm:max-w-md mt-6 px-6 py-4 bg-white shadow-md overflow-hidden sm:rounded-lg">
-                <h2>Ravi de vous revoir ! 😁</h2>
+                <h2>Bienvenue ! 😁</h2>
                 {{ $slot }}
                 <a id="register" href="{{ route('register') }}">Je suis nouveau 👋</a>
             </div>
