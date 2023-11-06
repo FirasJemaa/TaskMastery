@@ -1,0 +1,15 @@
+@import url(app.css);
+
+.container-dashboard{
+    margin : 10px;
+}
+
+.container-dashboard > nav{
+    display : flex;
+    flex-direction: row;
+}
+
+.container-dashboard > nav > div{
+    display : flex;
+    flex-direction: row;
+}

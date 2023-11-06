@@ -7,6 +7,7 @@
     <!--<link href="{{ asset('css/accueil.css') }}" rel="stylesheet">-->
     @vite(['resources/css/accueil.css', 'resources/js/app.js'])
     <title>Task Mastery</title>
+    <link rel="icon" href="{{ asset('image/logo_onglet.png') }}" type="image/x-icon">
 </head>
 
 <body>
