@@ -136,3 +136,55 @@ h3 {
     transform: scaleX(1);
     /* Le soulignage s'élargit jusqu'à la largeur du texte */
 }
+
+
+/*Button*/
+.Btn {
+    text-align: center;
+    display: block;
+    height: 50px;
+    width: 200px;
+    font-size: 1.3rem;
+    font-weight: 700;
+    position: relative;
+    color: var(--clr-black);
+    border: 2px solid var(--clr-yellow);
+    background: var(--clr-yellow);
+    overflow: hidden;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 15px;
+    transition: all .5s;
+}
+
+.Btn:hover {
+    background-color: #333533;
+    color: #F5CB5C;
+}
+
+.Btn-small {
+    text-align: center;
+    display: block;
+    height: 35px;
+    width: 140px;
+    font-size: 0.8em;
+    font-weight: 700;
+    position: relative;
+    color: var(--clr-black);
+    border: 2px solid var(--clr-yellow);
+    background: var(--clr-yellow);
+    overflow: hidden;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 15px;
+    transition: all .5s;
+}
+
+.Btn-small:hover {
+    background-color: #333533;
+    color: #F5CB5C;
+}

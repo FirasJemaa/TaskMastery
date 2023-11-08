@@ -76,32 +76,6 @@ nav {
     color: var(--clr-black);
 }
 
-header #Btn-begin {
-    text-align: center;
-    display: block;
-    margin: 50px auto;
-    height: 50px;
-    width: 200px;
-    font-size: 1.3rem;
-    font-weight: 700;
-    position: relative;
-    color: var(--clr-black);
-    border: 2px solid var(--clr-yellow);
-    background: var(--clr-yellow);
-    overflow: hidden;
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 15px;
-    transition: all .5s;
-}
-
-header #Btn-begin:hover {
-    background-color: #333533;
-    color: #F5CB5C;
-}
-
 /*******Presentation**********/
 #presentation-container {
     background-color: var(--clr-black);

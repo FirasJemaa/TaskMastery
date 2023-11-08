@@ -4,12 +4,21 @@
     margin : 10px;
 }
 
-.container-dashboard > nav{
-    display : flex;
+header{
+    display: flex;
     flex-direction: row;
+    align-items: center;
+    justify-content:space-between;
 }
 
-.container-dashboard > nav > div{
-    display : flex;
-    flex-direction: row;
+.lien{
+    margin: 0.5rem;
+}
+
+.Btn-small{
+    margin: 0.5rem;
+}
+
+section {
+    height: 60%;
 }

@@ -38,7 +38,7 @@
             </div>
             <img id="SVG" src="image/presentation.svg" alt="Presentation">
         </div>
-        <a id="Btn-begin" href="{{ route('login') }}">Commencer 🚀</a>
+        <a class="Btn" href="{{ route('login') }}">Commencer 🚀</a>
     </header>
 
     <section id="presentation-container" class="container-fluid column">
