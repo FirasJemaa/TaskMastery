@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('projets', function (Blueprint $table) {
             $table->id();
+            $table->string('designation', 100)->nullable(false);
+            $table->text('description')->nullable(true);
             $table->unsignedBigInteger('id_user', )->nullable(false);
             $table->foreign('id_user')->references('id')->on('users');
             $table->timestamps();

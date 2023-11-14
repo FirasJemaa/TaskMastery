@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('messages', function (Blueprint $table) {
             $table->id();
-            $table->string('contenu', 190);
+            $table->text('contenu')->nullable(false);
             $table->date('date_envoi')->nullable(false);
             $table->unsignedBigInteger('id_conversation')->nullable(false);
             $table->unsignedBigInteger('id_utilisateur')->nullable(false);

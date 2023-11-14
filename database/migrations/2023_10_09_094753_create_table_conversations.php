@@ -13,7 +13,6 @@ return new class extends Migration
     {
         Schema::create('conversations', function (Blueprint $table) {
             $table->id();
-            $table->date('date_creation')->nullable(false);
             $table->unsignedBigInteger('id_tache')->nullable(false);
             $table->foreign('id_tache')->references('id')->on('taches');
             $table->timestamps();
