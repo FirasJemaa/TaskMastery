@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('attachements', function (Blueprint $table) {
             $table->id();
-            $table->string('Nom_fichier', 50)->nullable();
+            $table->string('nom_fichier', 50)->nullable();
             $table->unsignedBigInteger('id_tache')->nullable(false);
             $table->foreign('id_tache')->references('id')->on('taches');
             $table->timestamps();

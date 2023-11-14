@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('attributions', function (Blueprint $table) {
             $table->unsignedBigInteger('id_tache')->nullable(false);
             $table->unsignedBigInteger('id_utilisateur')->nullable(false);
-            $table->boolean('Createur')->nullable(false);
+            $table->boolean('createur')->nullable(false);
             $table->primary(['id_tache', 'id_utilisateur']);
             $table->foreign('id_tache')->references('id')->on('taches');
             $table->foreign('id_utilisateur')->references('id')->on('users');

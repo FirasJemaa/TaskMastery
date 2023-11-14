@@ -14,11 +14,11 @@ return new class extends Migration
         Schema::create('taches', function (Blueprint $table) {
             $table->id();
             $table->string('priorite_liste', 50)->nullable(false);
-            $table->string('Designation', 190)->nullable();
+            $table->string('designation', 190)->nullable();
             $table->string('etiquette', 50)->nullable();
-            $table->date('date_creation_')->nullable(false);
-            $table->date('date_cloture_')->nullable();
-            $table->boolean('Notification');
+            $table->date('date_creation')->nullable(false);
+            $table->date('date_cloture')->nullable();
+            $table->boolean('notification');
             $table->unsignedBigInteger('id_couleur')->nullable(false);
             $table->unsignedBigInteger('id_projet')->nullable();
             $table->unsignedBigInteger('id_etiquette')->nullable();
