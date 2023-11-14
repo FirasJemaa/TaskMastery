@@ -11,11 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('attachement', function (Blueprint $table) {
+        Schema::create('conversations', function (Blueprint $table) {
             $table->id();
-            $table->string('Nom_fichier', 50)->nullable();
+            $table->date('Date_Creation_')->nullable(false);
             $table->unsignedBigInteger('id_tache')->nullable(false);
-            $table->foreign('id_tache')->references('id')->on('tache');
+            $table->foreign('id_tache')->references('id')->on('taches');
             $table->timestamps();
         });
     }
@@ -25,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('attachement');
+        Schema::dropIfExists('conversation');
     }
 };

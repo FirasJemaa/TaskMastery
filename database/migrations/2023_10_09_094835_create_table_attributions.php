@@ -11,11 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('conversation', function (Blueprint $table) {
-            $table->id();
-            $table->date('Date_Creation_')->nullable(false);
+        Schema::create('attributions', function (Blueprint $table) {
             $table->unsignedBigInteger('id_tache')->nullable(false);
-            $table->foreign('id_tache')->references('id')->on('tache');
+            $table->unsignedBigInteger('id_utilisateur')->nullable(false);
+            $table->boolean('Createur')->nullable(false);
+            $table->primary(['id_tache', 'id_utilisateur']);
+            $table->foreign('id_tache')->references('id')->on('taches');
+            $table->foreign('id_utilisateur')->references('id')->on('users');
             $table->timestamps();
         });
     }
@@ -25,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('conversation');
+        Schema::dropIfExists('assigner');
     }
 };

@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('tache', function (Blueprint $table) {
+        Schema::create('taches', function (Blueprint $table) {
             $table->id();
             $table->string('priorite_liste', 50)->nullable(false);
             $table->string('Designation', 190)->nullable();
@@ -23,10 +23,10 @@ return new class extends Migration
             $table->unsignedBigInteger('id_projet')->nullable();
             $table->unsignedBigInteger('id_etiquette')->nullable();
             $table->unsignedBigInteger('id_statut')->nullable(false);
-            $table->foreign('id_couleur')->references('id')->on('couleur');
-            $table->foreign('id_projet')->references('id')->on('projet');
-            $table->foreign('id_etiquette')->references('id')->on('etiquette');
-            $table->foreign('id_statut')->references('id')->on('statut');
+            $table->foreign('id_couleur')->references('id')->on('couleurs');
+            $table->foreign('id_projet')->references('id')->on('projets');
+            $table->foreign('id_etiquette')->references('id')->on('etiquettes');
+            $table->foreign('id_statut')->references('id')->on('statuts');
             $table->timestamps();
         });
     }

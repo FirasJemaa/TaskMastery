@@ -11,12 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('checklist', function (Blueprint $table) {
+        Schema::create('couleurs', function (Blueprint $table) {
             $table->id();
-            $table->string('designation', 50)->nullable(false);
-            $table->boolean('checked');
-            $table->unsignedBigInteger('id_tache')->nullable(false);
-            $table->foreign('id_tache')->references('id')->on('tache');
+            $table->string('CodeCouleur', 50)->nullable(false);
             $table->timestamps();
         });
     }
@@ -26,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('checklist');
+        Schema::dropIfExists('couleur');
     }
 };

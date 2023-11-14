@@ -11,9 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('etiquette', function (Blueprint $table) {
+        Schema::create('attachements', function (Blueprint $table) {
             $table->id();
-            $table->string('designation', 100)->nullable(false)->unique();
+            $table->string('Nom_fichier', 50)->nullable();
+            $table->unsignedBigInteger('id_tache')->nullable(false);
+            $table->foreign('id_tache')->references('id')->on('taches');
             $table->timestamps();
         });
     }
@@ -23,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('etiquette');
+        Schema::dropIfExists('attachement');
     }
 };
