@@ -80,56 +80,11 @@ h2{
 }
 
 .Login form button:hover {
-    background-color: #333533;
-    color: #F5CB5C;
+    background-color: var(--clr-black);
+    color: var(--clr-yellow);
 }
 
 #register{
     color: var(--clr-first);
     
 }
-/*
-#container h1,
-#container input[type="submit"] {
-    margin: 10px;  Ajoutez la marge souhaitée ici
-}
- */
-/*h1{
-    color: var(--clr-first);
-}
-
-input[type="submit"]{
-    background-color: var(--clr-yellow);
-    width: 100px;
-}
-input[type="mail"], input[type="password"] {
-    background-color: var(--clr-first);
-    width: 200px;
-    margin: 5px;
-}
-input {
-    padding: 10px;
-    border: 2px solid var(--clr-black);
-    border-radius: 15px;
-    font-size: 16px;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-}
-
-input[type="mail"]:hover, input[type="password"]:hover {
-    border-color: var(--clr-yellow);
-}
-
-input[type="submit"]:hover{
-    border-color: var(--clr-first);
-}
-
-input:hover{
-    transform: scale(1.01);
-}
-
-/* Style au focus *//*
-input:focus {
-    outline: none;
-    border-color: var(--clr-yellow);
-    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
-}*/
