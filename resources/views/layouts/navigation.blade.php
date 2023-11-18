@@ -25,7 +25,7 @@
                 </x-dropdown-link>
             </form>
             <x-responsive-nav-link class="Btn-small" :href="route('profile.edit')">
-                {{ __('Profile') }}
+                {{ __('Profil') }}
             </x-responsive-nav-link>
         </div>
     </header>
