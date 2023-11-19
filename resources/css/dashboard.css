@@ -60,6 +60,25 @@ section {
     margin-bottom: 1rem;
 }
 
+
+
+/****panel*******/
+.panel{
+    display: flex;
+    flex-direction: row;
+}
+.panel > aside{
+    width: 30%;
+    height: 100%;
+    background: var(--clr-black);
+}
+
+.panel > section {
+    width: 70%;
+    height: 100%;
+    background: var(--clr-second);
+}
+
 @media (max-width: 900px) {
     .formulaire_profil input{
         width: 90%;
