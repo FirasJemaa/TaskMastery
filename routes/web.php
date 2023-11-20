@@ -38,6 +38,6 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::post('/store', [ProjetController::class, 'store'])->middleware(['auth', 'verified'])->name('dashboard');
+Route::post('/store', [ProjetController::class, 'store']);//->middleware(['auth', 'verified'])->name('dashboard');
 
 require __DIR__.'/auth.php';

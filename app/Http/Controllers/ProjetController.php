@@ -33,7 +33,7 @@ class ProjetController extends Controller
     {
         $id_user = $request->id;
         $projet = Projet::updateOrCreate(
-            ['ID_User' => $id_user],
+            ['id_user' => $id_user],
             ['designaion' => $request->designation,
              'description' => $request->description]
         );

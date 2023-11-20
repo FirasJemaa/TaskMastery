@@ -17,7 +17,7 @@ jQuery('#employeForm').submit(function(e) {
 
     jQuery.ajax({
         type: 'POST',
-        url: "{{ url('store') }}",
+        url: "/store",
         data: formData,
         cache:false,
         contentType: false,
@@ -26,6 +26,7 @@ jQuery('#employeForm').submit(function(e) {
             console.log(data);
         },
         error: function(data){
+            console.log('ca ne marche pas');
             console.log(data);
         }
     });
