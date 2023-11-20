@@ -31,7 +31,13 @@ class ProjetController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $id_user = $request->id;
+        $projet = Projet::updateOrCreate(
+            ['ID_User' => $id_user],
+            ['designaion' => $request->designation,
+             'description' => $request->description]
+        );
+        return Response()->json($projet);
     }
 
     /**
