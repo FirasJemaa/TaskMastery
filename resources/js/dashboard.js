@@ -3,12 +3,13 @@ $(document).ready(function() {
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
-    });
+    });  
 });
 
-function ajouterEmploye() {
+window.ajouterEmploye = function () {
     $('#employeModal').modal('show');
 }
+
 
 jQuery('#employeForm').submit(function(e) { 
     e.preventDefault();
