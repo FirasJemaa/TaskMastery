@@ -1,3 +1,4 @@
+/********************************PROJET********************************/
 $(document).ready(function() {
     $.ajaxSetup({
         headers: {
@@ -14,7 +15,6 @@ window.ajouterEmploye = function () {
 jQuery('#employeForm').submit(function(e) { 
     e.preventDefault();
     const formData = new FormData(this);
-
     jQuery.ajax({
         type: 'POST',
         url: "/store",
@@ -23,10 +23,11 @@ jQuery('#employeForm').submit(function(e) {
         contentType: false,
         processData: false,
         success: (data) => {
+            $('#btn-save').html('Enregistrer');
+            $('#btn-save').attr("disabled", false);
             console.log(data);
         },
         error: function(data){
-            console.log('ca ne marche pas');
             console.log(data);
         }
     });
