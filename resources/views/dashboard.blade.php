@@ -3,7 +3,7 @@
 </x-app-layout>
 <div class="panel">
     <aside>
-        @include('projets.index')
+        @include('projets.indexProjet')
     </aside>
     <section>blabla</section>
 </div>
