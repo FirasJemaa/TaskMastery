@@ -1,0 +1,52 @@
+.panel > aside{
+    color :var(--clr-second);
+    width: 30%;
+    height: 100%;
+    background: var(--clr-black);
+    padding: 5px;
+    text-align: left;
+    /* //var(--clr-black); */
+}
+
+.panel > aside > div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: 10px;
+}
+
+.panel h2 {
+    color :var(--clr-second);
+}
+
+.panel > section {
+    width: 70%;
+    height: 100%;
+    background: var(--clr-second);
+}
+
+#listeProjets{
+    list-style-type: none;
+    padding-left: 0;
+}
+
+li{
+    cursor: pointer;
+    padding-left: 15px;
+}
+
+li:hover{
+    background-color: var(--clr-yellow);
+    color: var(--clr-black);
+}
+
+li:active{
+    background-color: var(--clr-yellow);
+}
+
+@media (max-width: 900px) {
+    aside h2{
+        font-size: 20px;
+    }
+}

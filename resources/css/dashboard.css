@@ -1,4 +1,6 @@
 @import url(app.css);
+@import url(dashboards/aside.css);
+@import url(dashboards/section.css);
 
 .container-dashboard{
     margin : 10px;
@@ -17,10 +19,6 @@ header{
 
 .Btn-small{
     margin: 0.5rem;
-}
-
-section {
-    height: 60%;
 }
 
 .formulaire_profil{
@@ -60,39 +58,10 @@ section {
     margin-bottom: 1rem;
 }
 
-
-
 /****panel*******/
 .panel{
     display: flex;
     flex-direction: row;
-}
-.panel > aside{
-    color :var(--clr-second);
-    width: 30%;
-    height: 100%;
-    background: var(--clr-black);
-    padding: 5px;
-    text-align: center;
-    /* //var(--clr-black); */
-}
-
-.panel > aside > div {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    align-items: center;
-    margin: 10px;
-}
-
-.panel h2 {
-    color :var(--clr-second);
-}
-
-.panel > section {
-    width: 70%;
-    height: 100%;
-    background: var(--clr-second);
 }
 
 @media (max-width: 900px) {
@@ -102,5 +71,9 @@ section {
     .Btn-small{
         margin: 0;
         margin-top: 0.2rem;
+    }
+
+    aside h2{
+        font-size: 20px;
     }
 }

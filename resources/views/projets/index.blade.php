@@ -3,7 +3,7 @@ $projets = \App\Models\Projet::all()->sortBy("id");
 @endphp
 <div>
     <h2>Liste projets :</h2>
-    <a id="creerEmploye" onclick="ajouterEmploye()">
+    <a id="creerProjet" onclick="ajouterProjet()">
         <svg xmlns="http://www.w3.org/2000/svg" height="1.25em" viewBox="0 0 512 512">
             <style>
                 svg {
@@ -15,13 +15,10 @@ $projets = \App\Models\Projet::all()->sortBy("id");
     </a>
 </div>
 
-@foreach ($projets as $projet)
-
-<ul>
+<ul id="listeProjets">
+    @foreach ($projets as $projet)
     <li id="{{ $projet->id }}">
         {{ $projet->designation }}
     </li>
+    @endforeach
 </ul>
-
-@endforeach
-  
