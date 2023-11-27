@@ -16,7 +16,8 @@ class ProjetController extends Controller
     {
         $projets = Projet::all()->sortBy("id");
         dd($projets);
-        return view("projets.index", compact("projets"));
+        return view("projets.indexProjet
+        ", compact("projets"));
     }
 
     /**

@@ -2,17 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\tache;
+use App\Models\Tache;
 use Illuminate\Http\Request;
 
-class tache extends Controller
+class TacheController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        $projets = Tache::all()->sortBy("id");
+        dd($projets);
+        return view("tache.indexTache", compact("taches"));
     }
 
     /**
@@ -34,7 +36,7 @@ class tache extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(tache $tache)
+    public function show(Tache $tache)
     {
         //
     }
@@ -42,7 +44,7 @@ class tache extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(tache $tache)
+    public function edit(Tache $tache)
     {
         //
     }
@@ -50,7 +52,7 @@ class tache extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, tache $tache)
+    public function update(Request $request, Tache $tache)
     {
         //
     }
@@ -58,7 +60,7 @@ class tache extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(tache $tache)
+    public function destroy(Tache $tache)
     {
         //
     }
