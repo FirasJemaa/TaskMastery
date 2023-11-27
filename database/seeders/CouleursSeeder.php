@@ -14,13 +14,13 @@ class CouleursSeeder extends Seeder
     public function run(): void
     {
         DB::table('couleurs')->insert([
-            'code_couleur'  => 255
+            'code_couleur'  => hexdec('ff0000')
         ]);
         DB::table('couleurs')->insert([
-            'code_couleur'  => 124
+            'code_couleur'  => hexdec('00ff00')
         ]);
         DB::table('couleurs')->insert([
-            'code_couleur'  => 64
+            'code_couleur'  => hexdec('0000ff')
         ]);
     }
 }
