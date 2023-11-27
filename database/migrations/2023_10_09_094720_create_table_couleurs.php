@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('couleurs', function (Blueprint $table) {
             $table->id();
             // Stocker la valeur décimale du code Hexa de la couleur
+            //$table->string('nom')->nullable(false)->unique();
             $table->integer('code_couleur')->nullable(false)->unique();
             $table->timestamps();
         });
