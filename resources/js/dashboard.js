@@ -16,14 +16,15 @@ $(document).on('click', '.delete-projet', function (e) {
     const projetId = this.name; // obtenir l'ID du projet à supprimer
     console.log(projetId);
     $.ajax({
-        type: 'DELETE',
+        type: 'POST',
         url: "/deleteProjet/"+projetId,
+        data: {projetId: projetId},
         cache: false,
         contentType: false,
         processData: false,
         success: function (data) {
-            console.log("suppression OK !")
-            //$('#listeProjets').remove('<li class="projet" id="' + data.id + '">' + data.designation + '</li>');
+            console.log(data);
+            $('#' + projetId).remove();
         },
         error: function (data) {
             console.log(data);

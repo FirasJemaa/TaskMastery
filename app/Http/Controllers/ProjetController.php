@@ -75,11 +75,12 @@ class ProjetController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Projet $projet)
+    public function destroy($id)
     {
-        $projet->delete();
+        //return ("Suppression du projet : " . $projet);
+        Projet::find($id)->delete();
         
-        //return response()->json(['message' => 'Projet supprimé avec succès']);
+        return response()->json(['message' => "Projet $id supprimé avec succès"]);
         //return redirect()->route("dashboard");
     }
 }

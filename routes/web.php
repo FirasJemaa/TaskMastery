@@ -40,6 +40,6 @@ Route::middleware('auth')->group(function () {
 
 //Projet
 Route::post('/storeProjet', [ProjetController::class, 'store']);//->middleware(['auth', 'verified'])->name('dashboard');
-Route::delete('/deleteProjet/{n}', [ProjetController::class, 'destroy']);
+Route::post('/deleteProjet/{n}', [ProjetController::class, 'destroy']);
 
 require __DIR__.'/auth.php';
