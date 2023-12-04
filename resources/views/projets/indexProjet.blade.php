@@ -19,6 +19,15 @@ $projets = \App\Models\Projet::all()->sortBy("id");
     @foreach ($projets as $projet)
     <li id="{{ $projet->id }}">
         {{ $projet->designation }}
+        <div>
+            <a>
+                <i class="fa-solid fa-pen"></i>
+            </a>
+            <a class="delete-projet" name="{{ $projet->id }}" onclick="//supprimerProjet()">
+                <i class="fa-solid fa-trash">
+                </i>
+            </a>
+        </div>
     </li>
     @endforeach
 </ul>

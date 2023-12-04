@@ -11,6 +11,40 @@ window.ajouterProjet = function () {
     $('#projetModal').modal('show');
 }
 
+/*window.supprimerProjet = function (projetId) {
+    e.preventDefault();
+    //const formData = new FormData(this);
+    if (confirm("Êtes-vous sûr de vouloir supprimer ce projet ?")) {
+        jQuery.ajax({
+            type: 'DELETE',
+            url: '/projets/{' + projetId + '}',
+            success: function (data) {
+                // Mettre à jour l'interface utilisateur ou effectuer d'autres actions nécessaires
+                console.log("Projet supprimé avec succès");
+            },
+            error: function (data) {
+                console.log(data);
+            }
+        });
+    }
+}*/
+
+$(document).on('click', '.delete-projet', function (e) {
+    e.preventDefault();
+    const projetId = this.name; // obtenir l'ID du projet à supprimer
+    console.log(projetId);
+    $.ajax({
+        type: 'DELETE',
+        url: "/deleteProjet/"+projetId,
+        success: function (data) {
+            console.log("suppression OK !")
+            //$('#listeProjets').remove('<li class="projet" id="' + data.id + '">' + data.designation + '</li>');
+        },
+        error: function (data) {
+            console.log(data);
+        }
+    });
+});
 
 jQuery('#projetForm').submit(function (e) {
     e.preventDefault();
@@ -45,10 +79,9 @@ jQuery('#projetForm').submit(function (e) {
 let elementsLi = document.querySelectorAll('li');
 
 // Ajouter un gestionnaire d'événements à chaque élément li
-elementsLi.forEach(function(li) {
-    li.addEventListener('click', function() {
+elementsLi.forEach(function (li) {
+    li.addEventListener('click', function () {
         // Récupérer l'ID de l'élément cliqué
-        var idClique = this.id;
-        console.log("L'élément cliqué a l'ID : " + idClique);
+        //supprimerProjet(this.id);
     });
 });

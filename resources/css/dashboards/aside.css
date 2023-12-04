@@ -1,6 +1,6 @@
 .panel > aside{
     color :var(--clr-second);
-    width: 30%;
+    width: 20%;
     height: 100%;
     background: var(--clr-black);
     padding: 5px;
@@ -34,15 +34,32 @@
 li{
     cursor: pointer;
     padding-left: 15px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
 li:hover{
     background-color: var(--clr-yellow);
     color: var(--clr-black);
+
+}
+
+li i {
+    color: #f5cb5c;
+}
+
+li:hover i {
+    color: var(--clr-black);
+
 }
 
 li:active{
     background-color: var(--clr-yellow);
+}
+
+li div {
+    margin-right: 15px;
 }
 
 @media (max-width: 900px) {
