@@ -78,6 +78,8 @@ class ProjetController extends Controller
     public function destroy(Projet $projet)
     {
         $projet->delete();
-        return redirect()->route("dashboard");
+        
+        //return response()->json(['message' => 'Projet supprimé avec succès']);
+        //return redirect()->route("dashboard");
     }
 }
