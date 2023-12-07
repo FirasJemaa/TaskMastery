@@ -15,7 +15,6 @@ class ProjetController extends Controller
     public function index()//:View
     {
         $projets = Projet::all()->sortBy("id");
-        dd($projets);
         return view("projets.indexProjet", compact("projets"));
     }
 
@@ -51,9 +50,10 @@ class ProjetController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Projet $projet)
+    public function show($id)
     {
-        return view("projets.show", compact("projet"));
+        $projet = Projet::find($id);
+        return response()->json($projet);
     }
 
     /**
@@ -69,7 +69,20 @@ class ProjetController extends Controller
      */
     public function update(Request $request, Projet $projet)
     {
-        //
+        //je récupère l'ID du user
+        $user = Auth::user();
+        $id_user = $user->id;
+
+        $id_projet = request()->id;
+        $projet = Projet::updateOrCreate(
+            ['id' => $id_projet],
+            [
+                'id_user' => $id_user,
+                'designation' => $request->designation,
+                'description' => $request->description
+            ]
+        );
+        return Response()->json($projet);
     }
 
     /**
@@ -77,10 +90,7 @@ class ProjetController extends Controller
      */
     public function destroy($id)
     {
-        //return ("Suppression du projet : " . $projet);
         Projet::find($id)->delete();
-        
         return response()->json(['message' => "Projet $id supprimé avec succès"]);
-        //return redirect()->route("dashboard");
     }
 }

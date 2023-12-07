@@ -20,10 +20,10 @@ $projets = \App\Models\Projet::all()->sortBy("id");
     <li id="{{ $projet->id }}">
         {{ $projet->designation }}
         <div>
-            <a>
+            <a class="update-projet" name="{{ $projet->id }}">
                 <i class="fa-solid fa-pen"></i>
             </a>
-            <a class="delete-projet" name="{{ $projet->id }}" onclick="//supprimerProjet()">
+            <a class="delete-projet" name="{{ $projet->id }}">
                 <i class="fa-solid fa-trash">
                 </i>
             </a>
