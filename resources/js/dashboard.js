@@ -37,7 +37,6 @@ window.modifierProjet = function (id) {
 $(document).on('click', '.update-projet', function (e) {
     e.preventDefault;
     const Projet = showProjet(this.name);
-    console.log(Projet);
     modifierProjet(Projet.id);
 
     $("#designation").val(Projet.designation);
@@ -74,10 +73,10 @@ window.ajouterProjet = function () {
 
 jQuery('#projetForm').submit(function (e) {
     e.preventDefault();
-    const formData = new FormData(this);
+    const Titre = $('.modal-title').text();
 
-    const Titre = $('.modal-title').html;
     if (Titre == "Ajouter un projet") {
+        const formData = new FormData(this);
         jQuery.ajax({
             type: 'POST',
             url: "/storeProjet",
@@ -103,15 +102,27 @@ jQuery('#projetForm').submit(function (e) {
             }
         });
     } else {
-        const projetId = $('.modal-title').attr('name');;
+        const projetId = $('.modal-title').attr('name');
+        $('.Id-Projet').attr('value', projetId);
+        const formData = new FormData(this);
+
+        // Affichage du contenu de formData
+        for (const pair of formData.entries()) {
+            console.log(pair[0], pair[1]);
+        }
+
         jQuery.ajax({
             type: 'PUT',
-            url: "/updateProjet/" + projetId,
+            url: "/updateProjet",
             data: formData,
             cache: false,
             contentType: false,
             processData: false,
             success: (data) => {
+                console.log(data);
+
+
+                /*
                 // Mettre à jour la liste des projets dans l'interface utilisateur
                 const projetElement = $('#listeProjets').find('#' + data.id);
 
@@ -131,14 +142,12 @@ jQuery('#projetForm').submit(function (e) {
                 $('#projetForm')[0].reset();
                 $('#projetModal').modal('hide');
                 $('#btn-save').html('Enregistrer');
-                $('#btn-save').attr("disabled", false);
+                $('#btn-save').attr("disabled", false);*/
             },
             error: function (data) {
-                console.log(data);
+                console.log(data + " erreur");
             }
         });
     }
-
-
 })
 

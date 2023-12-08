@@ -19,7 +19,7 @@
             </div>
             <div class="modal-body">
                 <form action="javascript:void(0)" id="projetForm" name="projetForm" class="form-horizontal" method="POST" enctype="multipart/form-data">
-                    <input type="hidden" name="id" id="id">
+                    <input class="Id-Projet" type="hidden" name="id" id="id">
                     <div class="form-group">
                         <label for="designation" class="col-sm-2 control-label">Designation</label>
                         <div class="col-sm-12">

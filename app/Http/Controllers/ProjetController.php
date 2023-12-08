@@ -67,22 +67,17 @@ class ProjetController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Projet $projet)
+    public function update(Request $request)
     {
-        //je récupère l'ID du user
-        $user = Auth::user();
-        $id_user = $user->id;
-
-        $id_projet = request()->id;
-        $projet = Projet::updateOrCreate(
-            ['id' => $id_projet],
-            [
-                'id_user' => $id_user,
-                'designation' => $request->designation,
-                'description' => $request->description
-            ]
-        );
-        return Response()->json($projet);
+        return $request;/*
+        // Mettre à jour les champs du projet
+        $projet->update([
+            'designation' => $request->designation,
+            'description' => $request->description
+        ]);
+    
+        // Retourner la réponse JSON
+        return response()->json($projet);*/
     }
 
     /**
