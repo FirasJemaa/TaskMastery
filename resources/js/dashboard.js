@@ -75,79 +75,41 @@ jQuery('#projetForm').submit(function (e) {
     e.preventDefault();
     const Titre = $('.modal-title').text();
 
-    if (Titre == "Ajouter un projet") {
-        const formData = new FormData(this);
-        jQuery.ajax({
-            type: 'POST',
-            url: "/storeProjet",
-            data: formData,
-            cache: false,
-            contentType: false,
-            processData: false,
-            success: (data) => {
-                // Mettre à jour la liste des projets dans l'interface utilisateur
+    //if (Titre == "Ajouter un projet") {
+    const projetId = $('.modal-title').attr('name');
+    $('.Id-Projet').attr('value', projetId);
+    const formData = new FormData(this);
+    jQuery.ajax({
+        type: 'POST',
+        url: "/storeProjet",
+        data: formData,
+        cache: false,
+        contentType: false,
+        processData: false,
+        success: (data) => {
+            // Mettre à jour la liste des projets dans l'interface utilisateur
+            if (Titre == "Ajouter un projet") {
                 $('#listeProjets').append('<li class="projet" id="' + data.id + '">' + data.designation + '<div><a class="update-projet" name="{{ $projet->id }}"><i class="fa-solid fa-pen"></i></a><a class="delete-projet" name=' + data.id + '> <i class="fa-solid fa-trash"></i></a></div></li>');
-
-                // Réinitialiser le formulaire et fermer la fenêtre modale
-                $('#projetForm')[0].reset();
-                $('#projetModal').modal('hide');
-
-                $('#projetForm')[0].reset();
-                $('#projetModal').modal('hide');
-                $('#btn-save').html('Enregistrer');
-                $('#btn-save').attr("disabled", false);
-            },
-            error: function (data) {
-                console.log(data);
-            }
-        });
-    } else {
-        const projetId = $('.modal-title').attr('name');
-        $('.Id-Projet').attr('value', projetId);
-        const formData = new FormData(this);
-
-        // Affichage du contenu de formData
-        for (const pair of formData.entries()) {
-            console.log(pair[0], pair[1]);
-        }
-
-        jQuery.ajax({
-            type: 'PUT',
-            url: "/updateProjet",
-            data: formData,
-            cache: false,
-            contentType: false,
-            processData: false,
-            success: (data) => {
-                console.log(data);
-
-
-                /*
-                // Mettre à jour la liste des projets dans l'interface utilisateur
+            } else {
                 const projetElement = $('#listeProjets').find('#' + data.id);
-
-                if (projetElement.length > 0) {
-                    // Si l'élément avec l'ID existe, mettez à jour son contenu
-                    projetElement.html(
-                        data.designation +
-                        '<div><a class="update-projet" name="' + data.id + '"><i class="fa-solid fa-pen"></i></a>' +
-                        '<a class="delete-projet" name="' + data.id + '"> <i class="fa-solid fa-trash"></i></a></div>'
-                    );
-                }
-
-                // Réinitialiser le formulaire et fermer la fenêtre modale
-                $('#projetForm')[0].reset();
-                $('#projetModal').modal('hide');
-
-                $('#projetForm')[0].reset();
-                $('#projetModal').modal('hide');
-                $('#btn-save').html('Enregistrer');
-                $('#btn-save').attr("disabled", false);*/
-            },
-            error: function (data) {
-                console.log(data + " erreur");
+                projetElement.html(
+                    data.designation +
+                    '<div><a class="update-projet" name="' + data.id + '"><i class="fa-solid fa-pen"></i></a>' +
+                    '<a class="delete-projet" name="' + data.id + '"> <i class="fa-solid fa-trash"></i></a></div>'
+                );
             }
-        });
-    }
+            // Réinitialiser le formulaire et fermer la fenêtre modale
+            $('#projetForm')[0].reset();
+            $('#projetModal').modal('hide');
+
+            $('#projetForm')[0].reset();
+            $('#projetModal').modal('hide');
+            $('#btn-save').html('Enregistrer');
+            $('#btn-save').attr("disabled", false);
+        },
+        error: function (data) {
+            console.log(data);
+        }
+    });
 })
 

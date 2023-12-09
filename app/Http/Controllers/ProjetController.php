@@ -67,9 +67,9 @@ class ProjetController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request)
+    /*public function update(Request $request)
     {
-        return $request;/*
+        return response()->json($request->id);
         // Mettre à jour les champs du projet
         $projet->update([
             'designation' => $request->designation,
@@ -77,8 +77,8 @@ class ProjetController extends Controller
         ]);
     
         // Retourner la réponse JSON
-        return response()->json($projet);*/
-    }
+        return response()->json($projet);
+    }*/
 
     /**
      * Remove the specified resource from storage.
