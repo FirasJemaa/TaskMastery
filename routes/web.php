@@ -42,6 +42,5 @@ Route::middleware('auth')->group(function () {
 Route::post('/storeProjet', [ProjetController::class, 'store']);
 Route::post('/deleteProjet/{n}', [ProjetController::class, 'destroy']);
 Route::get('/showProjet/{n}', [ProjetController::class, 'show']);
-//Route::put('/updateProjet', [ProjetController::class, 'update']);
 
 require __DIR__.'/auth.php';

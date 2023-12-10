@@ -5,7 +5,9 @@
     <aside>
         @include('projets.indexProjet')
     </aside>
-    <section>blabla</section>
+    <section>
+        
+    </section>
 </div>
 
 
