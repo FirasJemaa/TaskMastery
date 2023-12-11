@@ -6,7 +6,7 @@
         @include('projets.indexProjet')
     </aside>
     <section>
-        
+        @include('projets.indexTache')
     </section>
 </div>
 
