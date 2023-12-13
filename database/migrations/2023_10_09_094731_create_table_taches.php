@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\DB;
 
 return new class extends Migration
 {
@@ -30,6 +31,20 @@ return new class extends Migration
             $table->foreign('id_statut')->references('id')->on('statuts');
             $table->timestamps();
         });
+
+        DB::unprepared('
+        DELIMITER //
+        CREATE TRIGGER taches_default_values
+        BEFORE INSERT ON taches
+        FOR EACH ROW
+        BEGIN
+            SET NEW.id_etiquette = 1;
+            SET NEW.id_couleur = 1;
+            SET NEW.id_statut = 1;
+        END;
+        //
+        DELIMITER ;
+        ');
     }
 
     /**

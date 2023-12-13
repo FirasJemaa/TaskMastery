@@ -9,7 +9,7 @@ class StatutController extends Controller
 {
     public function index()//:View
     {
-        $projets = Statut::all()->sortBy("id");
+        $statuts = Statut::all()->sortBy("id");
         return view("projets.indexTache", compact("statuts"));
     }
 }

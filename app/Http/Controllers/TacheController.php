@@ -12,9 +12,8 @@ class TacheController extends Controller
      */
     public function index()
     {
-        $projets = Tache::all()->sortBy("id");
-        dd($projets);
-        return view("tache.indexTache", compact("taches"));
+        $Taches = Tache::all()->sortBy("id");
+        return view("projets.indexTache", compact("taches"));
     }
 
     /**

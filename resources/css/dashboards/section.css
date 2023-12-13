@@ -1,3 +1,27 @@
-section {
-    height: 80%;
+.statuts{
+    height: 70vh;
+    background: var(--clr-second);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.statut {
+    width: 20%;
+    height: 60vh;
+    background: var(--clr-first);
+    border-radius: 15px;
+    box-shadow: 0 0 10px 1px rgb(127, 127, 127);
+    padding: 5px;
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.statut h3{
+    font-size: 20px;
+    font-weight: bold;
+    margin: 5px;
 }

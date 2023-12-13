@@ -20,12 +20,6 @@
     color :var(--clr-second);
 }
 
-.panel > section {
-    width: 70%;
-    height: 100%;
-    background: var(--clr-second);
-}
-
 #listeProjets{
     list-style-type: none;
     padding-left: 0;
@@ -45,7 +39,7 @@ li:hover{
 
 }
 
-li i {
+li i, #creerProjet i {
     color: #f5cb5c;
 }
 
