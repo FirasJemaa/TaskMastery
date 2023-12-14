@@ -25,3 +25,18 @@
     font-weight: bold;
     margin: 5px;
 }
+
+.taches {
+    background-color: #F47979;
+    padding: 15px 50px;
+    margin: 15px;
+    border-radius: 15px;
+}
+
+.taches h4, p {
+    color: white;
+}
+
+.taches h4 {
+    font-size: 20px;
+}

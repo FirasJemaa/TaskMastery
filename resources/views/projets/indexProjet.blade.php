@@ -2,7 +2,7 @@
 $projets = \App\Models\Projet::all()->sortBy("id");
 @endphp
 <div>
-    <h2>Liste projets :</h2>
+    <h2>Liste projets</h2>
     <a id="creerProjet" onclick="ajouterProjet()">
         <i class="fa-solid fa-circle-plus"></i>
     </a>

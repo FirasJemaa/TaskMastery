@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProjetController;
+use App\Http\Controllers\TacheController;
 use App\Models\Projet;
 use Illuminate\Support\Facades\Route;
 
@@ -42,5 +43,8 @@ Route::middleware('auth')->group(function () {
     Route::post('/deleteProjet/{n}', [ProjetController::class, 'destroy']);
     Route::get('/showProjet/{n}', [ProjetController::class, 'show']);
 });
+
+//test
+Route::get('/test', [TacheController::class, 'index']);
 
 require __DIR__.'/auth.php';

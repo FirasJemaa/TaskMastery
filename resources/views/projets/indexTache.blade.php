@@ -13,6 +13,8 @@ $statuts = \App\Models\Statut::all()->sortBy("id");
         @foreach ($taches as $tache)
         <div class="taches">
             <h4>{{$tache->designation}}</h4>
+            <input type="checkbox">
+                
             <p>Étiquette : {{$tache->id_etiquette}}</p>
         </div>
         @endforeach

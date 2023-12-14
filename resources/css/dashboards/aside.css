@@ -1,7 +1,7 @@
 .panel > aside{
     color :var(--clr-second);
     width: 20%;
-    height: 100%;
+    height: auto;
     background: var(--clr-black);
     padding: 5px;
     text-align: left;
@@ -41,6 +41,14 @@ li:hover{
 
 li i, #creerProjet i {
     color: #f5cb5c;
+}
+
+#creerProjet i:hover {
+    color: #ddb548;
+}
+
+#creerProjet i {
+    font-size: 25px;
 }
 
 li:hover i {
