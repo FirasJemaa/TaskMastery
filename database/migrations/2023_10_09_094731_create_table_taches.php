@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-use Illuminate\Support\Facades\DB;
+//use Illuminate\Support\Facades\DB;
 
 return new class extends Migration
 {
@@ -21,30 +21,18 @@ return new class extends Migration
             $table->date('date_cloture')->nullable();
             $table->boolean('notification');
             $table->unsignedBigInteger('id_projet')->nullable(false);
-            $table->unsignedBigInteger('id_couleur')->nullable(false);
+            $table->unsignedBigInteger('id_couleur')->nullable(false)->default(1);
             // Obligatoire oui/non ?
-            $table->unsignedBigInteger('id_etiquette')->nullable();
-            $table->unsignedBigInteger('id_statut')->nullable(false);
+            $table->unsignedBigInteger('id_etiquette')->nullable(false)->default(1);
+            $table->unsignedBigInteger('id_statut')->nullable(false)->default(1);
             $table->foreign('id_projet')->references('id')->on('projets');
             $table->foreign('id_couleur')->references('id')->on('couleurs');
             $table->foreign('id_etiquette')->references('id')->on('etiquettes');
             $table->foreign('id_statut')->references('id')->on('statuts');
             $table->timestamps();
         });
-
-        DB::unprepared('
-        DELIMITER //
-        CREATE TRIGGER taches_default_values
-        BEFORE INSERT ON taches
-        FOR EACH ROW
-        BEGIN
-            SET NEW.id_etiquette = 1;
-            SET NEW.id_couleur = 1;
-            SET NEW.id_statut = 1;
-        END;
-        //
-        DELIMITER ;
-        ');
+        
+        //DB::unprepared();
     }
 
     /**

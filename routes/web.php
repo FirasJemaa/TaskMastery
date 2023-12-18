@@ -40,8 +40,11 @@ Route::middleware('auth')->group(function () {
     
     //Projet
     Route::post('/storeProjet', [ProjetController::class, 'store']);
-    Route::post('/deleteProjet/{n}', [ProjetController::class, 'destroy']);
-    Route::get('/showProjet/{n}', [ProjetController::class, 'show']);
+
+    //Route::middleware('verifAppartenance')->group(function () {
+        Route::post('/deleteProjet/{n}', [ProjetController::class, 'destroy']);
+        Route::get('/showProjet/{n}', [ProjetController::class, 'show']);
+    //});
 });
 
 //test

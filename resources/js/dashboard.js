@@ -89,9 +89,12 @@ jQuery('#projetForm').submit(function (e) {
         success: (data) => {
             // Mettre à jour la liste des projets dans l'interface utilisateur
             if (Titre == "Ajouter un projet") {
-                $('#listeProjets').append('<li class="projet" id="' + data.id + '">' + data.designation + '<div><a class="update-projet" name="{{ $projet->id }}"><i class="fa-solid fa-pen"></i></a><a class="delete-projet" name=' + data.id + '> <i class="fa-solid fa-trash"></i></a></div></li>');
+                $('#listeProjets').append(
+                    '<li id="' + data.id + '">' + data.designation + 
+                    '<div><a class="update-projet" name="' + data.id + '"><i class="fa-solid fa-pen"></i></a><a class="delete-projet" name=' + data.id + '> <i class="fa-solid fa-trash"></i></a></div></li>'
+                );
             } else {
-                const projetElement = $('#listeProjets').find('#' + data.id);
+                const projetElement = $('div').find('#' + data.id);
                 projetElement.html(
                     data.designation +
                     '<div><a class="update-projet" name="' + data.id + '"><i class="fa-solid fa-pen"></i></a>' +
