@@ -69,15 +69,21 @@ $(document).on('click', '.delete-projet', function (e) {
 window.ajouterProjet = function () {
     $('#projetModal').modal('show');
     $('.modal-title').html('Ajouter un projet');
+    $("#designation").val("");
+    $("#description").val("");
 }
 
 jQuery('#projetForm').submit(function (e) {
     e.preventDefault();
     const Titre = $('.modal-title').text();
 
-    //if (Titre == "Ajouter un projet") {
-    const projetId = $('.modal-title').attr('name');
-    $('.Id-Projet').attr('value', projetId);
+    if (Titre == "Modifier un projet") {
+        const projetId = $('.modal-title').attr('name');
+        $('.Id-Projet').attr('value', projetId);
+    }else{
+        $('.Id-Projet').attr('value', '');
+    }
+
     const formData = new FormData(this);
     jQuery.ajax({
         type: 'POST',
