@@ -8,13 +8,17 @@ $statuts = \App\Models\Statut::all()->sortBy("id");
     <div class="statut" id="{{ $statut->id }}" value="{{$statut->designation}}">
         <h3>{{$statut->designation}}</h3>
         @php
+        $valeur = "$(document).on('click', '#listeProjets li', function (e) {
+            e.preventDefault();
+            return = this.id;
+        });";
         $taches = \App\Models\Tache::all()->where('id_statut', $statut->id)->sortBy("id");
         @endphp
         @foreach ($taches as $tache)
         <div class="taches">
             <h4>{{$tache->designation}}</h4>
             <input type="checkbox">
-                
+
             <p>Étiquette : {{$tache->id_etiquette}}</p>
         </div>
         @endforeach

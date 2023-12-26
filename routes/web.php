@@ -3,7 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProjetController;
 use App\Http\Controllers\TacheController;
-use App\Models\Projet;
+//use App\Models\Projet;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -44,6 +44,14 @@ Route::middleware('auth')->group(function () {
     //Route::middleware('verifAppartenance')->group(function () {
         Route::post('/deleteProjet/{n}', [ProjetController::class, 'destroy']);
         Route::get('/showProjet/{n}', [ProjetController::class, 'show']);
+    //});
+
+    //Tache
+    Route::post('/storeTaches', [TacheController::class, 'store']);
+
+    //Route::middleware('verifAppartenance')->group(function () {
+        Route::post('/deleteTaches/{n}', [TacheController::class, 'destroy']);
+        Route::get('/showTaches/{n}', [TacheController::class, 'show']);
     //});
 });
 

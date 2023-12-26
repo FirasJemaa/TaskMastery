@@ -33,10 +33,13 @@ li{
     justify-content: space-between;
 }
 
-li:hover{
+li:hover, .active{
     background-color: var(--clr-yellow);
     color: var(--clr-black);
+}
 
+.active i{
+    color: var(--clr-black);
 }
 
 li i, #creerProjet i {

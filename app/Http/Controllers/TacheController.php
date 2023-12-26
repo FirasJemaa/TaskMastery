@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Tache;
+use App\Models\Projet;
 use Illuminate\Http\Request;
 
 class TacheController extends Controller
@@ -35,9 +36,11 @@ class TacheController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Tache $tache)
+    public function show($id_projet)
     {
-        //
+        
+        $taches = Tache::all()->where('id_projet', $id_projet)->sortBy("id");
+        return response()->json($taches);
     }
 
     /**

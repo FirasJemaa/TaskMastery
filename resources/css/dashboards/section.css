@@ -40,3 +40,9 @@
 .taches h4 {
     font-size: 20px;
 }
+
+input[type="checkbox"] {
+    width: 15px; /* Largeur */
+    height: 15px; /* Hauteur */
+    transform: scale(2); /* Mise à l'échelle */
+  }
