@@ -37,9 +37,11 @@ class TacheController extends Controller
      * Display the specified resource.
      */
     public function show($id_projet)
-    {
-        
-        $taches = Tache::all()->where('id_projet', $id_projet)->sortBy("id");
+    { 
+        //$taches = Tache::all()->where('id_projet', $id_projet)->sortBy("id");
+        $taches = Tache::join('couleurs', 'couleurs.id', '=', 'taches.id_couleur')
+        ->where('id_projet', $id_projet)
+        ->get(['taches.*', 'couleurs.code_couleur']);
         return response()->json($taches);
     }
 
