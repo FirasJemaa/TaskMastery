@@ -1,24 +1,44 @@
-.statuts{
-    height: 70vh;
+.panel section{
     background: var(--clr-second);
+}
+
+.statuts{
+    height: 60vh;
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
 }
 
-.statuts > *:first-child {
-    align-self: flex-start;
+#titreTache{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+}
+
+#titreTache a {
+    text-decoration: none;
+}
+
+#titreTache i{
+    margin: 10px;
+    font-size: 25px;
+}
+
+#titreTache h2{
+    color:var(--clr-black);
 }
 
 .statut {
     width: 20%;
-    height: 60vh;
+    height: 55vh;
     background: var(--clr-first);
     border-radius: 15px;
     box-shadow: 0 0 10px 1px rgb(127, 127, 127);
     padding: 5px;
-    margin: 20px;
+    margin: 15px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -32,21 +52,35 @@
 
 .taches {
     background-color: #F47979;
-    padding: 15px 50px;
-    margin: 15px;
+    height: 12vh;
+    width: 30vh;
+    padding: 15px;
+    margin: 5px 0;
     border-radius: 15px;
+}
+
+.taches > div{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
 }
 
 .taches h4, p {
     color: white;
+    font-size: 15px;
 }
 
-.taches h4 {
-    font-size: 20px;
+.taches p span {
+    text-decoration:underline;
+}
+
+.taches h4{
+    font-weight: bold;
 }
 
 input[type="checkbox"] {
-    width: 15px; /* Largeur */
-    height: 15px; /* Hauteur */
+    width: 12px; /* Largeur */
+    height: 12px; /* Hauteur */
     transform: scale(2); /* Mise à l'échelle */
   }

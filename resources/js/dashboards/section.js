@@ -22,15 +22,13 @@ $(document).on('click', '#listeProjets li', function (e) {
         contentType: false,
         processData: false,
         success: function (data) {
-            console.log(data);
             //boucle for in pour afficher les taches dans la balise section avec la classe statuts
             for (let key in data){
-                console.log(data[key].id_statut);
                 $('[class="statut"][name="' + data[key].id_statut + '"]').append(
                     '<div class="taches" style="background:#' + decimalToHex(data[key].code_couleur) + '">' +
-                        '<h4>' + data[key].designation +'</h4>'+
-                        '<input type = "checkbox" value=' + data[key].notification +'>'+
-                        '<p>Étiquette : ' + data[key].id_etiquette +'</p>'+
+                        '<div><h4>' + data[key].designation +'</h4>'+
+                        '<input class="check" type = "checkbox" ' + bCheck(data[key].notification) +' name="'+ data[key].id +'"></div>'+
+                        '<p><span>Étiquette :</span> ' + data[key].D_Etiquette +'</p>'+
                     '</div>'
                 );
             };
@@ -50,3 +48,21 @@ function decimalToHex(decimal) {
     }
     return hex;
 }
+
+function bCheck(nValeur){
+    if (nValeur) {
+        return "checked"
+    }else{
+        return " "
+    }
+}
+// Changer le statut sur le checkbox
+$(document).ready(function () {
+    $('.check').each(function () {
+        $(this).on('click', function () {
+            console.log("test");
+            $(this).prop("checked", !$(this).prop("checked"));
+            console.log($(this).attr('name'));
+        });
+    });
+});

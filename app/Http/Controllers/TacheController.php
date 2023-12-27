@@ -40,8 +40,9 @@ class TacheController extends Controller
     { 
         //$taches = Tache::all()->where('id_projet', $id_projet)->sortBy("id");
         $taches = Tache::join('couleurs', 'couleurs.id', '=', 'taches.id_couleur')
+        ->join('etiquettes', 'etiquettes.id', '=', 'taches.id_etiquette')
         ->where('id_projet', $id_projet)
-        ->get(['taches.*', 'couleurs.code_couleur']);
+        ->get(['taches.*', 'couleurs.code_couleur', 'etiquettes.designation as D_Etiquette']);
         return response()->json($taches);
     }
 

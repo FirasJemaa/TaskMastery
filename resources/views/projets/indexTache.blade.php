@@ -3,13 +3,13 @@ $statuts = \App\Models\Statut::all()->sortBy("id");
 @endphp
 
 
+<div id="titreTache">
+    <h2>Liste taches</h2>
+    <a id="creerTache" href="{{ route('tache') }}">
+        <i class="fa-solid fa-circle-plus"></i>
+    </a>
+</div>
 <section class="statuts">
-    <div>
-        <h2>Liste taches</h2>
-        <a id="creerTache" onclick="">
-            <i class="fa-solid fa-circle-plus"></i>
-        </a>
-    </div>
     @foreach ($statuts as $statut)
     <div class="statut" name="{{ $statut->id }}" value="{{$statut->designation}}">
         <h3>{{$statut->designation}}</h3>

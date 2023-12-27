@@ -56,6 +56,9 @@ Route::middleware('auth')->group(function () {
 });
 
 //test
-Route::get('/test', [TacheController::class, 'index']);
+Route::get('/tache', function () {
+    return view('tache');
+})->name('tache');
+
 
 require __DIR__.'/auth.php';
