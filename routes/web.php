@@ -47,10 +47,9 @@ Route::middleware('auth')->group(function () {
     //});
 
     //Tache
-    Route::post('/storeTaches', [TacheController::class, 'store']);
-
+    
     //Route::middleware('verifAppartenance')->group(function () {
-        Route::post('/deleteTaches/{n}', [TacheController::class, 'destroy']);
+        Route::post('/updateTaches', [TacheController::class, 'update']);        
         Route::get('/showTaches/{n}', [TacheController::class, 'show']);
     //});
 });

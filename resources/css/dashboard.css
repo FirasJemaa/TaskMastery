@@ -65,15 +65,19 @@ header{
 }
 
 @media (max-width: 900px) {
+    .panel{
+        flex-direction: column;
+    }
+
+    .panel > aside{
+        width: 100%;
+    }
+
     .formulaire_profil input{
         width: 90%;
     }
     .Btn-small{
         margin: 0;
         margin-top: 0.2rem;
-    }
-
-    aside h2{
-        font-size: 20px;
     }
 }

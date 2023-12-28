@@ -1,8 +1,8 @@
-.panel section{
+.panel section {
     background: var(--clr-second);
 }
 
-.statuts{
+.statuts {
     height: 60vh;
     display: flex;
     flex-direction: row;
@@ -10,7 +10,7 @@
     align-items: center;
 }
 
-#titreTache{
+#titreTache {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -22,13 +22,14 @@
     text-decoration: none;
 }
 
-#titreTache i{
+#titreTache i {
     margin: 10px;
     font-size: 25px;
 }
 
-#titreTache h2{
-    color:var(--clr-black);
+#titreTache h2 {
+    color: var(--clr-black);
+    font-size: 20px;
 }
 
 .statut {
@@ -44,7 +45,7 @@
     align-items: center;
 }
 
-.statut h3{
+.statut h3 {
     font-size: 20px;
     font-weight: bold;
     margin: 5px;
@@ -59,28 +60,86 @@
     border-radius: 15px;
 }
 
-.taches > div{
+.taches>div {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: flex-start;
 }
 
-.taches h4, p {
+.taches h4,
+p {
     color: white;
     font-size: 15px;
 }
 
 .taches p span {
-    text-decoration:underline;
+    text-decoration: underline;
 }
 
-.taches h4{
+.taches h4 {
     font-weight: bold;
 }
 
 input[type="checkbox"] {
-    width: 12px; /* Largeur */
-    height: 12px; /* Hauteur */
-    transform: scale(2); /* Mise à l'échelle */
-  }
+    width: 12px;
+    /* Largeur */
+    height: 12px;
+    /* Hauteur */
+    transform: scale(2);
+    /* Mise à l'échelle */
+}
+
+#BtnPuce {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+}
+
+#BtnPuce input[type="radio"] {
+    margin: 0 5px 5px 5px;
+}
+
+#BtnAllumer {
+    background-color: var(--clr-black);
+    visibility: hidden;
+}
+
+/* .statut {
+    width: 30%;
+} */
+@media screen and (min-width: 1300px) and (max-width: 1500px) {
+    .taches {
+        width: 25vh;
+    }
+}
+
+@media screen and (min-width: 1300px) and (max-width: 1500px) {
+    /* .statut {
+    width: 30%;
+} */
+}
+
+/* responsive 900 */
+@media (max-width: 900px) {
+    #BtnAllumer {
+        visibility: visible;
+    }
+
+    .statut {
+        width: 50%;
+    }
+
+    section .statut {
+        position: absolute;
+        visibility: hidden;
+    }
+}
+
+@media (max-width: 600px) {
+    .statut {
+        width: 80%;
+    }
+}

@@ -37,12 +37,12 @@ class TacheController extends Controller
      * Display the specified resource.
      */
     public function show($id_projet)
-    { 
+    {
         //$taches = Tache::all()->where('id_projet', $id_projet)->sortBy("id");
         $taches = Tache::join('couleurs', 'couleurs.id', '=', 'taches.id_couleur')
-        ->join('etiquettes', 'etiquettes.id', '=', 'taches.id_etiquette')
-        ->where('id_projet', $id_projet)
-        ->get(['taches.*', 'couleurs.code_couleur', 'etiquettes.designation as D_Etiquette']);
+            ->join('etiquettes', 'etiquettes.id', '=', 'taches.id_etiquette')
+            ->where('id_projet', $id_projet)
+            ->get(['taches.*', 'couleurs.code_couleur', 'etiquettes.designation as D_Etiquette']);
         return response()->json($taches);
     }
 
@@ -57,9 +57,20 @@ class TacheController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Tache $tache)
+    public function update(Request $request)
     {
-        //
+        // Recuperer l'id de la tache et la nouvelle valeur de notre checkbox ensuite on fait un update
+        $id_tache = $request->input('tacheId');
+        $bVal = $request->input('notification');
+        
+        $tache = Tache::find($id_tache);
+
+        if ($tache) {
+            $tache->update(['notification' => $bVal]);
+            return response()->json($bVal);
+        } else {
+            return response()->json(['error' => 'La tâche '. $bVal .' n\'existe pas.'], 404);
+        }
     }
 
     /**

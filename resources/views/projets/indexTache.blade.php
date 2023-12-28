@@ -16,3 +16,10 @@ $statuts = \App\Models\Statut::all()->sortBy("id");
     </div>
     @endforeach
 </section>
+<div id="BtnPuce">
+    <fieldset>
+        <input class="radio" type="radio" name="ChoixStatut" value="1">
+        <input class="radio" type="radio" name="ChoixStatut" value="2">
+        <input class="radio" type="radio" name="ChoixStatut" value="3">
+    <fieldset>
+</div>
