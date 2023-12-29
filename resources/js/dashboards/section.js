@@ -51,6 +51,13 @@ $(window).resize(function () {
     }
 });
 
+//lorsque je double clique sur la balise div avec la class tache je récupère le name de la balise
+$(document).on('dblclick', '.taches', function () {
+    const tacheId = $(this).attr('name');
+    //diriger la page vers la route /Tache/{n} avec l'id de la tache
+    window.location.href = '/Tache/' + tacheId;
+});
+
 ///////////////////////////////////FUNCTION
 //renvoyer le code couleur en hexa
 function decimalToHex(decimal) {
@@ -82,7 +89,7 @@ function getAjax(projetId){
             //boucle for in pour afficher les taches dans la balise section avec la classe statuts
             for (let key in data){
                 $('[class="statut"][name="' + data[key].id_statut + '"]').append(
-                    '<div class="taches" style="background:#' + decimalToHex(data[key].code_couleur) + '" href="google.fr">' +
+                    '<div class="taches" style="background:#' + decimalToHex(data[key].code_couleur) + '" name="' + data[key].id + '">' +
                         '<div><h4>' + data[key].designation +'</h4>'+
                         '<input class="check" type = "checkbox" ' + bCheck(data[key].notification) +' name="'+ data[key].id +'"></div>'+
                         '<p><span>Étiquette :</span> ' + data[key].D_Etiquette +'</p>'+

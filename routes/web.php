@@ -51,6 +51,7 @@ Route::middleware('auth')->group(function () {
     //Route::middleware('verifAppartenance')->group(function () {
         Route::post('/updateTaches', [TacheController::class, 'update']);        
         Route::get('/showTaches/{n}', [TacheController::class, 'show']);
+        route::get('/Tache/{n}', [TacheController::class, 'index']);
     //});
 });
 

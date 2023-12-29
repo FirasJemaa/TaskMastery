@@ -11,10 +11,11 @@ class TacheController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $taches = Tache::all()->sortBy("id");
-        return view("projets.indexTache", compact("taches"));
+        $id_tache = $request->input('tacheId');
+        $taches = Tache::all()->where("id", $id_tache)->sortBy("id");
+        return view("tache", compact("taches"));
     }
 
     /**

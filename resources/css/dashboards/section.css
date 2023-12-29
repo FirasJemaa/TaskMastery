@@ -58,6 +58,7 @@
     padding: 15px;
     margin: 5px 0;
     border-radius: 15px;
+    cursor: pointer;
 }
 
 .taches>div {
@@ -96,6 +97,7 @@ input[type="checkbox"] {
     justify-content: center;
     align-items: center;
     margin: 10px;
+    visibility: hidden;
 }
 
 #BtnPuce input[type="radio"] {
@@ -116,10 +118,11 @@ input[type="checkbox"] {
     }
 }
 
-@media screen and (min-width: 1300px) and (max-width: 1500px) {
-    /* .statut {
-    width: 30%;
-} */
+@media screen and (min-width: 900px) and (max-width: 1300px) {
+    .taches {
+        width: auto;
+        height: auto;
+    }
 }
 
 /* responsive 900 */
