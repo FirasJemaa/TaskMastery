@@ -17,13 +17,14 @@
     </x-app-layout>
     <main id="tache">
         <section>
-            <form action="" method="post">
-                <div>
+            <form action="" method="post" class=".wrapper">
+
+                <div class="one item">
                     <input type="text" name="titre" id="titre" placeholder="Titre">
                     <textarea name="description" id="description" cols="30" rows="10" placeholder="Description"></textarea>
                 </div>
                 <!-- balise date de création et date de cloture -->
-                <div>
+                <div class="two item">
                     <input type="date" name="date_creation" id="date_creation">
                     <input type="date" name="date_cloture" id="date_cloture">
                     <!-- un champ de saisie d'une couleur -->
@@ -40,7 +41,8 @@
                         <option value="3">Terminé</option>
                     </select>
                 </div>
-                <div>
+
+                <div class="three item">
                     <!-- une liste avec un checkbox -->
                     <!-- un range pour savoir combien de checkbox à était checked -->
                     <input type="range" name="range" id="range" min="0" max="3">
@@ -59,10 +61,12 @@
                         </li>
                     </ul>
                 </div>
-                <!-- un bouton pour valider -->
-                <button>Valider</button>
-                <!-- un bouton pour supprimer -->
-                <button>Supprimer</button>
+                <div class="four item">
+                    <!-- un bouton pour supprimer -->
+                    <button>Supprimer</button>
+                    <!-- un bouton pour valider -->
+                    <button>Sauvegarder</button>
+                </div>
             </form>
         </section>
 
