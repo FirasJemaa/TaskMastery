@@ -21,62 +21,325 @@
 
 .wrapper {
     display: grid;
-    grid-template-rows: repeat(5, 1fr);
+    grid-template-rows: repeat(8, 1fr);
     grid-template-columns: repeat(2, 1fr);
     gap: 10px;
 }
 
 .one {
-    grid-row: 1 / span 2;
-    grid-column: 1; /* La première cellule occupe la première colonne */
+    grid-row: 1 / span 4;
+    grid-column: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+}
+
+.one input,
+.one textarea {
+    margin: 10px;
+    resize: none;
+    margin: 5px;
+    padding: 10px;
+    border: 2px solid var(--clr-first);
+    background-color: var(--clr-second);
+    border-radius: 15px;
+    font-size: 16px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.one textarea {
+    height: 100%;
 }
 
 .two {
-    grid-row: 1 / span 2;
-    grid-column: 2; /* La deuxième cellule occupe la deuxième colonne */
+    grid-row: 1 / span 4;
+    grid-column: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 5px;
+}
+
+.two input[type="date"] {
+    margin: 10px;
+    resize: none;
+    margin: 5px;
+    padding: 10px;
+    border: 2px solid var(--clr-first);
+    background-color: var(--clr-second);
+    border-radius: 15px;
+    font-size: 16px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+#choixCouleur {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+#choixCouleur input {
+    margin: 10px;
+    width: 60px;
+    height: 30px;
+    border: none;
+    transition: all 0.3s ease-in-out;
+}
+
+.two select {
+    margin: 10px;
+    resize: none;
+    margin: 5px;
+    padding: 10px;
+    border: 2px solid var(--clr-first);
+    background-color: var(--clr-second);
+    border-radius: 15px;
+    font-size: 16px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.two select:focus {
+    outline: none;
+    border-color: var(--clr-first);
+}
+
+.two select[multiple] option:checked {
+    background-color: var(--clr-yellow);
+    color: var(--clr-black);
 }
 
 .three {
-    grid-row: 3 / span 2;
+    grid-row: 5 / 8;
     grid-column: 1 / span 2;
+    border-radius: 15px;
+    padding: 15px;
+}
+
+.three h4 {
+    margin-bottom: 0;
+}
+
+.three h4 span {
+    color: var(--clr-yellow);
+    font-weight: bold;
+    transition: all 0.3s ease-in-out;
+}
+
+#pourcent {
+    display: grid;
+    grid-template-rows: repeat(1, 1fr);
+    grid-template-columns: repeat(1, 1fr);
+    margin-bottom: 10px;
+}
+
+#pourcent hr:nth-child(1) {
+    grid-row: 1;
+    grid-column: 1;
+    height: 12px;
+    background-color: var(--clr-black);
+    border-radius: 10px;
+    width: 20%;
+    opacity: 1;
+}
+
+#pourcent hr:nth-child(2) {
+    grid-row: 1;
+    grid-column: 1;
+    height: 11px;
+    background-color: var(--clr-yellow);
+    border-radius: 10px;
+    width: 10%;
+    opacity: 1;
+    margin-left: 1px;
+    transition: all 0.3s ease-in-out;
+}
+
+.scrollable-list {
+    background-color: var(--clr-black);
+    padding: 15px;
+    border-radius: 10px;
+    height: 210px;
+    /* Hauteur limite */
+    overflow-y: auto;
+    /* Ajoute une barre de défilement si nécessaire */
+    border: 1px solid #ccc;
+}
+
+.scrollable-list ul {
+    padding-left: 2px;
+}
+
+.three li {
+    color: white;
+    margin: 1px;
+    padding: 1px;
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+    list-style: none; 
+}
+
+.three li label {
+    margin: auto;
+}
+
+.scrollable-list i {
+    color: var(--clr-yellow);
+    font-size: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;  
 }
 
 .four {
-    grid-row: 5;
-    grid-column: 1 / span 2;
+    grid-row: 8;
+    grid-column: 2;
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
 }
 
-.four button{
+.four button {
     border-radius: 10px;
-    padding: 10px;
-    margin: 10px;
+    margin: 20px;
     width: 120px;
     border: none;
     transition: all 0.3s ease-in-out;
 }
 
-.four button:nth-child(1){
+.four button:nth-child(1) {
     background-color: #CF4146;
 }
-.four button:nth-child(2){
+
+.four button:nth-child(2) {
     background-color: #8BD59E;
 }
 
-.four button:nth-child(1):hover{
+.four button:nth-child(1):hover {
     background-color: #af383c;
 }
-.four button:nth-child(2):hover{
+
+.four button:nth-child(2):hover {
     background-color: #6ba178;
 }
 
-#tache aside {
+#contact {
     width: 30%;
+    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
     margin: 40px;
+    padding: 20px;
     background-color: var(--clr-first);
     border-radius: 15px;
     box-shadow: 0px 0px 15px 4px rgba(0, 0, 0, 25%);
+}
+
+#contact button {
+    border-radius: 10px;
+    padding: 10px;
+    background-color: var(--clr-yellow);
+    width: auto;
+    border: none;
+    transition: all 0.3s ease-in-out;
+}
+
+#contact button:hover {
+    background-color: #c6a548;
+}
+
+#contact input {
+    width: 45vh;
+    margin: 10px;
+    resize: none;
+    margin: 5px;
+    padding: 10px;
+    border: 2px solid var(--clr-first);
+    background-color: var(--clr-second);
+    border-radius: 15px;
+    font-size: 16px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+#contact div i{
+    font-size: large;
+    background-color: var(--clr-yellow);
+    padding: 10px;
+    border-radius: 50%;
+}
+
+.message{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+    width: 100%;
+    height: 80vh;
+    background-color: var(--clr-black);
+    border-radius: 10px;
+    overflow-y: auto;
+}
+
+@media (max-width: 1024px) {
+    #tache {
+        flex-direction: column;
+        margin: auto;
+        width: auto;
+    }
+
+    #tache section{
+        width: auto;
+    }
+
+    #contact {
+        width: auto;
+        margin: auto;
+    }
+}
+
+@media (max-width: 900px) {
+    #tache {
+        flex-direction: column;
+        margin: auto;
+        width: auto;
+    }
+
+    #contact {
+        width: auto;
+        margin: auto;
+    }
+}
+
+@media (max-width: 425px) {
+    .wrapper{
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .four button{
+        padding: 5px;
+    }
+
+    #contact{
+        width: auto;
+    }
+    #contact input{
+        width: 79%;
+    }
+
+    .message {
+        height: 65vh;
+    }
+}
+
+@media (max-width: 320px) {
+    #tache section{
+        margin: 0 0 30px 0 ;
+        padding: 5px;
+    }
 }
