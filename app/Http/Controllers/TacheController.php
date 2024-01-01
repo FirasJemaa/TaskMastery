@@ -33,8 +33,10 @@ class TacheController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Tache $tache, Request $request)
     {
+        //jrécupère les modifications de $request et je mes a jour $tache
+        $tache->update($request->all());
         return view('dashboard');
     }
 
