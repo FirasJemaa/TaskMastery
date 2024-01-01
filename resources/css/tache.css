@@ -203,7 +203,7 @@
 
 .four button {
     border-radius: 10px;
-    margin: 20px;
+    margin: 20px 8px;
     width: 120px;
     border: none;
     transition: all 0.3s ease-in-out;
@@ -217,12 +217,20 @@
     background-color: #8BD59E;
 }
 
+.four button:nth-child(3) {
+    background-color: #9dc0ed;
+}
+
 .four button:nth-child(1):hover {
     background-color: #af383c;
 }
 
 .four button:nth-child(2):hover {
     background-color: #6ba178;
+}
+
+.four button:nth-child(3):hover {
+    background-color: #809dc2;
 }
 
 #contact {

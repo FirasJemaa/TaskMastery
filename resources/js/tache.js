@@ -33,5 +33,29 @@ function pourcentage(){
     $('#modifiable').css('width', Math.round((pourcentage*20)/100)+"%"); 
 }
 
+// une fonction qui récupère le code couleur en décimal et qui le renvoie à un input de type couleur
+function couleur(){
+    const couleur = $('#couleur').val();
+    //convertir le format en hexadécimal
+    let couleurHex = couleur.toString(16);
+    while (couleurHex.length < 6) {
+        couleurHex = "0" + couleurHex;
+    }
+    console.log(couleurHex);
+    $('#couleur').val(couleurHex);
+}
+
+//lorsqu'on clique sur la class AjoutCheckList on ajoute une liste
+$(document).on('click', '.AjoutCheckList', function () {
+    const contenu = prompt("Veuillez saisir le contenu de la liste");
+    if (contenu == null || contenu == "") {
+        alert("Vous n'avez rien saisi");
+    }else{
+        // on ajoute ca dans la balise ul avec la class checkList
+        $('.checklist').append('<li class="listes"><input type="checkbox" name="new" id="0"><label for="check">'+contenu+'</label></li>');
+    }
+});
+
 // éxecuter des le début de la page
 pourcentage();
+

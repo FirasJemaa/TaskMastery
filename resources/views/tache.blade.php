@@ -20,42 +20,39 @@
     </x-app-layout>
     <main id="tache">
         <section>
-            <form action="" method="post" class="wrapper">
-
+            <form action="{{ route('tache.store', $tache->id) }}" method="post" class="wrapper">
+                @csrf
                 <div class="one item">
-                    <input type="text" name="titre" id="titre" placeholder="Titre">
-                    <textarea name="description" id="description" cols="30" rows="10" placeholder="Description"></textarea>
+                    <input type="text" name="titre" id="titre" placeholder="Titre" value="{{$tache->designation}}">
+                    <textarea name="description" id="description" cols="30" rows="10" placeholder="Description">{{hexdec($couleur->code_couleur)}}</textarea>
                 </div>
                 <!-- balise date de création et date de cloture -->
                 <div class="two item">
-                    <input type="date" name="date_creation" id="date_creation">
-                    <input type="date" name="date_cloture" id="date_cloture">
+                    <input type="date" name="date_creation" id="date_creation" value="{{$tache->date_creation}}">
+                    <input type="date" name="date_cloture" id="date_cloture" value="{{$tache->date_cloture}}">
                     <!-- un champ de saisie d'une couleur -->
                     <div id="choixCouleur">
                         <label for="couleur">Couleur de répère : </label>
-                        <input type="color" name="couleur" id="couleur">
+                        <input type="color" name="couleur" id="couleur" value="{{sprintf('#%s', str_pad(dechex($couleur->code_couleur), 6, '0', STR_PAD_LEFT))}}">
                     </div>
                     <!-- une liste déroulante etiquette et statut -->
                     <select id="etiquette" name="etiquette">
-                        <option value="1">Etiquette 1</option>
-                        <option value="2">Etiquette 2</option>
-                        <option value="3">Etiquette 3</option>
+                        @foreach($etiquettes as $etiquette)
+                        <option value="{{$etiquette->id}}" @if($etiquette->id == $tache->id_etiquette) selected @endif>{{$etiquette->designation}}</option>
+                        @endforeach
                     </select>
                     <select id="statut" name="statut">
-                        <option value="1">En attente</option>
-                        <option value="2">En cours</option>
-                        <option value="3">Terminé</option>
+                        @foreach($statuts as $statut)
+                        <option value="{{$statut->id}}" @if($statut->id == $tache->id_statut) selected @endif>{{$statut->designation}}</option>
+                        @endforeach
                     </select>
                     <label for="options">Sélectionnez vos dépendances :</label>
-                    <!-- Appliquer Select2 à l'élément select -->
                     <select id="options" name="options[]" multiple="multiple">
-                        <option value="option1">Option 1</option>
-                        <option value="option2">Option 2</option>
-                        <option value="option3">Option 3</option>
-                        <option value="option4">Option 4</option>
-                        <option value="option4">Option 5</option>
-                        <option value="option4">Option 6</option>
-                        <!-- Ajoutez autant d'options que nécessaire -->
+                        @foreach($projets as $projet)
+                            @if($projet->id != $tache->id_projet)
+                            <option value="{{$projet->id}}">{{$projet->designation}}</option>
+                            @endif
+                        @endforeach
                     </select>
                 </div>
 
@@ -67,22 +64,21 @@
                         <hr id="modifiable">
                     </div>
                     <div class="scrollable-list">
-                        <ul>
-                            <li class="listes"><input type="checkbox" id="item1"> <label for="item1">Élément 1</label></li>
-                            <li class="listes"><input type="checkbox" id="item2"> <label for="item2">Élément 2</label></li>
-                            <li class="listes"><input type="checkbox" id="item3"> <label for="item3">Élément 3</label></li>
-                            <li class="listes"><input type="checkbox" id="item4"> <label for="item4">Élément 4</label></li>
-                            <li class="listes"><input type="checkbox" id="item5"> <label for="item5">Élément 5</label></li>
-                            <li class="listes"><input type="checkbox" id="item6"> <label for="item6">Élément 6</label></li>
+                        <ul class="checklist">
+                            @foreach($checklists as $checklist)
+                            <li class="listes"><input type="checkbox" id="item{{$checklist->id}}" @if($checklist->checked) checked @endif> <label for="item{{$checklist->id}}">{{$checklist->designation}}</label></li>
+                            @endforeach
                         </ul>
-                        <i class="fa-solid fa-circle-plus"></i>
+                        <i class="fa-solid fa-circle-plus AjoutCheckList"></i>
                     </div>
                 </div>
                 <div class="four item">
                     <!-- un bouton pour supprimer -->
-                    <button>Supprimer</button>
+                    <button type="delete">Supprimer</button>
                     <!-- un bouton pour valider -->
-                    <button>Sauvegarder</button>
+                    <button type="submit">Sauvegarder</button>
+                    <!-- un bouton pour valider -->
+                    <button>Cloturer</button>
                 </div>
             </form>
         </section>

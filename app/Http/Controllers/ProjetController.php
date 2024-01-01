@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Projet;
+use App\Models\Tache;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -21,9 +22,9 @@ class ProjetController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create()//Tache $tache, Request $request)
     {
-        //
+        //return view("dashboard");
     }
 
     /**
