@@ -33,11 +33,19 @@ class TacheController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Tache $tache, Request $request)
+    public function store($id, Request $request)
     {
-        //jrécupère les modifications de $request et je mes a jour $tache
-        $tache->update($request->all());
-        return view('dashboard');
+        $tache = Tache::find($id);
+        // je veux voir le contenu de $tache
+        $tache->update([
+            'designation' => $request->input('titre'),
+            'date_debut' => $request->input('date_creation'),
+            'date_cloture' => $request->input('date_cloture'),
+            'id_etiquette' => $request->input('etiquette'),
+            'id_statut' => $request->input('statut'),
+        ]);
+
+        return redirect()->route('dashboard');
     }
 
     /**
@@ -55,12 +63,12 @@ class TacheController extends Controller
 
     public function showPage($id)//Tache $tache
     {
-        $tache = Tache::find($id);
-        $couleur = Couleur::all()->where('id', $tache->id_couleur)->first();
-        $statuts = Statut::all()->sortBy('id');
-        $etiquettes = Etiquette::all()->sortBy('id');
-        $projets = Projet::all()->sortBy('id');
-        $checklists = Checklist::all()->where('id_tache', $id)->sortBy('id');
+        $tache          = Tache::find($id);
+        $couleur        = Couleur::all()->where('id', $tache->id_couleur)->first();
+        $statuts        = Statut::all()->sortBy('id');
+        $etiquettes     = Etiquette::all()->sortBy('id');
+        $projets        = Projet::all()->sortBy('id');
+        $checklists     = Checklist::all()->where('id_tache', $id)->sortBy('id');
         return view("tache", compact("tache", "couleur", "statuts", "etiquettes", "projets", "checklists"));
     }
 

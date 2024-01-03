@@ -24,7 +24,7 @@
                 @csrf
                 <div class="one item">
                     <input type="text" name="titre" id="titre" placeholder="Titre" value="{{$tache->designation}}">
-                    <textarea name="description" id="description" cols="30" rows="10" placeholder="Description">{{hexdec($couleur->code_couleur)}}</textarea>
+                    <textarea name="designation" id="designation" cols="30" rows="10" placeholder="Designation">{{hexdec($couleur->code_couleur)}}</textarea>
                 </div>
                 <!-- balise date de création et date de cloture -->
                 <div class="two item">
@@ -85,7 +85,7 @@
 
         <aside id="contact">
             <button>
-                ajouter une personne <i class="fa-solid fa-user-plus"></i>
+                Ajouter une personne <i class="fa-solid fa-user-plus"></i>
             </button>
             <!-- bloc div ou on aura le chat avec les messages envoyer et recu qui s'affiche -->
             <div class="message">

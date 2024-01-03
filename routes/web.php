@@ -57,9 +57,9 @@ Route::middleware('auth')->group(function () {
 });
 
 //test
-// Route::get('/tache', function () {
-//     return view('tache');
-// })->name('tache');
+Route::get('/test', function () {
+    return view('test');
+})->name('test');
 
 
 require __DIR__.'/auth.php';

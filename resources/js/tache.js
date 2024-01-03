@@ -10,12 +10,12 @@ $(document).ready(function () {
 // lorqu'on double clique sur la .listes on récupère le la balise label a l'interieur et on l'affiche dans une alerte
 $(document).on('dblclick', '.listes', function () {
     var label = $(this).find('label').text();
-    const NewContenu = prompt("Le contenu actuel est "+ label + " , veuillez saisir le nouveau contenu");
+    const NewContenu = prompt("Le contenu actuel est " + label + " , veuillez saisir le nouveau contenu");
     if (NewContenu == null || NewContenu == "") {
         alert("Vous n'avez rien saisi");
-    }else{
+    } else {
         $(this).find('label').text(NewContenu);
-        alert("Le nouveau contenu est "+ NewContenu);
+        alert("Le nouveau contenu est " + NewContenu);
     }
 });
 
@@ -24,17 +24,22 @@ $(document).on('click', '.listes', function () {
     pourcentage();
 });
 
-function pourcentage(){
+function pourcentage() {
     const nbre = $('.listes input:checked').length;
     const nbreT = $('.listes').length;
     //le pourcentage de la liste cochée sans virgule
-    const pourcentage = Math.round((nbre/nbreT)*100);    
-    $('span').text(pourcentage);
-    $('#modifiable').css('width', Math.round((pourcentage*20)/100)+"%"); 
+    if (nbre == 0) {
+        $('span').text(0);
+        $('#modifiable').css('width', 0);
+    } else {
+        const pourcentage = Math.round((nbre / nbreT) * 100);
+        $('span').text(pourcentage);
+        $('#modifiable').css('width', Math.round((pourcentage * 20) / 100) + "%");
+    }
 }
 
 // une fonction qui récupère le code couleur en décimal et qui le renvoie à un input de type couleur
-function couleur(){
+function couleur() {
     const couleur = $('#couleur').val();
     //convertir le format en hexadécimal
     let couleurHex = couleur.toString(16);
@@ -50,9 +55,9 @@ $(document).on('click', '.AjoutCheckList', function () {
     const contenu = prompt("Veuillez saisir le contenu de la liste");
     if (contenu == null || contenu == "") {
         alert("Vous n'avez rien saisi");
-    }else{
+    } else {
         // on ajoute ca dans la balise ul avec la class checkList
-        $('.checklist').append('<li class="listes"><input type="checkbox" name="new" id="0"><label for="check">'+contenu+'</label></li>');
+        $('.checklist').append('<li class="listes"><input type="checkbox" name="new" id="0"><label for="check">' + contenu + '</label></li>');
     }
 });
 

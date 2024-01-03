@@ -6,7 +6,6 @@
     <title>Error acces</title>
 </head>
 <body>
-    <p>error</p>
-
+    
 </body>
 </html>
