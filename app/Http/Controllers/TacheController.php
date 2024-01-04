@@ -8,6 +8,7 @@ use App\Models\Statut;
 use App\Models\Etiquette;
 use App\Models\Projet;
 use App\Models\Checklist;
+use App\Models\Dependance;
 use Illuminate\Http\Request;
 
 class TacheController extends Controller
@@ -44,7 +45,40 @@ class TacheController extends Controller
             'id_etiquette' => $request->input('etiquette'),
             'id_statut' => $request->input('statut'),
         ]);
+        
+        $dependances = Dependance::all()->where('id_tache_1', $id);
+        foreach ($dependances as $dependance) {
+            $dependance->delete();
+        }
+        //creer les dependances recu dans request id_tache_1 correspond a la tache en cours et id_tache_2 correspond a la tache selectionner
+        foreach ($request->input('dependances') as $dependance) {
+            Dependance::create([
+                'id_tache_1' => $id,
+                'id_tache_2' => $dependance,
+            ]);
+        }
 
+        $checkboxes = $request->input('checkboxes', []);
+        $labels = $request->input('labels', []);
+
+        foreach ($labels as $key => $label) {
+            //grace a la clé qui correspond au id de la checklist on peut recuperer le id de la checklist ou la creation de la checklist
+            $checklist = Checklist::find($key);
+            if ($checklist) {
+                $checklist->update([
+                    'designation' => $label,
+                    'checked' => in_array($key, $checkboxes),
+                ]);
+            } else {
+                Checklist::create([
+                    'designation' => $label,
+                    'checked' => in_array($key, $checkboxes),
+                    'id_tache' => $id,
+                ]);
+            }
+        }
+        
+        
         return redirect()->route('dashboard');
     }
 
@@ -67,9 +101,12 @@ class TacheController extends Controller
         $couleur        = Couleur::all()->where('id', $tache->id_couleur)->first();
         $statuts        = Statut::all()->sortBy('id');
         $etiquettes     = Etiquette::all()->sortBy('id');
-        $projets        = Projet::all()->sortBy('id');
+        $taches         = Tache::leftJoin('dependances', 'taches.id', '=', 'dependances.id_tache_1')->get(['taches.*', 'dependances.id_tache_1', 'dependances.id_tache_2']);
         $checklists     = Checklist::all()->where('id_tache', $id)->sortBy('id');
-        return view("tache", compact("tache", "couleur", "statuts", "etiquettes", "projets", "checklists"));
+        //pluk permet de recuperer un tableau avec les id de la table et toArray permet de convertir en tableau
+        $selectedDependances = $taches->pluck('id_tache_2')->toArray();
+
+        return view("tache", compact("tache", "couleur", "statuts", "etiquettes", "taches", "checklists", "selectedDependances"));
     }
 
     /**

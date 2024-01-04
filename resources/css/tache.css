@@ -217,20 +217,12 @@
     background-color: #8BD59E;
 }
 
-.four button:nth-child(3) {
-    background-color: #9dc0ed;
-}
-
 .four button:nth-child(1):hover {
     background-color: #af383c;
 }
 
 .four button:nth-child(2):hover {
     background-color: #6ba178;
-}
-
-.four button:nth-child(3):hover {
-    background-color: #809dc2;
 }
 
 #contact {
@@ -257,7 +249,8 @@
 }
 
 #contact button:hover {
-    background-color: #c6a548;
+    background-color: #333533;
+    color: #F5CB5C;
 }
 
 #contact input {

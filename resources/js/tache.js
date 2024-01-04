@@ -1,6 +1,6 @@
 $(document).ready(function () {
     // Désactiver la sélection multiple en maintenant la touche Ctrl
-    $('#options').on('mousedown', 'option', function (e) {
+    $('#dependances').on('mousedown', 'option', function (e) {
         e.preventDefault();
         $(this).prop('selected', !$(this).prop('selected'));
         return false;
@@ -15,6 +15,7 @@ $(document).on('dblclick', '.listes', function () {
         alert("Vous n'avez rien saisi");
     } else {
         $(this).find('label').text(NewContenu);
+        $(this).find('input[type="hidden"]').val(NewContenu);
         alert("Le nouveau contenu est " + NewContenu);
     }
 });
@@ -50,14 +51,20 @@ function couleur() {
     $('#couleur').val(couleurHex);
 }
 
+// test function lorsqu'il check alors il fait la meme chose pour l'input hidden
+
 //lorsqu'on clique sur la class AjoutCheckList on ajoute une liste
 $(document).on('click', '.AjoutCheckList', function () {
     const contenu = prompt("Veuillez saisir le contenu de la liste");
     if (contenu == null || contenu == "") {
         alert("Vous n'avez rien saisi");
     } else {
-        // on ajoute ca dans la balise ul avec la class checkList
-        $('.checklist').append('<li class="listes"><input type="checkbox" name="new" id="0"><label for="check">' + contenu + '</label></li>');
+        const uniqueId = Date.now();
+        $('.checklist').append('<li class="listes">\
+        <input type="checkbox" name="checkboxes[]" value="' + uniqueId + '" id="' + uniqueId + '" >\
+        <label for="' + uniqueId + '" name="labels[]" value="' + uniqueId + '">' + contenu + '</label>\
+        <input type="hidden" name="labels[' + uniqueId + ']" value="' + contenu + '">\
+    </li>');
     }
 });
 

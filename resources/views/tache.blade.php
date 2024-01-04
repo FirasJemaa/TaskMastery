@@ -46,12 +46,14 @@
                         <option value="{{$statut->id}}" @if($statut->id == $tache->id_statut) selected @endif>{{$statut->designation}}</option>
                         @endforeach
                     </select>
-                    <label for="options">Sélectionnez vos dépendances :</label>
-                    <select id="options" name="options[]" multiple="multiple">
-                        @foreach($projets as $projet)
-                            @if($projet->id != $tache->id_projet)
-                            <option value="{{$projet->id}}">{{$projet->designation}}</option>
-                            @endif
+                    <label for="dependances">Sélectionnez vos dépendances :</label>
+                    <select id="dependances" name="dependances[]" multiple="multiple">
+                        @foreach($taches as $tacheDependance)
+                        @if($tacheDependance->id_tache_1 != $tacheDependance->id)
+                        <option value="{{ $tacheDependance->id }}" @if(in_array($tacheDependance->id, $selectedDependances)) selected @endif>
+                            {{ $tacheDependance->designation }}
+                        </option>
+                        @endif
                         @endforeach
                     </select>
                 </div>
@@ -64,9 +66,16 @@
                         <hr id="modifiable">
                     </div>
                     <div class="scrollable-list">
-                        <ul class="checklist">
+                        <ul class="checklist" id="checklist-container">
+                            <!-- Les cases à cocher existantes générées côté serveur -->
                             @foreach($checklists as $checklist)
-                            <li class="listes"><input type="checkbox" id="item{{$checklist->id}}" @if($checklist->checked) checked @endif> <label for="item{{$checklist->id}}">{{$checklist->designation}}</label></li>
+                            <li class="listes">
+                                <input type="checkbox" name="checkboxes[]" value="{{ $checklist->id }}" id="{{ $checklist->id }}" @if($checklist->checked) checked @endif >
+                                <label for="{{ $checklist->id }}" name="labels[]" value="{{ $checklist->id }}">
+                                    {{ $checklist->designation }}
+                                </label>
+                                <input type="hidden" name="labels[{{ $checklist->id }}]" value="{{ $checklist->designation }}">
+                            </li>
                             @endforeach
                         </ul>
                         <i class="fa-solid fa-circle-plus AjoutCheckList"></i>
@@ -77,8 +86,6 @@
                     <button type="delete">Supprimer</button>
                     <!-- un bouton pour valider -->
                     <button type="submit">Sauvegarder</button>
-                    <!-- un bouton pour valider -->
-                    <button>Cloturer</button>
                 </div>
             </form>
         </section>
