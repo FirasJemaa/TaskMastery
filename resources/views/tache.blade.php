@@ -26,7 +26,7 @@
                 @csrf
                 <div class="one item">
                     <input type="text" name="titre" id="titre" placeholder="Titre" value="{{$tache->titre}}">
-                    <textarea name="designation" id="designation" cols="30" rows="10" placeholder="Designation">{{$couleur->designation}}</textarea>
+                    <textarea name="designation" id="designation" cols="30" rows="10" placeholder="Designation">{{$tache->designation}}</textarea>
                 </div>
                 <!-- balise date de création et date de cloture -->
                 <div class="two item">

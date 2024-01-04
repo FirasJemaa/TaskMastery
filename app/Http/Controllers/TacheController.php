@@ -114,6 +114,31 @@ class TacheController extends Controller
         return view("tache", compact("tache", "couleur", "statuts", "etiquettes", "taches", "checklists", "selectedDependances"));
     }
 
+    public function newPage($id_projet)
+    {
+        //creation d'une nouvelle tache
+        $tache = new Tache();
+        $tache->id_projet = $id_projet;
+        $tache->titre = "";
+        $tache->designation = "";
+        $tache->priorite = 1;
+        $tache->date_creation = date("Y-m-d");
+        $tache->etat = false;
+        $tache->id_couleur = 1;
+        $tache->id_etiquette = 1;
+        $tache->id_statut = 1;
+        $tache->save();
+
+        $statuts = Statut::all()->sortBy("id");
+        $etiquettes = Etiquette::all()->sortBy("id");
+        $couleur = Couleur::all()->where('id', $tache->id_couleur)->first();
+        $taches = Tache::leftJoin('dependances', 'taches.id', '=', 'dependances.id_tache_1')->get(['taches.*', 'dependances.id_tache_1', 'dependances.id_tache_2']);
+        $checklists = Checklist::all()->where('id_tache', $tache->id)->sortBy('id');
+        $selectedDependances = $taches->pluck('id_tache_2')->toArray();
+        
+        return view("tache", compact("tache", "couleur", "statuts", "etiquettes", "taches", "checklists", "selectedDependances"));
+    }
+
     /**
      * Show the form for editing the specified resource.
      */

@@ -5,8 +5,7 @@ $statuts = \App\Models\Statut::all()->sortBy("id");
 
 <div id="titreTache">
     <h2>Liste taches</h2>
-    <a id="creerTache" href=""> 
-        <!--  route('tache')  -->
+    <a id="creerTache" href="{{ route('newTache', ['n' => 2]) }}"> 
         <i class="fa-solid fa-circle-plus"></i>
     </a>
 </div>

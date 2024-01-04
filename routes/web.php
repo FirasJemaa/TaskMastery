@@ -52,6 +52,7 @@ Route::middleware('auth')->group(function () {
         Route::post('/updateTaches', [TacheController::class, 'update']);        
         Route::get('/showTaches/{n}', [TacheController::class, 'show']);
         Route::get('/Tache/{n}', [TacheController::class, 'showPage']);
+        Route::get('/newTache/{n}', [TacheController::class, 'newPage'])->name('newTache');
         Route::post('/tache/store/{id}', [TacheController::class, 'store'])->name('tache.store');
     //});
 

@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Couleur extends Model
 {
     use HasFactory;
+    protected $fillable= [
+        'id',
+        'code_couleur',
+    ];
 }

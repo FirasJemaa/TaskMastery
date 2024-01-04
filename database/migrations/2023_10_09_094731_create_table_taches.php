@@ -14,10 +14,10 @@ return new class extends Migration
     {
         Schema::create('taches', function (Blueprint $table) {
             $table->id();
-            $table->integer('priorite')->nullable(false);
+            $table->integer('priorite')->nullable(false)->default(0);
             $table->string('titre', 50)->nullable()->nullable(false);
-            $table->string('designation', 190)->nullable(false);
-            $table->date('date_creation')->nullable(false);
+            $table->string('designation', 190)->nullable();
+            $table->date('date_creation')->nullable();
             $table->date('date_cloture')->nullable();
             $table->boolean('etat')->nullable(false)->default(false);
             $table->unsignedBigInteger('id_projet')->nullable(false);
