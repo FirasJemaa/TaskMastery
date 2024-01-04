@@ -13,7 +13,7 @@ $statuts = \App\Models\Statut::all()->sortBy("id");
 <section class="statuts">
     @foreach ($statuts as $statut)
     <div class="statut" name="{{ $statut->id }}" value="{{$statut->designation}}">
-        <h3>{{$statut->designation}}</h3>
+        <h3>{{$statut->titre}}</h3>
     </div>
     @endforeach
 </section>

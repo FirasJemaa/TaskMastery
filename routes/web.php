@@ -54,6 +54,10 @@ Route::middleware('auth')->group(function () {
         Route::get('/Tache/{n}', [TacheController::class, 'showPage']);
         Route::post('/tache/store/{id}', [TacheController::class, 'store'])->name('tache.store');
     //});
+
+    //Route::middleware('verifAppartenance')->group(function () {
+        Route::post('/appartenance/{n}/{j}', [TacheController::class, 'store']);        
+    //});
 });
 
 //test

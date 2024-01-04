@@ -51,10 +51,34 @@ function couleur() {
     $('#couleur').val(couleurHex);
 }
 
-// test function lorsqu'il check alors il fait la meme chose pour l'input hidden
+//lorqu'on clique sur le bouton ayant l'ID AjoutPrn
+$('#AjoutPrn').on('click', function () {
+    // Récupérer la valeur du champ de saisie
+    const inputValue = document.getElementById('inputValue').value;
+
+    //faire une méthode ajax post vers la route /attribuer/{ID} avec le paramètre ID de la tâche et le pseudo du participant
+    $.ajax({
+        url: '/attribuer/' + $('#idTache').val(),
+        type: 'POST',
+        data: {
+            pseudo: inputValue
+        },
+        success: function (data) {
+            // Ajouter le pseudo dans la liste des participants
+            console.log(data.message);
+        },
+        error: function (data) {
+            // Afficher un message d'erreur
+            console.log(data.responseJSON.message);
+        }
+    });
+
+    // Fermer le modal
+    $('#ajoutParticipant').modal('hide');
+});
 
 //lorsqu'on clique sur la class AjoutCheckList on ajoute une liste
-$(document).on('click', '.AjoutCheckList', function () {
+$('#AjoutCheckList').on('click', function () {
     const contenu = prompt("Veuillez saisir le contenu de la liste");
     if (contenu == null || contenu == "") {
         alert("Vous n'avez rien saisi");

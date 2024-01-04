@@ -21,8 +21,8 @@ $(document).on('click', '#listeProjets li', function (e) {
 $(document).ready(function () {
     $(document).on('click', '.check', function () {
         //ajax method POST pour changer le statut de la tache
-        const notification = $(this).prop('checked') ? 1 : 0;
-        postAjax($(this).attr('name'), notification);      
+        const etat = $(this).prop('checked') ? 1 : 0;
+        postAjax($(this).attr('name'), etat);      
     });
 
     $(document).on('click', '.radio', function () {
@@ -91,7 +91,7 @@ function getAjax(projetId){
                 $('[class="statut"][name="' + data[key].id_statut + '"]').append(
                     '<div class="taches" style="background:#' + decimalToHex(data[key].code_couleur) + '" name="' + data[key].id + '">' +
                         '<div><h4>' + data[key].designation +'</h4>'+
-                        '<input class="check" type = "checkbox" ' + bCheck(data[key].notification) +' name="'+ data[key].id +'"></div>'+
+                        '<input class="check" type = "checkbox" ' + bCheck(data[key].etat) +' name="'+ data[key].id +'"></div>'+
                         '<p><span>Étiquette :</span> ' + data[key].D_Etiquette +'</p>'+
                     '</div>'
                 );
@@ -103,11 +103,11 @@ function getAjax(projetId){
     });
 }
 
-function postAjax(tacheId, notification){
+function postAjax(tacheId, etat){
     $.ajax({
         type: 'POST',
         url: "/updateTaches",
-        data: { tacheId: tacheId, notification: notification },
+        data: { tacheId: tacheId, etat: etat },
         success: function (data) {
             //message de succès
             console.log(data);            

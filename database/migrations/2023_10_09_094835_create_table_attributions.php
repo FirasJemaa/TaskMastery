@@ -15,10 +15,12 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('id_tache')->nullable(false);
             $table->unsignedBigInteger('id_utilisateur')->nullable(false);
+            $table->unsignedBigInteger('id_inviter')->nullable(false);
             $table->boolean('createur')->nullable(false);
-            $table->unique(['id_tache', 'id_utilisateur']);
+            $table->unique(['id_tache', 'id_utilisateur', 'id_inviter']);
             $table->foreign('id_tache')->references('id')->on('taches');
             $table->foreign('id_utilisateur')->references('id')->on('users');
+            $table->foreign('id_inviter')->references('id')->on('users');
             $table->timestamps();
         });
     }

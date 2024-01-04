@@ -36,10 +36,12 @@ class TacheController extends Controller
      */
     public function store($id, Request $request)
     {
+        if ($request->input('action') === 'enregistrer') {
         $tache = Tache::find($id);
         // je veux voir le contenu de $tache
         $tache->update([
-            'designation' => $request->input('titre'),
+            'titre' => $request->input('titre'),
+            'designation' => $request->input('designation'),
             'date_debut' => $request->input('date_creation'),
             'date_cloture' => $request->input('date_cloture'),
             'id_etiquette' => $request->input('etiquette'),
@@ -77,7 +79,10 @@ class TacheController extends Controller
                 ]);
             }
         }
-        
+    }else if ($request->input('action') === 'supprimer') {
+        $tache = Tache::find($id);
+        $tache->delete();
+    } 
         
         return redirect()->route('dashboard');
     }
@@ -124,12 +129,12 @@ class TacheController extends Controller
     {
         // Recuperer l'id de la tache et la nouvelle valeur de notre checkbox ensuite on fait un update
         $id_tache = $request->input('tacheId');
-        $bVal = $request->input('notification');
+        $bVal = $request->input('etat');
 
         $tache = Tache::find($id_tache);
 
         if ($tache) {
-            $tache->update(['notification' => $bVal]);
+            $tache->update(['etat' => $bVal]);
             return response()->json($bVal);
         } else {
             return response()->json(['error' => 'La tâche ' . $bVal . ' n\'existe pas.'], 404);

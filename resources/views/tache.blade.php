@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-Avb2QiuDEEvB4bZJYdft2mNjVShBftLdPG8FJ0V7irTLQ8Uo0qcPxh4Plq7G5tGm0rU+1SPhVotteLpBERwTkw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="icon" href="{{ asset('image/logo_onglet.png') }}" type="image/x-icon">
     <title>Tâche</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     @vite(['resources/css/tache.css', 'resources/js/tache.js'])
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
@@ -23,8 +25,8 @@
             <form action="{{ route('tache.store', $tache->id) }}" method="post" class="wrapper">
                 @csrf
                 <div class="one item">
-                    <input type="text" name="titre" id="titre" placeholder="Titre" value="{{$tache->designation}}">
-                    <textarea name="designation" id="designation" cols="30" rows="10" placeholder="Designation">{{hexdec($couleur->code_couleur)}}</textarea>
+                    <input type="text" name="titre" id="titre" placeholder="Titre" value="{{$tache->titre}}">
+                    <textarea name="designation" id="designation" cols="30" rows="10" placeholder="Designation">{{$couleur->designation}}</textarea>
                 </div>
                 <!-- balise date de création et date de cloture -->
                 <div class="two item">
@@ -83,15 +85,32 @@
                 </div>
                 <div class="four item">
                     <!-- un bouton pour supprimer -->
-                    <button type="delete">Supprimer</button>
+                    <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">Supprimer</button>
                     <!-- un bouton pour valider -->
-                    <button type="submit">Sauvegarder</button>
+                    <button type="submit" value="enregistrer">Sauvegarder</button>
+                </div>
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="exampleModalLabel">Supprimer</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                Êtes vous sûr de vouloir supprimer cette tâche ?
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                                <button type="submit" class="btn btn-danger" value="supprimer">Supprimer</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </form>
         </section>
-
         <aside id="contact">
-            <button>
+            <button data-bs-toggle="modal" data-bs-target="#ajoutParticipant">
                 Ajouter une personne <i class="fa-solid fa-user-plus"></i>
             </button>
             <!-- bloc div ou on aura le chat avec les messages envoyer et recu qui s'affiche -->
@@ -106,6 +125,26 @@
                 <a href=""><i class="fa-solid fa-paper-plane"></i></a>
             </div>
         </aside>
+
+        <!-- Modal -->
+        <div class="modal fade" id="ajoutParticipant" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Ajouter un participant</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <!-- Champ de saisie (input) -->
+                        <input type="text" class="form-control" id="inputValue" placeholder="Saisissez son pseudo...">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                        <button type="button" class="btn btn-warning" id="AjoutPrn">Ajouter</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </main>
 </body>
 
