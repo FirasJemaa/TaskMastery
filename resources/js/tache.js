@@ -1,3 +1,4 @@
+///////////////////////////////////////////////////////////////////////Partie Tâche////////////////////////////////////////////////////////////////////////////////////////
 $(document).ready(function () {
     // Désactiver la sélection multiple en maintenant la touche Ctrl
     $('#dependances').on('mousedown', 'option', function (e) {
@@ -51,32 +52,6 @@ function couleur() {
     $('#couleur').val(couleurHex);
 }
 
-//lorqu'on clique sur le bouton ayant l'ID AjoutPrn
-$('#AjoutPrn').on('click', function () {
-    // Récupérer la valeur du champ de saisie
-    const inputValue = document.getElementById('inputValue').value;
-
-    //faire une méthode ajax post vers la route /attribuer/{ID} avec le paramètre ID de la tâche et le pseudo du participant
-    $.ajax({
-        url: '/attribuer/' + $('#idTache').val(),
-        type: 'POST',
-        data: {
-            pseudo: inputValue
-        },
-        success: function (data) {
-            // Ajouter le pseudo dans la liste des participants
-            console.log(data.message);
-        },
-        error: function (data) {
-            // Afficher un message d'erreur
-            console.log(data.responseJSON.message);
-        }
-    });
-
-    // Fermer le modal
-    $('#ajoutParticipant').modal('hide');
-});
-
 //lorsqu'on clique sur la class AjoutCheckList on ajoute une liste
 $('.AjoutCheckList').on('click', function () {console.log("ok");
     const contenu = prompt("Veuillez saisir le contenu de la liste");
@@ -95,3 +70,29 @@ $('.AjoutCheckList').on('click', function () {console.log("ok");
 // éxecuter des le début de la page
 pourcentage();
 
+///////////////////////////////////////////////////////////////////////Partie Contact////////////////////////////////////////////////////////////////////////////////////////
+// lorqu'on clique sur le bouton ayant l'ID AjoutPrn
+$('#AjoutPrn').on('click', function (e) {
+    e.preventDefault();
+    const inputValue = document.getElementById('inputValue').value;
+    console.log(inputValue);
+    //faire une méthode ajax post vers la route /attribuer/{ID} avec le paramètre ID de la tâche et le pseudo du participant
+    $.ajax({
+        url: '/ajouterContact',
+        type: 'POST',
+        data: {
+            pseudo: inputValue
+        },
+        success: function (data) {
+            // Ajouter le pseudo dans la liste des participants
+            console.log(data.message);
+        },
+        error: function (data) {
+            // Afficher un message d'erreur
+            console.log(data.responseJSON.message);
+        }
+    });
+
+    // Fermer le modal
+    $('#ajoutContact').modal('hide');
+});
