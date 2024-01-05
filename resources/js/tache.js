@@ -78,7 +78,7 @@ $('#AjoutPrn').on('click', function () {
 });
 
 //lorsqu'on clique sur la class AjoutCheckList on ajoute une liste
-$('#AjoutCheckList').on('click', function () {
+$('.AjoutCheckList').on('click', function () {console.log("ok");
     const contenu = prompt("Veuillez saisir le contenu de la liste");
     if (contenu == null || contenu == "") {
         alert("Vous n'avez rien saisi");

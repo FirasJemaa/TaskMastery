@@ -88,9 +88,9 @@ function getAjax(projetId){
         success: function (data) {
             //boucle for in pour afficher les taches dans la balise section avec la classe statuts
             for (let key in data){
-                $('[class="statut"][name="' + data[key].id_statut + '"]').append(
+                $('[class="statut"][name="' + data[key].id_statut + '"] .list').append(
                     '<div class="taches" style="background:#' + decimalToHex(data[key].code_couleur) + '" name="' + data[key].id + '">' +
-                        '<div><h4>' + data[key].designation +'</h4>'+
+                        '<div><h4>' + data[key].titre +'</h4>'+
                         '<input class="check" type = "checkbox" ' + bCheck(data[key].etat) +' name="'+ data[key].id +'"></div>'+
                         '<p><span>Étiquette :</span> ' + data[key].D_Etiquette +'</p>'+
                     '</div>'

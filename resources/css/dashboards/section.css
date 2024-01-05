@@ -33,7 +33,8 @@
 }
 
 .statut {
-    width: 20%;
+    min-width: 20%;
+    width: auto;
     height: 55vh;
     background: var(--clr-first);
     border-radius: 15px;
@@ -43,6 +44,14 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+.list {
+    height: 90%;
+    /*lorsque la taille est dépasser je veux qu'on scroll*/
+    overflow-y: auto;
+    /*il ne faut pas caché le h3 */
+    margin-top: auto;
 }
 
 .statut h3 {
@@ -109,9 +118,12 @@ input[type="checkbox"] {
     visibility: hidden;
 }
 
-/* .statut {
-    width: 30%;
-} */
+@media screen and (max-width: 1500px) {
+    .statut {
+        min-width: none;
+    }
+}
+
 @media screen and (min-width: 1300px) and (max-width: 1500px) {
     .taches {
         width: 25vh;

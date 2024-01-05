@@ -53,7 +53,7 @@
                         @foreach($taches as $tacheDependance)
                         @if($tacheDependance->id_tache_1 != $tacheDependance->id)
                         <option value="{{ $tacheDependance->id }}" @if(in_array($tacheDependance->id, $selectedDependances)) selected @endif>
-                            {{ $tacheDependance->designation }}
+                            {{ $tacheDependance->titre }}
                         </option>
                         @endif
                         @endforeach
@@ -87,7 +87,7 @@
                     <!-- un bouton pour supprimer -->
                     <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">Supprimer</button>
                     <!-- un bouton pour valider -->
-                    <button type="submit" value="enregistrer">Sauvegarder</button>
+                    <button name="btn" type="submit" value="enregistrer">Sauvegarder</button>
                 </div>
                 <!-- Modal -->
                 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -102,7 +102,7 @@
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
-                                <button type="submit" class="btn btn-danger" value="supprimer">Supprimer</button>
+                                <button type="submit" class="btn btn-danger">Supprimer</button>
                             </div>
                         </div>
                     </div>

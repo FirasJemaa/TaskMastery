@@ -36,54 +36,71 @@ class TacheController extends Controller
      */
     public function store($id, Request $request)
     {
-        if ($request->input('action') === 'enregistrer') {
-        $tache = Tache::find($id);
-        // je veux voir le contenu de $tache
-        $tache->update([
-            'titre' => $request->input('titre'),
-            'designation' => $request->input('designation'),
-            'date_debut' => $request->input('date_creation'),
-            'date_cloture' => $request->input('date_cloture'),
-            'id_etiquette' => $request->input('etiquette'),
-            'id_statut' => $request->input('statut'),
-        ]);
-        
-        $dependances = Dependance::all()->where('id_tache_1', $id);
-        foreach ($dependances as $dependance) {
-            $dependance->delete();
-        }
-        //creer les dependances recu dans request id_tache_1 correspond a la tache en cours et id_tache_2 correspond a la tache selectionner
-        foreach ($request->input('dependances') as $dependance) {
-            Dependance::create([
-                'id_tache_1' => $id,
-                'id_tache_2' => $dependance,
+        if ($request->input('btn') === 'enregistrer') {//$request->input('action') === 'enregistrer'
+            $tache = Tache::find($id);
+            // je veux voir le contenu de $tache
+            $tache->update([
+                'titre' => $request->input('titre'),
+                'designation' => $request->input('designation'),
+                'date_debut' => $request->input('date_creation'),
+                'date_cloture' => $request->input('date_cloture'),
+                'id_etiquette' => $request->input('etiquette'),
+                'id_statut' => $request->input('statut'),
             ]);
-        }
 
-        $checkboxes = $request->input('checkboxes', []);
-        $labels = $request->input('labels', []);
-
-        foreach ($labels as $key => $label) {
-            //grace a la clé qui correspond au id de la checklist on peut recuperer le id de la checklist ou la creation de la checklist
-            $checklist = Checklist::find($key);
-            if ($checklist) {
-                $checklist->update([
-                    'designation' => $label,
-                    'checked' => in_array($key, $checkboxes),
+            $couleur = Couleur::where('code_couleur', hexdec(substr($request->input('couleur'), 1)))->first();
+            if ($couleur) {
+                $tache->update([
+                    'id_couleur' => $couleur->id,
                 ]);
             } else {
-                Checklist::create([
-                    'designation' => $label,
-                    'checked' => in_array($key, $checkboxes),
-                    'id_tache' => $id,
+                $couleur = Couleur::create([
+                    'code_couleur' => hexdec(substr($request->input('couleur'), 1)),
+                ]);
+                $tache->update([
+                    'id_couleur' => $couleur->id,
                 ]);
             }
+
+            $dependances = Dependance::all()->where('id_tache_1', $id);
+            foreach ($dependances as $dependance) {
+                $dependance->delete();
+            }
+            //creer les dependances recu dans request id_tache_1 correspond a la tache en cours et id_tache_2 correspond a la tache selectionner
+            //vérifier que le $request->input('dependances') n'est pas vide ou existe
+            if ($request->input('dependances')){
+                foreach ($request->input('dependances') as $dependance) {
+                    Dependance::create([
+                        'id_tache_1' => $id,
+                        'id_tache_2' => $dependance,
+                    ]);
+                }
+            }
+
+            $checkboxes = $request->input('checkboxes', []);
+            $labels = $request->input('labels', []);
+
+            foreach ($labels as $key => $label) {
+                //grace a la clé qui correspond au id de la checklist on peut recuperer le id de la checklist ou la creation de la checklist
+                $checklist = Checklist::find($key);
+                if ($checklist) {
+                    $checklist->update([
+                        'designation' => $label,
+                        'checked' => in_array($key, $checkboxes),
+                    ]);
+                } else {
+                    Checklist::create([
+                        'designation' => $label,
+                        'checked' => in_array($key, $checkboxes),
+                        'id_tache' => $id,
+                    ]);
+                }
+            }
+        } else{ //if ($request->input('action') === 'supprimer') {
+            $tache = Tache::find($id);
+            $tache->delete();
         }
-    }else if ($request->input('action') === 'supprimer') {
-        $tache = Tache::find($id);
-        $tache->delete();
-    } 
-        
+
         return redirect()->route('dashboard');
     }
 
@@ -100,7 +117,7 @@ class TacheController extends Controller
         return response()->json($taches);
     }
 
-    public function showPage($id)//Tache $tache
+    public function showPage($id) //Tache $tache
     {
         $tache          = Tache::find($id);
         $couleur        = Couleur::all()->where('id', $tache->id_couleur)->first();
@@ -135,7 +152,7 @@ class TacheController extends Controller
         $taches = Tache::leftJoin('dependances', 'taches.id', '=', 'dependances.id_tache_1')->get(['taches.*', 'dependances.id_tache_1', 'dependances.id_tache_2']);
         $checklists = Checklist::all()->where('id_tache', $tache->id)->sortBy('id');
         $selectedDependances = $taches->pluck('id_tache_2')->toArray();
-        
+
         return view("tache", compact("tache", "couleur", "statuts", "etiquettes", "taches", "checklists", "selectedDependances"));
     }
 
