@@ -12,8 +12,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     @vite(['resources/css/tache.css', 'resources/js/tache.js'])
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
-    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
-    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 </head>
 
 <body>
@@ -51,11 +49,11 @@
                     <label for="dependances">Sélectionnez vos dépendances :</label>
                     <select id="dependances" name="dependances[]" multiple="multiple">
                         @foreach($taches as $tacheDependance)
-                        @if($tacheDependance->id_tache_1 != $tacheDependance->id)
-                        <option value="{{ $tacheDependance->id }}" @if(in_array($tacheDependance->id, $selectedDependances)) selected @endif>
-                            {{ $tacheDependance->titre }}
-                        </option>
-                        @endif
+                            @if($tacheDependance->id_tache_1 != $tacheDependance->id)
+                                <option value="{{ $tacheDependance->id }}" @if(in_array($tacheDependance->id, $selectedDependances)) selected @endif>
+                                    {{ $tacheDependance->titre }}
+                                </option>
+                                @endif
                         @endforeach
                     </select>
                 </div>

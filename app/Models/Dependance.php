@@ -11,5 +11,6 @@ class Dependance extends Model
     protected $fillable= [
         'id_tache_1',
         'id_tache_2',
+        'id_user'
     ];
 }

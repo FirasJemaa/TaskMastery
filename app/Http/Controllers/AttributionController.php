@@ -12,7 +12,13 @@ class AttributionController extends Controller
     public function index()
     {
         $user = auth()->id();
-        $taches = Tache::join('attributions', 'taches.id', 'attributions.id_tache')->where('attributions.id_inviter', '=', $user)->get();
+        $taches = Tache::join('attributions', 'taches.id', 'attributions.id_tache')
+        ->join('users', 'attributions.id_inviter', 'users.id')
+        ->join('users as u', 'attributions.id_utilisateur', 'u.id')
+        ->join('statuts', 'statuts.id', 'taches.id_statut')
+            ->select('taches.*', 'statuts.designation as DS', 'attributions.id_inviter', 'u.pseudo')    
+        ->where('attributions.id_inviter', '=', $user)
+            ->get();
 
         return view('attribution', compact('taches'));
     }

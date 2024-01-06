@@ -62,7 +62,11 @@ class TacheController extends Controller
                 ]);
             }
 
-            $dependances = Dependance::all()->where('id_tache_1', $id);
+            $dependances = Dependance::join('taches', 'taches.id', 'dependances.id_tache_1')
+                ->join('projets', 'projets.id', 'taches.id_projet')
+                ->where('projets.id_user', '=', auth()->id())
+                ->where('id_tache_1', $id);
+
             foreach ($dependances as $dependance) {
                 $dependance->delete();
             }
@@ -73,6 +77,7 @@ class TacheController extends Controller
                     Dependance::create([
                         'id_tache_1' => $id,
                         'id_tache_2' => $dependance,
+                        'id_user' => auth()->id(),
                     ]);
                 }
             }
@@ -123,9 +128,11 @@ class TacheController extends Controller
         $couleur        = Couleur::all()->where('id', $tache->id_couleur)->first();
         $statuts        = Statut::all()->sortBy('id');
         $etiquettes     = Etiquette::all()->sortBy('id');
-        $taches         = Tache::leftJoin('dependances', 'taches.id', '=', 'dependances.id_tache_1')->leftJoin('projets', 'projets.id', '=', 'taches.id_projet')
-        ->where('projets.id_user', '=', $tache->id)
-        ->get(['taches.*', 'dependances.id_tache_1', 'dependances.id_tache_2']);
+        $taches         = Tache::leftJoin('dependances', 'taches.id', '=', 'dependances.id_tache_1')
+            ->leftJoin('projets', 'projets.id', '=', 'taches.id_projet')
+            ->where('projets.id_user', '=', auth()->id())
+            ->where('taches.id', '!=', $tache->id)
+            ->get(['taches.*', 'dependances.id_tache_1', 'dependances.id_tache_2']);
         $checklists     = Checklist::all()->where('id_tache', $id)->sortBy('id');
         //pluk permet de recuperer un tableau avec les id de la table et toArray permet de convertir en tableau
         $selectedDependances = $taches->pluck('id_tache_2')->toArray();
@@ -151,7 +158,11 @@ class TacheController extends Controller
         $statuts = Statut::all()->sortBy("id");
         $etiquettes = Etiquette::all()->sortBy("id");
         $couleur = Couleur::all()->where('id', $tache->id_couleur)->first();
-        $taches = Tache::leftJoin('dependances', 'taches.id', '=', 'dependances.id_tache_1')->where('taches.id', '=', $tache->id)->get(['taches.*', 'dependances.id_tache_1', 'dependances.id_tache_2']);
+        $taches = Tache::leftJoin('dependances', 'taches.id', '=', 'dependances.id_tache_1')
+            ->leftJoin('projets', 'projets.id', '=', 'taches.id_projet')
+            ->where('projets.id_user', '=', auth()->id())
+            ->where('taches.id', '!=', $tache->id)
+            ->get(['taches.*', 'dependances.id_tache_1', 'dependances.id_tache_2']);
         $checklists = Checklist::all()->where('id_tache', $tache->id)->sortBy('id');
         $selectedDependances = $taches->pluck('id_tache_2')->toArray();
 
