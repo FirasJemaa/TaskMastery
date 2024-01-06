@@ -20,6 +20,7 @@
 
 #titreTache a {
     text-decoration: none;
+    visibility: hidden;
 }
 
 #titreTache i {

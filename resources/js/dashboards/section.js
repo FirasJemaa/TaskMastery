@@ -13,8 +13,16 @@ $(document).on('click', '#listeProjets li', function (e) {
     //ajouter la class active sur la balise li cliquée
     $(this).addClass('active');
 
+    //mettre #creerTache en visible
+    $('#creerTache').css('visibility', 'visible');
+
     //ajax method GET pour obtenir les taches du projet ayant l'id projetId
     getAjax(projetId);
+
+    // Modifie l'attribut href avec la nouvelle valeur
+    $('#creerTache').attr('href', function(index, oldHref) {
+        return oldHref.replace(/\/\d+$/, '/' + projetId);
+    });
 });
 
 // Changer le statut sur le checkbox
