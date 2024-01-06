@@ -115,9 +115,14 @@
             </button>
             <!-- bloc div ou on aura le chat avec les messages envoyer et recu qui s'affiche -->
             <div class="message">
-                <p>Message 1</p>
-                <p>Message 1</p>
-                <p>Message 1</p>
+                <div class="messages participant">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et, nostrum, esse laborum molestiae ullam deserunt voluptatibus sint exercitationem praesentium quis molestias eum sed tenetur quasi ratione sapiente error natus laudantium?</p>
+                    <h5>Invitez</h5>
+                </div>
+                <div class="messages hote">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et, nostrum, esse laborum molestiae ullam deserunt voluptatibus</p>
+                    <h5>Moi</h5>
+                </div>
             </div>
             <!-- un champ ou on écrit le message -->
             <div>

@@ -74,8 +74,9 @@ pourcentage();
 // lorqu'on clique sur le bouton ayant l'ID AjoutPrn
 $('#AjoutPrn').on('click', function (e) {
     e.preventDefault();
-    const inputValue = document.getElementById('inputValue').value;
+    const inputValue = $('#inputValue').val();
     const id = $('#contact > button').attr('id');
+    console.log(inputValue, id);
     //faire une méthode ajax post vers la route /attribuer/{ID} avec le paramètre ID de la tâche et le pseudo du participant
     $.ajax({
         url: '/ajouterContact',
@@ -86,7 +87,7 @@ $('#AjoutPrn').on('click', function (e) {
         },
         success: function (data) {
             // Ajouter le pseudo dans la liste des participants
-            alert(data.message);
+            console.log(data.message);
         },
         error: function (data) {
             // Afficher un message d'erreur

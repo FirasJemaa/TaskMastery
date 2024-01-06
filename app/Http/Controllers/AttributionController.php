@@ -28,25 +28,31 @@ class AttributionController extends Controller
         $pseudo = $request->input('pseudo');
         $id_tache = $request->input('id_tache');
 
-        // chercher un utilisateur avec le pseudo
-        $userInvite = User::where('pseudo', $pseudo)->first();
+        try {
+            // Chercher un utilisateur avec le pseudo
+            $userInvite = User::where('pseudo', $pseudo)->firstOrFail();
 
-        //récuperer l'id du user connecté
-        $user = auth()->user();
+            // Récupérer l'id du user connecté
+            $userID = auth()->id();
 
-        // si l'userInvite existe on créer une attribution
-        if($userInvite){
-            Attribution::create([
-                'id_tache' => $id_tache,
-                'id_user' => $userInvite->id,
-            ]);
-        }else{
-            // on retourne que le user n'existe pas
-            return response()->json(['message' => 'L\'utilisateur '. $pseudo .' n\'existe pas.']);
+            // Si l'utilisateur existe et n'est pas le même que l'utilisateur connecté, on crée une attribution
+            if ($userInvite->id != $userID) {
+                Attribution::create([
+                    'id_tache' => $id_tache,
+                    'id_utilisateur' => $userID,
+                    'id_inviter' => $userInvite->id,
+                    'createur' => true
+                ]);
+
+                // Répondre à la requête Ajax avec un message
+                return response()->json(['message' => 'Votre demande d\'attribution a bien été prise en compte.']);
+            } else {
+                // On retourne que le user est le même que l'utilisateur connecté
+                return response()->json(['message' => 'L\'utilisateur ' . $pseudo . ' est le même que l\'utilisateur connecté.']);
+            }
+        } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
+            // On retourne que le user n'existe pas
+            return response()->json(['message' => 'L\'utilisateur ' . $pseudo . ' n\'existe pas.']);
         }
-
-        // Répondre à la requête Ajax avec un message
-        return response()->json(['message' => 'Votre demande d\'attribution a bien été prise en compte.']);
     }
-
 }

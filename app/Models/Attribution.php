@@ -12,5 +12,6 @@ class Attribution extends Model
         'id_tache',
         'id_utilisateur',
         'id_inviter',
+        'createur'
     ];
 }
