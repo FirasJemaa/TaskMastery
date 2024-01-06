@@ -4,13 +4,17 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Tache;
 use App\Models\Attribution;
 
 class AttributionController extends Controller
 {
     public function index()
     {
-        // Logique pour afficher la liste des attribues
+        $user = auth()->id();
+        $taches = Tache::join('attributions', 'taches.id', 'attributions.id_tache')->where('attributions.id_inviter', '=', $user)->get();
+
+        return view('attribution', compact('taches'));
     }
 
     public function show($id)

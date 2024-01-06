@@ -58,7 +58,8 @@ Route::middleware('auth')->group(function () {
 
     //Attribution
     //Route::middleware('verifAppartenance')->group(function () {
-        Route::POST('/ajouterContact', [AttributionController::class, 'store']);        
+        Route::POST('/ajouterContact', [AttributionController::class, 'store']); 
+        Route::GET('/indexAttribution', [AttributionController::class, 'index'])->name('indexAttribution');    
     //});
 });
 

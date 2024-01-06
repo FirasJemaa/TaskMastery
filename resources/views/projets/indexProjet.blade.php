@@ -8,6 +8,9 @@ $projets = $projetController->index();
     <a id="creerProjet" onclick="ajouterProjet()">
         <i class="fa-solid fa-circle-plus"></i>
     </a>
+    <a id="creerProjet" href="{{route('indexAttribution')}}">
+        <i class="fa-brands fa-slideshare"></i>    
+    </a>
 </div>
 
 <ul id="listeProjets">
