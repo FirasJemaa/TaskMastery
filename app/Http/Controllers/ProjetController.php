@@ -15,8 +15,11 @@ class ProjetController extends Controller
      */
     public function index()//:View
     {
-        $projets = Projet::all()->sortBy("id");
-        return view("projets.indexProjet", compact("projets"));
+        //récuperer l'id du user connecté
+        $userID = auth()->id();
+        $projets = Projet::where('id_user', '=', $userID)->get();
+        //return view("projets.indexProjet", compact("projets"));
+        return $projets;
     }
 
     /**

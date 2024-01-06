@@ -75,24 +75,22 @@ pourcentage();
 $('#AjoutPrn').on('click', function (e) {
     e.preventDefault();
     const inputValue = document.getElementById('inputValue').value;
-    console.log(inputValue);
+    const id = $('#contact > button').attr('id');
     //faire une méthode ajax post vers la route /attribuer/{ID} avec le paramètre ID de la tâche et le pseudo du participant
     $.ajax({
         url: '/ajouterContact',
         type: 'POST',
         data: {
-            pseudo: inputValue
+            pseudo: inputValue,
+            id_tache: id
         },
         success: function (data) {
             // Ajouter le pseudo dans la liste des participants
-            console.log(data.message);
+            alert(data.message);
         },
         error: function (data) {
             // Afficher un message d'erreur
-            console.log(data.responseJSON.message);
+            console.log(data.message);
         }
     });
-
-    // Fermer le modal
-    $('#ajoutContact').modal('hide');
 });

@@ -1,5 +1,7 @@
 @php
-$projets = \App\Models\Projet::all()->sortBy("id");
+// Appel direct du contrôleur
+$projetController = app(\App\Http\Controllers\ProjetController::class);
+$projets = $projetController->index();
 @endphp
 <div>
     <h2>Liste projets</h2>

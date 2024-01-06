@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProjetController;
 use App\Http\Controllers\TacheController;
+use App\Http\Controllers\AttributionController;
 //use App\Models\Projet;
 use Illuminate\Support\Facades\Route;
 
@@ -39,15 +40,14 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     
     //Projet
-    Route::post('/storeProjet', [ProjetController::class, 'store']);
-
     //Route::middleware('verifAppartenance')->group(function () {
+        //Route::get('/projets/indexProjet', [ProjetController::class, 'index'])->name('projets.indexProjet');
+        Route::post('/storeProjet', [ProjetController::class, 'store']);
         Route::post('/deleteProjet/{n}', [ProjetController::class, 'destroy']);
         Route::get('/showProjet/{n}', [ProjetController::class, 'show']);
     //});
 
     //Tache
-    
     //Route::middleware('verifAppartenance')->group(function () {
         Route::post('/updateTaches', [TacheController::class, 'update']);        
         Route::get('/showTaches/{n}', [TacheController::class, 'show']);
@@ -56,8 +56,9 @@ Route::middleware('auth')->group(function () {
         Route::post('/tache/store/{id}', [TacheController::class, 'store'])->name('tache.store');
     //});
 
+    //Attribution
     //Route::middleware('verifAppartenance')->group(function () {
-        Route::post('/appartenance/{n}/{j}', [TacheController::class, 'store']);        
+        Route::post('/ajouterContact', [AttributionController::class, 'store']);        
     //});
 });
 

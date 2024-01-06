@@ -110,7 +110,7 @@
             </form>
         </section>
         <aside id="contact">
-            <button data-bs-toggle="modal" data-bs-target="#ajoutParticipant">
+            <button data-bs-toggle="modal" data-bs-target="#ajoutParticipant" id="{{$tache->id}}">
                 Ajouter une personne <i class="fa-solid fa-user-plus"></i>
             </button>
             <!-- bloc div ou on aura le chat avec les messages envoyer et recu qui s'affiche -->
@@ -140,7 +140,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
-                        <button type="button" class="btn btn-warning" id="AjoutPrn">Ajouter</button>
+                        <button type="button" class="btn btn-warning" data-bs-dismiss="modal" id="AjoutPrn">Ajouter</button>
                     </div>
                 </div>
             </div>
