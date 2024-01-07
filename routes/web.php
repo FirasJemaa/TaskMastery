@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProjetController;
 use App\Http\Controllers\TacheController;
 use App\Http\Controllers\AttributionController;
+use App\Http\Controllers\ConversationController;
 //use App\Models\Projet;
 use Illuminate\Support\Facades\Route;
 
@@ -61,6 +62,11 @@ Route::middleware('auth')->group(function () {
         Route::POST('/ajouterContact', [AttributionController::class, 'store']); 
         Route::GET('/indexAttribution', [AttributionController::class, 'index'])->name('indexAttribution');    
     //});
+
+    //Message
+    //Route::middleware('verifAppartenance')->group(function () {
+        Route::POST('/ajouterMessage', [ConversationController::class, 'store']); 
+        Route::GET('/refreshConversation', [ConversationController::class, 'show']);
 });
 
 //test

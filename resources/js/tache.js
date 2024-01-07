@@ -53,7 +53,8 @@ function couleur() {
 }
 
 //lorsqu'on clique sur la class AjoutCheckList on ajoute une liste
-$('.AjoutCheckList').on('click', function () {console.log("ok");
+$('.AjoutCheckList').on('click', function () {
+    console.log("ok");
     const contenu = prompt("Veuillez saisir le contenu de la liste");
     if (contenu == null || contenu == "") {
         alert("Vous n'avez rien saisi");
@@ -95,3 +96,85 @@ $('#AjoutPrn').on('click', function (e) {
         }
     });
 });
+
+$('#message').keypress(function(e) {
+    if (e.which === 13) { // 13 correspond à la touche Entrée
+        // Exécutez le traitement du bouton
+        $('#envoyerMsg').click();
+    }
+});
+
+//lorsqu'on clique sur l'id envoyerMsg on récupère le contenu du message et on l'envoie à la route /envoyerMsg
+$('#envoyerMsg').on('click', function (e) {
+    e.preventDefault();
+    const id = $('#contact > button').attr('id');
+    const msg = $('#message').val();
+    console.log(id, msg);
+    $.ajax({
+        url: '/ajouterMessage',
+        type: 'POST',
+        data: {
+            id_tache: id,
+            contenu: msg
+        },
+        success: function (data) {
+            // Afficher un message de succès
+            console.log(data.message);
+            //ajouter le message dans la conversation :
+            //ajouter dans la balise message une div avec la class messages et le contenu du message
+            $('.message').append('<div class="messages hote">\
+                <p>' + msg + '</p>\
+                <h5>Moi</h5>\
+                </div>');
+        },
+        error: function (data) {
+            // Afficher un message d'erreur
+            console.log(data.message);
+        }
+    });
+
+    //vider le contenu du message
+    $('#message').val('');
+});
+
+//raffraichir la conversation tous les 5 secondes
+setInterval(function () {
+    const id = $('#contact > button').attr('id');
+    $.ajax({
+        url: '/refreshConversation',
+        type: 'GET',
+        data: {
+            id_tache: id
+        },
+        success: function (data) {
+            $('.message').html('');
+            const conversation = data.conversation;
+            const pseudoActuel = data.utilisateurCourant;
+            for (let key in conversation) {
+                //verifier si l'utilisateurCourant = pseudo                
+                if (pseudoActuel == conversation[key].pseudo) {
+                    $('.message').append('<div class="messages hote">\
+                    <p>' + conversation[key].contenu + '</p>\
+                    <h5>Moi</h5>\
+                    </div>');
+                } else {
+                    $('.message').append('<div class="messages participant">\
+                    <p>' + conversation[key].contenu + '</p>\
+                    <h5>' + conversation[key].pseudo + '</h5>\
+                    </div>');
+                }
+            };
+        },
+        error: function (data) {
+            // Afficher un message d'erreur
+            console.log(data.message);
+        }
+    });
+}, 1000);
+
+setInterval(function () {
+    var MsgConteneur = $('.message');
+    var containerHeight = MsgConteneur.height();
+    var contentHeight = MsgConteneur[0].scrollHeight;
+    MsgConteneur.scrollTop(contentHeight - containerHeight);
+},5000);

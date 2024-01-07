@@ -28,6 +28,7 @@
                 </div>
                 <!-- balise date de création et date de cloture -->
                 <div class="two item">
+                    <label for="date_creation">Date de début et de fin : </label>
                     <input type="date" name="date_creation" id="date_creation" value="{{$tache->date_creation}}">
                     <input type="date" name="date_cloture" id="date_cloture" value="{{$tache->date_cloture}}">
                     <!-- un champ de saisie d'une couleur -->
@@ -36,11 +37,13 @@
                         <input type="color" name="couleur" id="couleur" value="{{sprintf('#%s', str_pad(dechex($couleur->code_couleur), 6, '0', STR_PAD_LEFT))}}">
                     </div>
                     <!-- une liste déroulante etiquette et statut -->
+                    <label for="etiquette">Étiquette : </label>
                     <select id="etiquette" name="etiquette">
                         @foreach($etiquettes as $etiquette)
                         <option value="{{$etiquette->id}}" @if($etiquette->id == $tache->id_etiquette) selected @endif>{{$etiquette->designation}}</option>
                         @endforeach
                     </select>
+                    <label for="statut">Statut : </label>
                     <select id="statut" name="statut">
                         @foreach($statuts as $statut)
                         <option value="{{$statut->id}}" @if($statut->id == $tache->id_statut) selected @endif>{{$statut->designation}}</option>
@@ -113,19 +116,12 @@
             </button>
             <!-- bloc div ou on aura le chat avec les messages envoyer et recu qui s'affiche -->
             <div class="message">
-                <div class="messages participant">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et, nostrum, esse laborum molestiae ullam deserunt voluptatibus sint exercitationem praesentium quis molestias eum sed tenetur quasi ratione sapiente error natus laudantium?</p>
-                    <h5>Invitez</h5>
-                </div>
-                <div class="messages hote">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et, nostrum, esse laborum molestiae ullam deserunt voluptatibus</p>
-                    <h5>Moi</h5>
-                </div>
+
             </div>
             <!-- un champ ou on écrit le message -->
             <div>
                 <input type="text" name="message" id="message" placeholder="Écrire...">
-                <a href=""><i class="fa-solid fa-paper-plane"></i></a>
+                <a id="envoyerMsg"><i class="fa-solid fa-paper-plane"></i></a>
             </div>
         </aside>
 

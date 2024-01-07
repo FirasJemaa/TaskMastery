@@ -266,35 +266,26 @@
     transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-#contact div i{
-    font-size: large;
-    background-color: var(--clr-yellow);
-    padding: 10px;
-    border-radius: 50%;
-}
-
 .message{
     display: flex;
     flex-direction: column;
-    justify-content: end;
-    align-items: center;
+    justify-content: start;
     margin: 10px;
     width: 100%;
     height: 80vh;
     background-color: var(--clr-black);
     border-radius: 10px;
     overflow-y: auto;
-}
-
-.message{
-    margin: 10px;
-    overflow-y: auto;
+    scrollbar-width: thin; /* "auto" ou "thin" (moins large) */
+    scrollbar-color: #531717 transparent;
+    /* firefox */
+    scrollbar-face-color: #ccc; 
+    scrollbar-arrow-color: transparent; 
 }
 
 .messages h5{
     color: white;
-    margin: 5px;
-    padding: 5px;
+    margin: 0 10px 5px 10px;
     width: 50%;
     font-size: 15px;
 }
@@ -302,7 +293,8 @@
     margin: 10px;
     padding: 10px;
     border-radius: 10px;
-    width: 75%;
+    width: auto;
+    max-width: 75%;
 }
 
 .participant{
@@ -335,6 +327,19 @@
 .hote p {
     color: var(--clr-black);
     background-color: var(--clr-second);
+}
+
+#envoyerMsg i{
+    font-size: large;
+    background-color: var(--clr-yellow);
+    padding: 12px;
+    border-radius: 50%;
+    transition: all 0.3s ease-in-out;
+}
+
+#envoyerMsg i:hover{
+    background-color: var(--clr-black);
+    color: var(--clr-yellow);
 }
 
 @media (max-width: 1024px) {
@@ -381,7 +386,7 @@
         width: auto;
     }
     #contact input{
-        width: 79%;
+        width: 78%;
     }
 
     .message {
