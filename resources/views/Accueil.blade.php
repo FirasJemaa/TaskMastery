@@ -4,7 +4,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!--<link href="{{ asset('css/accueil.css') }}" rel="stylesheet">-->
     @vite(['resources/css/accueil.css', 'resources/js/app.js'])
     <title>Task Mastery</title>
     <link rel="icon" href="{{ asset('image/logo_onglet.png') }}" type="image/x-icon">
@@ -42,24 +41,23 @@
     </header>
 
     <section id="presentation-container" class="container-fluid column">
-        <div class=""><!--penser a mettre une class-->
+        <div class="Explication">
             <div class="row">
                 <h2 id="text1" class="soulignage">Le projet consiste à ?</h2>
                 <h2 id="text2" class="soulignage">Correspond a qui ?</h2>
             </div>
-            <p id="para1">Le projet consiste en un gestionnaire de tâches convivial qui permet aux utilisateurs de créer, suivre et gérer des tâches individuellement ou en équipe. Cette solution simplifie la planification du travail quotidien et améliore la productivité.</p>
-            <p id="para2">Les professionnels, les étudiants, les équipes de travail, et toute personne cherchant à mieux organiser ses tâches.</p>
+            <p id="para">Le projet consiste en un gestionnaire de tâches convivial qui permet aux utilisateurs de créer, suivre et gérer des tâches individuellement ou en équipe. Cette solution simplifie la planification du travail quotidien et améliore la productivité.</p>
         </div>
         <div id="fonctionnement" class="container row">
             <div class="column">
                 <div class="box play">
-                    <p>Create a project, and insert different tasks for your project.</p>
+                    <p>Créer un projet, et insérer différente tâches</p>
                 </div>
                 <div class="box">
-                    <p>Add someone in the project for work with you</p>
+                    <p>Ajouter quelqu'un au projet</p>
                 </div>
                 <div class="box">
-                    <p>Edit and share with your friends</p>
+                    <p>Modifier et communiqué avec vos amis</p>
                 </div>
             </div>
 
@@ -67,7 +65,7 @@
 
         </div>
     </section>
-    <section id="avantage" class="container column">
+    <main id="avantage" class="container column">
         <div class="row">
             <p>Travailler en <strong>équipe !</strong><br>Cela vous permettre de partager les tâches</p>
             <img src="{{ asset('image/avantage1.svg') }}" alt="équipe">
@@ -80,7 +78,10 @@
             <p><strong>Réussir ensemble !</strong><br>Franchissez tous les étapes en équipe</p>
             <img src="{{ asset('image/avantage3.svg') }}" alt="ensemble">
         </div>
-    </section>
+    </main>
+    <footer class="clearfix">
+        <p>© 2024 <a href="https://www.linkedin.com/in/firas-jemaa-963336151/">Firase JEMAA</a>. Tous droits réservés. Tous droits réservés sur le contenu de ce site Web.</p>
+    </footer>
 
     <script src="{{ asset('js/accueil.js') }}"></script>
 </body>

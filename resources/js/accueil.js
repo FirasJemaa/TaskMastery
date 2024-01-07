@@ -25,21 +25,19 @@ new ResizeObserver(entries => {
 }).observe(document.body);
 
 //animation sur le text dans presentation
-var paragraph1 = document.getElementById('para1');
-var paragraph2 = document.getElementById('para2');
+var paragraph = document.getElementById('para');
 var button1 = document.getElementById('text1');
 var button2 = document.getElementById('text2');
 
-// Écoutez les clics sur le premier bouton
 button1.addEventListener('click', function () {
-  paragraph1.style.visibility = 'visible';  // Affiche le premier paragraphe en le rendant opaque
-  paragraph2.style.visibility = 'hidden';  // Masque le deuxième paragraphe en le rendant transparent
+  //lorsqu'on clique sur le bouton 1 on change le text du paragraphe
+  paragraph.innerHTML = "Le projet consiste en un gestionnaire de tâches sophistiqué et convivial, conçu pour répondre aux besoins variés des utilisateurs individuels ainsi que des équipes professionnelles. Ce gestionnaire de tâches vise à révolutionner la manière dont les utilisateurs planifient, suivent et gèrent leurs activités quotidiennes, offrant une solution complète pour améliorer la productivité et la collaboration au sein d'un environnement professionnel.";
 });
 
 // Écoutez les clics sur le deuxième bouton
 button2.addEventListener('click', function () {
-  paragraph1.style.visibility = 'hidden';  // Masque le premier paragraphe en le rendant transparent
-  paragraph2.style.visibility = 'visible';  // Affiche le deuxième paragraphe en le rendant opaque
+  //lorsqu'on clique sur le bouton 2 on change le text du paragraphe
+  paragraph.innerHTML = "Notre solution de gestion de tâches est conçue pour répondre aux besoins divers et variés de plusieurs segments de la population, englobant aussi bien les professionnels chevronnés que les étudiants ambitieux, en passant par les équipes de travail dynamiques, ainsi que toute personne cherchant à optimiser l'organisation de ses tâches quotidiennes.";
 });
 
 /***************le moment lorsque je change de vidéo*************/
