@@ -40,12 +40,12 @@ class TacheController extends Controller
             $tache = Tache::find($id);
             // je veux voir le contenu de $tache
             $tache->update([
-                'titre' => $request->input('titre'),
-                'designation' => $request->input('designation'),
-                'date_debut' => $request->input('date_creation'),
-                'date_cloture' => $request->input('date_cloture'),
-                'id_etiquette' => $request->input('etiquette'),
-                'id_statut' => $request->input('statut'),
+                'titre' => $request->input('titre') ? $request->input('titre') : $tache->titre,
+                'designation' => $request->input('designation') ? $request->input('designation') : $tache->designation,
+                'date_debut' => $request->input('date_creation') ? $request->input('date_creation') : $tache->date_creation,
+                'date_cloture' => $request->input('date_cloture') ? $request->input('date_cloture') : $tache->date_cloture,
+                'id_etiquette' => $request->input('etiquette') ? $request->input('etiquette') : $tache->id_etiquette,
+                'id_statut' => $request->input('statut') ? $request->input('statut') : $tache->id_statut,
             ]);
 
             $couleur = Couleur::where('code_couleur', hexdec(substr($request->input('couleur'), 1)))->first();

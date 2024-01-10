@@ -2,8 +2,8 @@
     <header class="header">
         <!-- Logo -->
         <div class="shrink-0 flex items-center">
-            <a href="{{ route('dashboard') }}">
-                <img src="image/logo.png" alt="logo">
+            <a title="Retour au tableau de bord" href="{{ route('dashboard') }}">
+                <img src="/image/logo.png" alt="logo">
             </a>
         </div>
 

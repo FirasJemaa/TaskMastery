@@ -23,10 +23,6 @@ Route::get('/', function () {
     return view('accueil');
 });
 
-// Route::get('/identification', function () {
-//     return view('identification');
-// });
-
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
@@ -40,13 +36,14 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     
-    //Projet
-    //Route::middleware('verifAppartenance')->group(function () {
+//Projet
+Route::post('/storeProjet', [ProjetController::class, 'store']);
+    
+    Route::middleware('verifAppartenance')->group(function () {
         //Route::get('/projets/indexProjet', [ProjetController::class, 'index'])->name('projets.indexProjet');
-        Route::post('/storeProjet', [ProjetController::class, 'store']);
         Route::post('/deleteProjet/{n}', [ProjetController::class, 'destroy']);
-        Route::get('/showProjet/{n}', [ProjetController::class, 'show']);
-    //});
+        Route::get('/showProjet/{n}', [ProjetController::class, 'show']);   
+    });
 
     //Tache
     //Route::middleware('verifAppartenance')->group(function () {

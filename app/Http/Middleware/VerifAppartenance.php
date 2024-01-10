@@ -25,7 +25,7 @@ class VerifAppartenance
         return $next($request);
     }
 
-    protected function appartientAUtilisateur($nID){
+    public function appartientAUtilisateur($nID){
         $user = Auth::user();
         $id_user = $user->id;
 

@@ -5,7 +5,7 @@ $projets = $projetController->index();
 @endphp
 <div>
     <h2>Liste projets</h2>
-    <a id="creerProjet" onclick="ajouterProjet()">
+    <a title="Créer un projet" id="creerProjet" onclick="ajouterProjet()">
         <i class="fa-solid fa-circle-plus"></i>
     </a>
     <a title="Voir les tâches attribué" id="creerProjet" href="{{route('indexAttribution')}}">
