@@ -106,7 +106,7 @@ function getAjax(projetId){
             };
         },
         error: function (data) {
-            console.log(data);
+            alert(data.responseJSON.message);
         }
     });
 }
@@ -114,14 +114,14 @@ function getAjax(projetId){
 function postAjax(tacheId, etat){
     $.ajax({
         type: 'POST',
-        url: "/updateTaches",
+        url: "/updateTaches/" + tacheId,
         data: { tacheId: tacheId, etat: etat },
         success: function (data) {
             //message de succès
             console.log(data);            
         },
         error: function (data) {
-            console.log(data);
+            console.log(data.responseJSON.message);
         }
     });
 }

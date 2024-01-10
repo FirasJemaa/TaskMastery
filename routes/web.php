@@ -35,35 +35,35 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-    
-//Projet
-Route::post('/storeProjet', [ProjetController::class, 'store']);
-    
+
+    //Projet
+    Route::post('/storeProjet', [ProjetController::class, 'store']);
+
     Route::middleware('verifAppartenance')->group(function () {
         //Route::get('/projets/indexProjet', [ProjetController::class, 'index'])->name('projets.indexProjet');
         Route::post('/deleteProjet/{n}', [ProjetController::class, 'destroy']);
-        Route::get('/showProjet/{n}', [ProjetController::class, 'show']);   
-    });
-
-    //Tache
-    //Route::middleware('verifAppartenance')->group(function () {
-        Route::post('/updateTaches', [TacheController::class, 'update']);        
+        Route::get('/showProjet/{n}', [ProjetController::class, 'show']);
         Route::get('/showTaches/{n}', [TacheController::class, 'show']);
+    });
+    
+    //Tache
+    Route::middleware('tacheAppartenance')->group(function () {
+        Route::post('/updateTaches/{n}', [TacheController::class, 'update']);
         Route::get('/Tache/{n}', [TacheController::class, 'showPage']);
         Route::get('/newTache/{n}', [TacheController::class, 'newPage'])->name('newTache');
-        Route::post('/tache/store/{id}', [TacheController::class, 'store'])->name('tache.store');
-    //});
+        Route::post('/tache/store/{n}', [TacheController::class, 'store'])->name('tache.store');
+    });
 
     //Attribution
     //Route::middleware('verifAppartenance')->group(function () {
-        Route::POST('/ajouterContact', [AttributionController::class, 'store']); 
-        Route::GET('/indexAttribution', [AttributionController::class, 'index'])->name('indexAttribution');    
+    Route::POST('/ajouterContact', [AttributionController::class, 'store']);
+    Route::GET('/indexAttribution', [AttributionController::class, 'index'])->name('indexAttribution');
     //});
 
     //Message
     //Route::middleware('verifAppartenance')->group(function () {
-        Route::POST('/ajouterMessage', [ConversationController::class, 'store']); 
-        Route::GET('/refreshConversation', [ConversationController::class, 'show']);
+    Route::POST('/ajouterMessage', [ConversationController::class, 'store']);
+    Route::GET('/refreshConversation', [ConversationController::class, 'show']);
 });
 
 //test
@@ -72,4 +72,4 @@ Route::get('/test', function () {
 })->name('test');
 
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

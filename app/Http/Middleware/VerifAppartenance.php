@@ -10,32 +10,32 @@ use App\Models\Projet;
 
 class VerifAppartenance
 {
-    /**
-     * Handle an incoming request.
-     *
-     * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
-     */
-    public function handle(Request $request, Closure $next): Response
+    public function handle(Request $request, Closure $next)
     {
-        $nID = $request->route('n');
-        // Vérification d'appartenance à l'utilisateur pour la méthode POST
-        if (!$this->appartientAUtilisateur($nID)) {
-            return redirect('/test')->with('error', 'Vous n\'avez pas l\'appartenance nécessaire.');
+        $nID_projet = $request->route('n');
+        //on vérifie si le projet appartient à l'utilisateur
+        if (!$this->appartientAUtilisateur($nID_projet)) {
+            return response()->json([
+                'message' => 'Vous n\'avez pas accès à ce projet'
+            ], Response::HTTP_FORBIDDEN);
         }
+
         return $next($request);
     }
 
-    public function appartientAUtilisateur($nID){
+    public function appartientAUtilisateur($nID)
+    {
         $user = Auth::user();
         $id_user = $user->id;
 
-        // Récupérez la tâche avec l'ID $n
-        $projet = Projet::find($nID);
+        // Récupérez la tâche avec l'ID $nID
+        $projet = Projet::where('id', '=', $nID)->where('id_user', '=', $id_user)->first();
 
-        if ($id_user === $projet->id_user){
+        if ($projet && $id_user === $projet->id_user) {
             return true;
-        }else{
-            return false;
         }
+
+        return false;
     }
 }
+

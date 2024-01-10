@@ -6,14 +6,17 @@ window.showProjet = function (projetId) {
         type: 'GET',
         url: "/showProjet/" + projetId,
         async: false,
-        data: { projetId: projetId },
+        //data: { projetId: projetId },
         cache: false,
         contentType: false,
         processData: false,
         success: function (data) {
+            console.log("ca fonctionne");
             projetData = (data);
         },
         error: function (data) {
+            if (data.status == 403) window.location.href = "/test";
+            alert(data.responseJSON.message);
             projetData = (null);
         }
     });
@@ -38,7 +41,7 @@ $(document).on('click', '.update-projet', function (e) {
 ////////////////////////////////////////////SUPPRIMER
 $(document).on('click', '.delete-projet', function (e) {
     e.preventDefault();
-    const projetId = this.name; // obtenir l'ID du projet à supprimer
+    const projetId = this.name; // TEST middlware
     console.log(projetId);
     $.ajax({
         type: 'POST',
@@ -52,7 +55,10 @@ $(document).on('click', '.delete-projet', function (e) {
             $('#' + projetId).remove();
         },
         error: function (data) {
-            console.log(data);
+            alert(data.responseJSON.message);
+            //rediriger vers la page d'erreur
+            if (data.status == 403) window.location.href = "/test";
+            alert(data.responseJSON.message);
         }
     });
     //éxecuter le traitement apres une seconde
@@ -61,8 +67,6 @@ $(document).on('click', '.delete-projet', function (e) {
         const projetActif = document.getElementsByClassName("active"); 
         if (projetActif.length == 0) {
             $('#creerTache').css('visibility', 'hidden');
-        }else{
-            console.log(projetActif.length);
         }
     }, 500);
 });
@@ -124,7 +128,8 @@ jQuery('#projetForm').submit(function (e) {
             $('#btn-save').attr("disabled", false);
         },
         error: function (data) {
-            console.log(data);
+            if (data.status == 403) window.location.href = "/test";
+            console.log(data.responseJSON.message);
         }
     });
 })
