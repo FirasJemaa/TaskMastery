@@ -55,6 +55,16 @@ $(document).on('click', '.delete-projet', function (e) {
             console.log(data);
         }
     });
+    //éxecuter le traitement apres une seconde
+    setTimeout(function () {
+        //vérifier si y a au moins un projet qui possède la classe actif sinon on passe id creerTache passe a hidden
+        const projetActif = document.getElementsByClassName("active"); 
+        if (projetActif.length == 0) {
+            $('#creerTache').css('visibility', 'hidden');
+        }else{
+            console.log(projetActif.length);
+        }
+    }, 500);
 });
 
 /////////////////////////////////////////AJOUTER 
@@ -89,14 +99,19 @@ jQuery('#projetForm').submit(function (e) {
             if (Titre == "Ajouter un projet") {
                 $('#listeProjets').append(
                     '<li id="' + data.id + '">' + data.designation + 
-                    '<div><a class="update-projet" name="' + data.id + '"><i class="fa-solid fa-pen"></i></a><a class="delete-projet" name=' + data.id + '> <i class="fa-solid fa-trash"></i></a></div></li>'
+                        '<div>\
+                            <a class="update-projet" name="' + data.id + '"><i class="fa-solid fa-pen"></i></a>\
+                            <a class="delete-projet" name="' + data.id + '"><i class="fa-solid fa-trash"></i></a>\
+                        </div></li>'
                 );
             } else {
                 const projetElement = $('div').find('#' + data.id);
                 projetElement.html(
                     data.designation +
-                    '<div><a class="update-projet" name="' + data.id + '"><i class="fa-solid fa-pen"></i></a>' +
-                    '<a class="delete-projet" name="' + data.id + '"> <i class="fa-solid fa-trash"></i></a></div>'
+                    '<div>\
+                        <a class="update-projet" name="' + data.id + '"><i class="fa-solid fa-pen"></i></a>\
+                        <a class="delete-projet" name="' + data.id + '"><i class="fa-solid fa-trash"></i></a>\
+                    </div>'
                 );
             }
             // Réinitialiser le formulaire et fermer la fenêtre modale

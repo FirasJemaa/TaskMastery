@@ -8,7 +8,7 @@ $projets = $projetController->index();
     <a id="creerProjet" onclick="ajouterProjet()">
         <i class="fa-solid fa-circle-plus"></i>
     </a>
-    <a id="creerProjet" href="{{route('indexAttribution')}}">
+    <a title="Voir les tâches attribué" id="creerProjet" href="{{route('indexAttribution')}}">
         <i class="fa-brands fa-slideshare"></i>    
     </a>
 </div>
@@ -18,13 +18,8 @@ $projets = $projetController->index();
     <li id="{{ $projet->id }}">
         {{ $projet->designation }}
         <div>
-            <a class="update-projet" name="{{ $projet->id }}">
-                <i class="fa-solid fa-pen"></i>
-            </a>
-            <a class="delete-projet" name="{{ $projet->id }}">
-                <i class="fa-solid fa-trash">
-                </i>
-            </a>
+            <a class="update-projet" name="{{ $projet->id }}"><i class="fa-solid fa-pen"></i></a>
+            <a class="delete-projet" name="{{ $projet->id }}"><i class="fa-solid fa-trash"></i></a>
         </div>
     </li>
     @endforeach
