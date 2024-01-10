@@ -23,9 +23,9 @@ Route::get('/', function () {
     return view('accueil');
 });
 
-Route::get('/identification', function () {
-    return view('identification');
-});
+// Route::get('/identification', function () {
+//     return view('identification');
+// });
 
 Route::get('/dashboard', function () {
     return view('dashboard');

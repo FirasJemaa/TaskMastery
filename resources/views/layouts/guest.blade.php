@@ -25,7 +25,9 @@
             <div class="Login w-full sm:max-w-md mt-6 px-6 py-4 bg-white shadow-md overflow-hidden sm:rounded-lg">
                 <h2>Bienvenue ! 😁</h2>
                 {{ $slot }}
-                <a id="register" href="{{ route('register') }}">Je suis nouveau 👋</a>
+                @unless (request()->is('register'))
+                    <a id="register" href="{{ route('register') }}">Je suis nouveau 👋</a>
+                @endunless
             </div>
         </div>
     </body>

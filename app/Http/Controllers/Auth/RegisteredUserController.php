@@ -30,6 +30,8 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
+        //controller que le mot de passe possède au moins 8 caractères, une majuscule, une minuscule et un chiffre
+
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'surname' => ['required', 'string', 'max:190'],
