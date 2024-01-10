@@ -167,6 +167,41 @@ nav {
     font-size: 22px;
 }
 
+/**** Top boutton ******/
+#topButton {
+    visibility: visible;
+    position: fixed;
+    bottom: 1.2rem;
+    right: 1.5rem;
+    cursor: pointer;
+    padding: 20px;
+    outline: none;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    transition: ease-in-out 0.3s;
+    z-index: 100;
+}
+
+#topButton:hover {
+    background-color: var(--clr-yellow);
+}
+
+#arrow {
+    color: var(--clr-black);
+    background-color: var(--clr-yellow);
+    padding: 20px;
+    border-radius: 40%;
+
+    transition: all ease-in-out 0.3s;
+}
+
+#arrow:hover {
+    color: var(--clr-black);
+    background-color: var(--clr-yellow);
+    border-radius: var(--border-radius);
+    transform: rotate(360deg);
+}
+
 footer{
     background-color: var(--clr-black);
     width: 100%;

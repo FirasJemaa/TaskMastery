@@ -1,3 +1,4 @@
+import './app.js';
 const toggler = document.querySelector(".hamburger");
 const navLinksContainer = document.querySelector(".navlinks-container");
 
@@ -62,3 +63,24 @@ function DeleteClassPlay(Boxes) {
     }
   }
 }
+
+// BTN scroll top
+window.addEventListener('scroll', TopScroll);
+function TopScroll() {
+  let BtnScrollTop = document.getElementById('topButton');
+    
+  if (window.scrollY > 200){
+    BtnScrollTop.style.visibility ="visible";
+  }else{
+    BtnScrollTop.style.visibility ="hidden";
+  }
+};
+
+document
+  .getElementById('topButton')
+  .addEventListener("click", function(){
+    window.scrollTo({
+      top:0,
+      behavior:"smooth"
+    });
+  });

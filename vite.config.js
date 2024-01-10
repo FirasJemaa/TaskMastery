@@ -10,6 +10,7 @@ export default defineConfig({
                 'resources/css/identification.css',
                 'resources/css/attribution.css',
                 'resources/js/app.js',
+                'resources/js/accueil.js',
                 'resources/js/dashboard.js',
                 'resources/js/test.js',
                 'resources/js.tache.js',

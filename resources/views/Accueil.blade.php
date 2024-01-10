@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    @vite(['resources/css/accueil.css', 'resources/js/app.js'])
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-Avb2QiuDEEvB4bZJYdft2mNjVShBftLdPG8FJ0V7irTLQ8Uo0qcPxh4Plq7G5tGm0rU+1SPhVotteLpBERwTkw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    @vite(['resources/css/accueil.css', 'resources/js/accueil.js'])
     <title>Task Mastery</title>
     <link rel="icon" href="{{ asset('image/logo_onglet.png') }}" type="image/x-icon">
 </head>
@@ -79,10 +80,15 @@
             <img src="{{ asset('image/avantage3.svg') }}" alt="ensemble">
         </div>
     </main>
+
+    <!-- Top btn-->
+    <div id="topButton">
+        <i id="arrow" class="fa-solid fa-arrow-up"></i>
+    </div>
+
     <footer class="clearfix">
         <p>© 2024 <a href="https://www.linkedin.com/in/firas-jemaa-963336151/">Firase JEMAA</a>. Tous droits réservés. Tous droits réservés sur le contenu de ce site Web.</p>
     </footer>
-
     <script src="{{ asset('js/accueil.js') }}"></script>
 </body>
 

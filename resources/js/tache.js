@@ -61,10 +61,10 @@ $('.AjoutCheckList').on('click', function () {
     } else {
         const uniqueId = Date.now();
         $('.checklist').append('<li class="listes">\
-        <input type="checkbox" name="checkboxes[]" value="' + uniqueId + '" id="' + uniqueId + '" >\
-        <label for="' + uniqueId + '" name="labels[]" value="' + uniqueId + '">' + contenu + '</label>\
-        <input type="hidden" name="labels[' + uniqueId + ']" value="' + contenu + '">\
-    </li>');
+            <input type="checkbox" name="checkboxes[]" value="' + uniqueId + '" id="' + uniqueId + '" >\
+            <label for="' + uniqueId + '" name="labels[]" value="' + uniqueId + '">' + contenu + '</label>\
+            <input type="hidden" name="labels[' + uniqueId + ']" value="' + contenu + '">\
+        </li>');
     }
 });
 
