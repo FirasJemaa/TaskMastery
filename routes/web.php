@@ -48,10 +48,11 @@ Route::middleware('auth')->group(function () {
     
     //Tache
     Route::middleware('tacheAppartenance')->group(function () {
-        Route::post('/updateTaches/{n}', [TacheController::class, 'update']);
         Route::get('/Tache/{n}', [TacheController::class, 'showPage']);
+        Route::post('/updateTaches/{n}', [TacheController::class, 'update']);
         Route::get('/newTache/{n}', [TacheController::class, 'newPage'])->name('newTache');
         Route::post('/tache/store/{n}', [TacheController::class, 'store'])->name('tache.store');
+        Route::post('/updateStatutTache/{n}', [TacheController::class, 'udpateStatut']);
     });
 
     //Attribution

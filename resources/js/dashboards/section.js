@@ -62,7 +62,6 @@ $(window).resize(function () {
 //lorsque je double clique sur la balise div avec la class tache je récupère le name de la balise
 $(document).on('dblclick', '.taches', function () {
     const tacheId = $(this).attr('name');
-    //diriger la page vers la route /Tache/{n} avec l'id de la tache
     window.location.href = '/Tache/' + tacheId;
 });
 
@@ -97,7 +96,7 @@ function getAjax(projetId){
             //boucle for in pour afficher les taches dans la balise section avec la classe statuts
             for (let key in data){
                 $('[class="statut"][name="' + data[key].id_statut + '"] .list').append(
-                    '<div class="taches" style="background:#' + decimalToHex(data[key].code_couleur) + '" name="' + data[key].id + '">' +
+                    '<div class="taches" draggable="true" style="background:#' + decimalToHex(data[key].code_couleur) + '" name="' + data[key].id + '">' +
                         '<div><h4>' + data[key].titre +'</h4>'+
                         '<input class="check" type = "checkbox" ' + bCheck(data[key].etat) +' name="'+ data[key].id +'"></div>'+
                         '<p><span>Étiquette :</span> ' + data[key].D_Etiquette +'</p>'+
@@ -126,3 +125,43 @@ function postAjax(tacheId, etat){
     });
 }
 
+////////////////////////////Drag and drop
+// Événement de début de glisser
+$(document).on('dragstart', '.taches', function (e) {
+    // on spécifie les données à transférer lors du glisser-déposer
+    e.originalEvent.dataTransfer.setData('text/plain', $(this).attr('name'));
+});
+
+// Événement pendant le survol de la zone de dépôt
+$(document).on('dragover', '.statut', function (e) {
+    e.preventDefault();
+});
+
+// Événement de dépôt
+$(document).on('drop', '.statut', function (e) {
+    e.preventDefault();
+
+    // on récupère les données lors du lâcher
+    const tacheId = e.originalEvent.dataTransfer.getData('text/plain');
+    
+    // on récupère l'élément de la tâche
+    const tacheElement = $('[name="' + tacheId + '"][class="taches"]');
+
+    // on récupère l'élément de la liste de destination
+    const listeDestination = $(this).find('.list');
+
+    // On ajoute l'élément de la tâche à la liste de destination
+    listeDestination.append(tacheElement);
+    $.ajax({   
+        type: 'POST',
+        url: "/updateStatutTache/" + tacheId,
+        data: { tacheId: tacheId, statutId: $(this).attr('name') },
+        success: function (data) {
+            //message de succès
+            console.log("Votre tache a été déplacée avec succès");            
+        },
+        error: function (data) {
+            console.log(data.responseJSON.message);
+        }
+    });
+});

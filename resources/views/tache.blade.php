@@ -60,7 +60,6 @@
                         @endforeach
                     </select>
                 </div>
-
                 <div class="three item">
                     <h4>Checklist : <span>50</span>%</h4>
                     <div id="pourcent">

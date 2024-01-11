@@ -15,9 +15,11 @@ class TacheAppartenance
         $nID_tache = $request->route('n');
         //on vérifie si la tache appartient à l'utilisateur
         if (!$this->appartientAUtilisateur($nID_tache)) {
-            return response()->json([
+            //retourner vers la page 403
+            return redirect('/403');
+            /*return response()->json([
                 'message' => 'Vous n\'avez pas accès à cette tache'
-            ], Response::HTTP_FORBIDDEN);
+            ], Response::HTTP_FORBIDDEN);*/
         }
 
         return $next($request);

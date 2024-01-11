@@ -203,4 +203,20 @@ class TacheController extends Controller
     {
         //
     }
+
+    public function udpateStatut(Request $request)
+    {
+        // Recuperer l'id de la tache et la nouvelle valeur de notre checkbox ensuite on fait un update
+        $id_tache = $request->input('tacheId');
+        $id_statut = $request->input('statutId');
+
+        $tache = Tache::find($id_tache);
+
+        if ($tache) {
+            $tache->update(['id_statut' => $id_statut]);
+            return response()->json($id_statut);
+        } else {
+            return response()->json(['error' => 'La tâche ' . $id_statut . ' n\'existe pas.'], 404);
+        }
+    }
 }
