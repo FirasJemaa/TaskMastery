@@ -47,16 +47,9 @@ $(document).ready(function () {
     });
 });
 
-// lorsque la taille de l'écran devient supérieur à 768px on affiche les taches
+// lorsque je modifie la taille de la fenêtre on fait appelle à la fonction dimensionTel
 $(window).resize(function () {
-    if ($(window).width() > 900) {
-        $('.statut').css('visibility', 'visible');
-        //on met l'id #BtnPuce en invisible
-        $('#BtnPuce').css('visibility', 'hidden');
-    }else{
-        //on met l'id #BtnPuce en visible
-        $('#BtnPuce').css('visibility', 'visible');
-    }
+    dimensionTel();
 });
 
 //lorsque je double clique sur la balise div avec la class tache je récupère le name de la balise
@@ -124,6 +117,19 @@ function postAjax(tacheId, etat){
         }
     });
 }
+
+function dimensionTel() {
+    if ($(window).width() > 900) {
+        $('.statut').css('visibility', 'visible');
+        //on met l'id #BtnPuce en invisible
+        $('#BtnPuce').css('visibility', 'hidden');
+    }else{
+        //on met l'id #BtnPuce en visible
+        $('#BtnPuce').css('visibility', 'visible');
+    }
+}
+
+dimensionTel();
 
 ////////////////////////////Drag and drop
 // Événement de début de glisser

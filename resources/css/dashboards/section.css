@@ -48,7 +48,7 @@
 }
 
 .list {
-    height: 90%;
+    min-height: 90%;
     /*lorsque la taille est dépasser je veux qu'on scroll*/
     overflow-y: auto;
     /*il ne faut pas caché le h3 */
@@ -63,8 +63,8 @@
 
 .taches {
     background-color: #F47979;
-    height: 12vh;
-    width: 30vh;
+    min-height: 12vh;
+    min-width: 30vh;
     padding: 15px;
     margin: 5px 0;
     border-radius: 15px;
@@ -126,14 +126,32 @@ input[type="checkbox"] {
 }
 
 @media screen and (min-width: 1300px) and (max-width: 1500px) {
+    .statut {
+        min-width: 35vh;
+    }
     .taches {
-        width: 25vh;
+        min-width: 25vh;
     }
 }
 
-@media screen and (min-width: 900px) and (max-width: 1300px) {
+@media screen and (min-width: 1200px) and (max-width: 1300px) {
+    .statut {
+        width: 28vh;
+    }
     .taches {
-        width: auto;
+        min-width: 25vh;
+        margin: 5px;
+        height: auto;
+    }
+}
+
+@media screen and (min-width: 901px) and (max-width: 1199px) {
+    .statut {
+        width: 24vh;
+    }
+    .taches {
+        min-width: 23vh;
+        margin: 0;
         height: auto;
     }
 }

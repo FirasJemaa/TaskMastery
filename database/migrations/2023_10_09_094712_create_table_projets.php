@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\DB;
 
 return new class extends Migration
 {
@@ -20,6 +21,19 @@ return new class extends Migration
             $table->timestamps();
         });
     }
+
+    /*DB::unprepared('
+        DELIMITER //
+        CREATE TRIGGER projets_AFTER_DELETE 
+        AFTER DELETE ON projets 
+        FOR EACH ROW
+        BEGIN
+            -- Supprimer les taches
+            DELETE FROM taches WHERE id_projet = OLD.id;
+        END;
+        //
+        DELIMITER ;
+    ');*/
 
     /**
      * Reverse the migrations.
