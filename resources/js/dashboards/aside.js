@@ -15,7 +15,7 @@ window.showProjet = function (projetId) {
             projetData = (data);
         },
         error: function (data) {
-            if (data.status == 403) window.location.href = "/test";
+            if (data.status == 403) window.location.href = "/403";
             alert(data.responseJSON.message);
             projetData = (null);
         }
@@ -57,7 +57,7 @@ $(document).on('click', '.delete-projet', function (e) {
         error: function (data) {
             alert(data.responseJSON.message);
             //rediriger vers la page d'erreur
-            if (data.status == 403) window.location.href = "/test";
+            if (data.status == 403) window.location.href = "/403";
             alert(data.responseJSON.message);
         }
     });
@@ -128,7 +128,7 @@ jQuery('#projetForm').submit(function (e) {
             $('#btn-save').attr("disabled", false);
         },
         error: function (data) {
-            if (data.status == 403) window.location.href = "/test";
+            if (data.status == 403) window.location.href = "/403";
             console.log(data.responseJSON.message);
         }
     });

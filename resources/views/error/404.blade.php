@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Error forbidden</title>
+    <title>Not found</title>
 </head>
 <body>
-    <style>
+<style>
         body{
             background-color: #E8EDDF;
         }
@@ -18,6 +18,6 @@
             height: 80vh;
         }
     </style>
-    <img src="./image/403.svg" alt="ERROR 403">
+    <img src="./image/404.svg" alt="ERROR 404">
 </body>
 </html>

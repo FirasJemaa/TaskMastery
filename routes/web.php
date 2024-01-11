@@ -71,5 +71,15 @@ Route::get('/test', function () {
     return view('test');
 })->name('test');
 
+//route pour une error 404
+Route::fallback(function () {
+    return view('error/404');
+});
+
+//route pour une error 403
+Route::fallback(function () {
+    return view('error/403');
+});
+
 
 require __DIR__ . '/auth.php';
