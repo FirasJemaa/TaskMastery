@@ -44,13 +44,14 @@ Route::middleware('auth')->group(function () {
         Route::post('/deleteProjet/{n}', [ProjetController::class, 'destroy']);
         Route::get('/showProjet/{n}', [ProjetController::class, 'show']);
         Route::get('/showTaches/{n}', [TacheController::class, 'show']);
+        //Déplacer ici car {n} dans l'url correspond à l'id du projet
+        Route::get('/newTache/{n}', [TacheController::class, 'newPage'])->name('newTache');
     });
     
     //Tache
     Route::middleware('tacheAppartenance')->group(function () {
         Route::get('/Tache/{n}', [TacheController::class, 'showPage']);
         Route::post('/updateTaches/{n}', [TacheController::class, 'update']);
-        Route::get('/newTache/{n}', [TacheController::class, 'newPage'])->name('newTache');
         Route::post('/tache/store/{n}', [TacheController::class, 'store'])->name('tache.store');
         Route::post('/updateStatutTache/{n}', [TacheController::class, 'udpateStatut']);
     });
