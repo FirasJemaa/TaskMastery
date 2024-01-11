@@ -45,40 +45,40 @@ $(document).on('click', '.delete-projet', function (e) {
     $('#deleteModal').modal('show');
     //mettre l'id du projet dans le bouton supprimer
     $('#btn-delete').val(this.name);
-    //supprimer le projet seulement si l'utilisateur clique sur le bouton supprimer
-    $('#btn-delete').click(function (e) {
-        e.preventDefault();
-        const projetId = $('#btn-delete').val();
-        $.ajax({
-            type: 'POST',
-            url: "/deleteProjet/" + projetId,
-            data: { projetId: projetId },
-            cache: false,
-            contentType: false,
-            processData: false,
-            success: function (data) {
-                console.log(data);
-                $('#' + projetId).remove();
-            },
-            error: function (data) {
-                alert(data.responseJSON.message);
-                //rediriger vers la page d'erreur
-                if (data.status == 403) window.location.href = "/403";
-                alert(data.responseJSON.message);
-            }
-        });
-        //éxecuter le traitement apres une seconde
-        setTimeout(function () {
-            //vérifier si y a au moins un projet qui possède la classe actif sinon on passe id creerTache passe a hidden
-            const projetActif = document.getElementsByClassName("active");
-            if (projetActif.length == 0) {
-                $('#creerTache').css('visibility', 'hidden');
-            }
-        }, 500);
-
-        //passer le modal a hidden
-        $('#deleteModal').modal('hide');
+});
+//supprimer le projet seulement si l'utilisateur clique sur le bouton supprimer
+$('#btn-delete').click(function (e) {
+    e.preventDefault();
+    const projetId = $('#btn-delete').val();
+    $.ajax({
+        type: 'POST',
+        url: "/deleteProjet/" + projetId,
+        data: { projetId: projetId },
+        cache: false,
+        contentType: false,
+        processData: false,
+        success: function (data) {
+            console.log(data);
+            $('#' + projetId).remove();
+        },
+        error: function (data) {
+            alert(data.responseJSON.message);
+            //rediriger vers la page d'erreur
+            if (data.status == 403) window.location.href = "/403";
+            alert(data.responseJSON.message);
+        }
     });
+    //éxecuter le traitement apres une seconde
+    setTimeout(function () {
+        //vérifier si y a au moins un projet qui possède la classe actif sinon on passe id creerTache passe a hidden
+        const projetActif = document.getElementsByClassName("active");
+        if (projetActif.length == 0) {
+            $('#creerTache').css('visibility', 'hidden');
+        }
+    }, 500);
+
+    //passer le modal a hidden
+    $('#deleteModal').modal('hide');
 });
 
 /////////////////////////////////////////AJOUTER 
@@ -111,12 +111,13 @@ jQuery('#projetForm').submit(function (e) {
         success: (data) => {
             // Mettre à jour la liste des projets dans l'interface utilisateur
             if (Titre == "Ajouter un projet") {
+                console.log(data.id);
                 $('#listeProjets').append(
                     '<li id="' + data.id + '">' + data.designation +
                     '<div>\
-                            <a class="update-projet" name="' + data.id + '"><i class="fa-solid fa-pen"></i></a>\
-                            <a class="delete-projet" name="' + data.id + '"><i class="fa-solid fa-trash"></i></a>\
-                        </div></li>'
+                        <a class="update-projet" name="' + data.id + '"><i class="fa-solid fa-pen"></i></a>\
+                        <a class="delete-projet" name="' + data.id + '"><i class="fa-solid fa-trash"></i></a>\
+                    </div></li>'
                 );
             } else {
                 const projetElement = $('div').find('#' + data.id);
