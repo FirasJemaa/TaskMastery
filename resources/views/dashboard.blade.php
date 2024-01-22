@@ -54,11 +54,11 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        Êtes-vous sûr de vouloir supprimer ce projet ?
+        Êtes-vous sûr de vouloir supprimer ce projet ? Toutes les tâches associées seront supprimées.
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
-        <button id="btn-delete" type="button" class="btn btn-warning">Supprimer</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Non</button>
+        <button id="btn-delete" type="button" class="btn btn-warning">Oui</button>
       </div>
     </div>
   </div>

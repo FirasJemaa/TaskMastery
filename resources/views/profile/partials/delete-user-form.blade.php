@@ -47,7 +47,7 @@
                 </x-secondary-button>
 
                 <x-danger-button class="ml-3">
-                    {{ __('Suprrimer le compte') }}
+                    {{ __('Supprimer le compte') }}
                 </x-danger-button>
             </div>
         </form>
