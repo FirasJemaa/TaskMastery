@@ -24,8 +24,8 @@ return new class extends Migration
 
     /*DB::unprepared('
         DELIMITER //
-        CREATE TRIGGER projets_AFTER_DELETE 
-        AFTER DELETE ON projets 
+        CREATE TRIGGER projets_BEFORE_DELETE 
+        BEFORE DELETE ON projets 
         FOR EACH ROW
         BEGIN
             -- Supprimer les taches

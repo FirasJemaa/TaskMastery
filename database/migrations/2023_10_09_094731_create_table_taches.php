@@ -35,8 +35,8 @@ return new class extends Migration
         //un trigger lors d'une suppression d'une ligne dans la table tache
         /*DB::unprepared('
             DELIMITER //
-            CREATE TRIGGER taches_AFTER_DELETE 
-            AFTER DELETE ON taches 
+            CREATE TRIGGER taches_BEFORE_DELETE 
+            BEFORE DELETE ON taches 
             FOR EACH ROW
             BEGIN
                 -- Supprimer les dépendances
@@ -46,7 +46,7 @@ return new class extends Migration
                 DELETE FROM checklists WHERE id_tache = OLD.id;
 
                 -- Supprimer la couleur
-                DELETE FROM couleurs WHERE id = OLD.id_couleur;
+                -- DELETE FROM couleurs WHERE id = OLD.id_couleur;
 
                 -- Récupérer l'id de la conversation
                 SET @id_conv = (SELECT id FROM conversations WHERE id_tache = OLD.id LIMIT 1);
