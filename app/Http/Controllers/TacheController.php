@@ -62,10 +62,9 @@ class TacheController extends Controller
                 ]);
             }
 
-            $dependances = Dependance::join('taches', 'taches.id', 'dependances.id_tache_1')
-                ->join('projets', 'projets.id', 'taches.id_projet')
-                ->where('projets.id_user', '=', auth()->id())
-                ->where('id_tache_1', $id);
+            $dependances = Dependance::where('id_user', '=', auth()->id())
+                ->where('id_tache_1', $id)
+                ->get();
 
             foreach ($dependances as $dependance) {
                 $dependance->delete();
@@ -128,7 +127,7 @@ class TacheController extends Controller
         $couleur        = Couleur::all()->where('id', $tache->id_couleur)->first();
         $statuts        = Statut::all()->sortBy('id');
         $etiquettes     = Etiquette::all()->sortBy('id');
-        $taches         = Tache::leftJoin('dependances', 'taches.id', '=', 'dependances.id_tache_1')
+        $taches         = Tache::leftJoin('dependances', 'taches.id', '=', 'dependances.id_tache_2')
             ->leftJoin('projets', 'projets.id', '=', 'taches.id_projet')
             ->where('projets.id_user', '=', auth()->id())
             ->where('taches.id', '!=', $tache->id)

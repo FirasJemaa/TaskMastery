@@ -318,6 +318,7 @@
     flex-direction: column;
     justify-content: end;
     align-items: flex-end;
+    /*bug la :319*/
 }
 
 .hote h5 {
