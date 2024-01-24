@@ -31,12 +31,17 @@ class TacheAppartenance
         $id_user = $user->id;
 
         // Récupérez la tâche avec l'ID $nID
-        $tache = Tache::join('projets', 'taches.id_projet', 'projets.id')->where('taches.id', '=', $nID)->where('projets.id_user', '=', $id_user)->first();
-
-        if ($tache && $id_user === $tache->id_user) {
+        //$tache = Tache::join('projets', 'taches.id_projet', 'projets.id')->where('taches.id', '=', $nID)->where('projets.id_user', '=', $id_user)->first();
+        $tache = Tache::join('attributions', 'taches.id', 'attributions.id_tache')
+            ->where('taches.id', '=', $nID)
+            ->where(function ($query) use ($id_user) {
+                $query->where('attributions.id_utilisateur', '=', $id_user)
+                      ->orWhere('attributions.id_inviter', '=', $id_user);
+            })
+            ->first();
+        if ($tache){// && $id_user === $tache->id_user) {
             return true;
         }
-
         return false;
     }
 }

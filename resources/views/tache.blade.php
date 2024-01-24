@@ -84,10 +84,12 @@
                     </div>
                 </div>
                 <div class="four item">
-                    <!-- un bouton pour supprimer -->
-                    <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">Supprimer</button>
                     <!-- un bouton pour valider -->
                     <button name="btn" type="submit" value="enregistrer">Sauvegarder</button>
+                    @if($bProprietaire)
+                        <!-- un bouton pour supprimer -->
+                        <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">Supprimer</button>
+                    @endif
                 </div>
                 <!-- Modal -->
                 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

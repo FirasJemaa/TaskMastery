@@ -101,8 +101,18 @@ class TacheController extends Controller
                 }
             }
         } else{ //if ($request->input('action') === 'supprimer') {
-            $tache = Tache::find($id);
-            $tache->delete();
+            //vérifier qu'il est le propriétaire de la tache
+            $tache = Tache::join('projets', 'taches.id_projet', 'projets.id')
+                ->where('taches.id', '=', $id)
+                ->where('projets.id_user', '=', auth()->id())
+                ->first();
+            if (!$tache) {
+                //renvoyer page 403
+                return redirect('/403');
+            }else{
+                $tache = Tache::find($id);
+                $tache->delete();
+            }
         }
 
         return redirect()->route('dashboard');
@@ -123,6 +133,7 @@ class TacheController extends Controller
 
     public function showPage($id) //Tache $tache
     {
+        $bProprietaire  = false;
         $tache          = Tache::find($id);
         $couleur        = Couleur::all()->where('id', $tache->id_couleur)->first();
         $statuts        = Statut::all()->sortBy('id');
@@ -136,7 +147,17 @@ class TacheController extends Controller
         //pluk permet de recuperer un tableau avec les id de la table et toArray permet de convertir en tableau
         $selectedDependances = $taches->pluck('id_tache_2')->toArray();
 
-        return view("tache", compact("tache", "couleur", "statuts", "etiquettes", "taches", "checklists", "selectedDependances"));
+        //voir s'il est le propriétaire de la tache
+        $tacheControle = Tache::join('projets', 'taches.id_projet', 'projets.id')
+            ->where('taches.id', '=', $id)
+            ->where('projets.id_user', '=', auth()->id())
+            ->first();
+        if ($tacheControle) {  
+            //renvoyer page 403
+            $bProprietaire = true;
+        }
+
+        return view("tache", compact("tache", "couleur", "statuts", "etiquettes", "taches", "checklists", "selectedDependances", "bProprietaire"));
     }
 
     public function newPage($id_projet)
@@ -165,7 +186,9 @@ class TacheController extends Controller
         $checklists = Checklist::all()->where('id_tache', $tache->id)->sortBy('id');
         $selectedDependances = $taches->pluck('id_tache_2')->toArray();
 
-        return view("tache", compact("tache", "couleur", "statuts", "etiquettes", "taches", "checklists", "selectedDependances"));
+        $bProprietaire = true;
+
+        return view("tache", compact("tache", "couleur", "statuts", "etiquettes", "taches", "checklists", "selectedDependances", "bProprietaire"));
     }
 
     /**

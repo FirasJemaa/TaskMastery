@@ -88,11 +88,11 @@ $('#AjoutPrn').on('click', function (e) {
         },
         success: function (data) {
             // Ajouter le pseudo dans la liste des participants
-            console.log(data.message);
+            alert(data.message);
         },
         error: function (data) {
             // Afficher un message d'erreur
-            console.log(data.message);
+            alert(data.message);
         }
     });
 });

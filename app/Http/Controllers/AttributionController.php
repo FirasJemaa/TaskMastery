@@ -39,11 +39,32 @@ class AttributionController extends Controller
         $id_tache = $request->input('id_tache');
 
         try {
+            // vérifier qu'on est le créateur de la tâche
+            $tache = Tache::join('projets', 'taches.id_projet', 'projets.id')
+                ->where('taches.id', '=', $id_tache)
+                ->where('projets.id_user', '=', auth()->id())
+                ->first();
+
+            if (!$tache) {
+                return response()->json(['message' => 'Vous n\'êtes pas le créateur de cette tâche.']);
+            }
+
             // Chercher un utilisateur avec le pseudo
             $userInvite = User::where('pseudo', $pseudo)->firstOrFail();
 
             // Récupérer l'id du user connecté
             $userID = auth()->id();
+
+            // Chercher si l'affectation existe déjà
+            $attribution = Attribution::where('id_tache', $id_tache)
+                ->where('id_utilisateur', $userID)
+                ->where('id_inviter', $userInvite->id)
+                ->first();
+
+            if ($attribution) {
+                // Si l'affectation existe déjà, on retourne un message
+                return response()->json(['message' => 'L\'utilisateur ' . $pseudo . ' a déjà été invité à cette tâche.']);
+            }
 
             // Si l'utilisateur existe et n'est pas le même que l'utilisateur connecté, on crée une attribution
             if ($userInvite->id != $userID) {
