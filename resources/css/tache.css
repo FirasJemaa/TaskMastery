@@ -347,6 +347,18 @@
     color: var(--clr-yellow);
 }
 
+@media screen and (max-width: 1620px) and (min-width: 1251px) {
+    #contact > div > input {
+        width: 40vh;
+    }
+}
+
+@media screen and (max-width: 1250px) and (min-width: 1025px) {
+    #contact > div > input {
+        width: 75%;
+    }
+}
+
 @media (max-width: 1024px) {
     #tache {
         flex-direction: column;
@@ -364,7 +376,7 @@
     }
 }
 
-@media (max-width: 900px) {
+@media (max-width: 940px) {
     #tache {
         flex-direction: column;
         margin: auto;
