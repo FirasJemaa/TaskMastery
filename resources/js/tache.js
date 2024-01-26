@@ -6,6 +6,16 @@ $(document).ready(function () {
         $(this).prop('selected', !$(this).prop('selected'));
         return false;
     });
+
+    $('#date_cloture').on('input', function() {
+        const dateCreation = new Date($('#date_creation').val());
+        const dateCloture = new Date($(this).val());
+
+        if (dateCloture < dateCreation) {
+            alert("La date de clôture ne peut pas être antérieure à la date de début.");
+            $(this).val($('#date_creation').val());
+        }
+    });
 });
 
 // lorqu'on double clique sur la .listes on récupère le la balise label a l'interieur et on l'affiche dans une alerte
@@ -36,7 +46,7 @@ function pourcentage() {
     } else {
         const pourcentage = Math.round((nbre / nbreT) * 100);
         $('span').text(pourcentage);
-        $('#modifiable').css('width', Math.round((pourcentage * 20) / 100) + "%");
+        $('#modifiable').css('width', Math.round((pourcentage * 200) / 100) + "px");
     }
 }
 
@@ -65,6 +75,7 @@ $('.AjoutCheckList').on('click', function () {
             <label for="' + uniqueId + '" name="labels[]" value="' + uniqueId + '">' + contenu + '</label>\
             <input type="hidden" name="labels[' + uniqueId + ']" value="' + contenu + '">\
         </li>');
+        pourcentage();
     }
 });
 

@@ -23,7 +23,7 @@ class VerifAppartenance
         return $next($request);
     }
 
-    public function appartientAUtilisateur($nID)
+    private function appartientAUtilisateur($nID)
     {
         $user = Auth::user();
         $id_user = $user->id;

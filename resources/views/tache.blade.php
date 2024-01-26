@@ -52,20 +52,22 @@
                     <label for="dependances">Sélectionnez vos dépendances :</label>
                     <select id="dependances" name="dependances[]" multiple="multiple">
                         @foreach($taches as $tacheDependance)
-                            @if($tacheDependance->id_tache_1 != $tacheDependance->id)
-                                <option value="{{ $tacheDependance->id }}" @if(in_array($tacheDependance->id, $selectedDependances)) selected @endif>
-                                    {{ $tacheDependance->titre }}
-                                </option>
-                                @endif
+                        @if($tacheDependance->id_tache_1 != $tacheDependance->id)
+                        <option value="{{ $tacheDependance->id }}" @if(in_array($tacheDependance->id, $selectedDependances)) selected @endif>
+                            {{ $tacheDependance->titre }}
+                        </option>
+                        @endif
                         @endforeach
                     </select>
                 </div>
                 <div class="three item">
-                    <h4>Checklist : <span>50</span>%</h4>
-                    <div id="pourcent">
-                        <!-- ligne -->
-                        <hr>
-                        <hr id="modifiable">
+                    <div id="PourcentageCheckList">
+                        <h4>Checklist : <span>50</span>%</h4>
+                        <div id="pourcent">
+                            <!-- ligne -->
+                            <hr>
+                            <hr id="modifiable">
+                        </div>
                     </div>
                     <div class="scrollable-list">
                         <ul class="checklist" id="checklist-container">
@@ -87,8 +89,8 @@
                     <!-- un bouton pour valider -->
                     <button name="btn" type="submit" value="enregistrer">Sauvegarder</button>
                     @if($bProprietaire)
-                        <!-- un bouton pour supprimer -->
-                        <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">Supprimer</button>
+                    <!-- un bouton pour supprimer -->
+                    <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">Supprimer</button>
                     @endif
                 </div>
                 <!-- Modal -->
@@ -147,4 +149,5 @@
         </div>
     </main>
 </body>
+
 </html>
