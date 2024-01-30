@@ -156,6 +156,29 @@ nav {
 #avantage img {
     width: 600px;
     height: 400px;
+    z-index: 1;
+}
+
+.video-explain{
+    visibility: hidden;
+    width: 400px;
+    height: 215px;
+    
+} 
+
+#videos {
+    position: relative;
+}
+
+.video-explain {
+    position: absolute;
+    top: 10%;
+    left: 10%;
+    /*--object-fit: cover;  Ensures the video covers the entire container */
+}
+
+.play-Video{
+    visibility: visible;
 }
 
 #avantage>div {

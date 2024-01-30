@@ -49,10 +49,22 @@ const boxes = document.querySelectorAll('.box');
 boxes.forEach(box => {
   box.addEventListener('click', (Boxes) => {
     // Vérifiez si la classe "play" est présente dans l'élément cliqué
+    //supprimer tous les balises qui ont la classe .play-Video
+    var playVideo = document.querySelectorAll('.play-Video');
+    for (const play of playVideo) {
+      play.classList.remove('play-Video');
+    }
     if (!box.classList.contains('play')) {
       DeleteClassPlay(this);
       box.classList.add('play');
     }
+
+    // récuperer l'index de la box cliqué
+    const index = Array.prototype.indexOf.call(boxes, box);
+
+    // mettre dans la balise ayant la classe .video à l'index de la variable index la class : .video-Box
+    var videoBox = document.querySelectorAll('.video-explain');
+    videoBox[index].classList.add('play-Video');
   });
 });
 

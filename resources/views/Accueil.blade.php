@@ -61,9 +61,12 @@
                     <p>Modifier et communiqué avec vos amis</p>
                 </div>
             </div>
-
-            <img src="{{ asset('image/macbook.png') }}" alt="EcranPortable">
-
+            <div id="videos">
+                <img src="{{ asset('image/macbook.png') }}" alt="EcranPortable">
+                <video class="video-explain play-Video" src="{{ asset('image/videos/Video_1.mp4') }}" type="video/mp4" autoplay loop preload="auto"></video>
+                <video class="video-explain" src="{{ asset('image/videos/Video_2.mp4') }}" type="video/mp4" autoplay loop preload="auto"></video>
+                <video class="video-explain" src="{{ asset('image/videos/Video_3.mp4') }}" type="video/mp4" autoplay loop preload="auto"></video>
+            </div>
         </div>
     </section>
     <main id="avantage" class="container column">
@@ -91,5 +94,4 @@
     </footer>
     <script src="{{ asset('js/accueil.js') }}"></script>
 </body>
-
 </html>
