@@ -81,8 +81,8 @@ return [
     | to any of the locales which will be supported by the application.
     |
     */
-
-    'locale' => 'en',
+    // 'locale' => 'en', le mettre plutot en francais :
+    'locale' => 'fr',
 
     /*
     |--------------------------------------------------------------------------
