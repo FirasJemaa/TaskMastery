@@ -64,6 +64,10 @@ header{
     flex-direction: row;
 }
 
+p{
+    color: var(--clr-police);
+}
+
 @media (max-width: 900px) {
     .panel{
         flex-direction: column;

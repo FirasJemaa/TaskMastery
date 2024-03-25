@@ -16,5 +16,6 @@ class DatabaseSeeder extends Seeder
         $this->call(CouleursSeeder::class);
         $this->call(StatutSeeder::class);
         $this->call(EtiquettesSeeder::class);
+        //$this->call(UserSeeder::class);
     }
 }
