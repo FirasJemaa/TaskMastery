@@ -11,6 +11,7 @@ $projets = $projetController->index();
     <a title="Voir les tâches attribué" id="creerProjet" href="{{route('indexAttribution')}}">
         <i class="fa-brands fa-slideshare"></i>    
     </a>
+    <input id="ProjetEnCours" type="hidden" name="0">
 </div>
 
 <ul id="listeProjets">

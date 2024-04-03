@@ -11,7 +11,6 @@ window.showProjet = function (projetId) {
         contentType: false,
         processData: false,
         success: function (data) {
-            console.log("ca fonctionne");
             projetData = (data);
         },
         error: function (data) {
@@ -58,7 +57,6 @@ $('#btn-delete').click(function (e) {
         contentType: false,
         processData: false,
         success: function (data) {
-            console.log(data);
             $('#' + projetId).remove();
         },
         error: function (data) {
@@ -111,7 +109,6 @@ jQuery('#projetForm').submit(function (e) {
         success: (data) => {
             // Mettre à jour la liste des projets dans l'interface utilisateur
             if (Titre == "Ajouter un projet") {
-                console.log(data.id);
                 $('#listeProjets').append(
                     '<li id="' + data.id + '">' + data.designation +
                     '<div>\

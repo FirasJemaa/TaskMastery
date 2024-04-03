@@ -10,7 +10,20 @@
     </section>
 </div>
 
-
+@php
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        echo session('idProjet');
+    } else {
+        $idProjet = $_POST['id'] ?? '0';
+        if ($idProjet == '') {
+            echo "Aucun ID de projet n'a été envoyé dans la requête POST.";
+        } else {
+            echo "ID du projet récupéré depuis la requête POST : " . $idProjet;
+            session(['idProjet' => $idProjet]);
+        }
+    }
+@endphp
+ 
 <!-- Modal -->
 <div class="modal fade" id="projetModal" aria-hidden="true">
     <div class="modal-dialog modal-lg">
