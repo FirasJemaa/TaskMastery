@@ -171,3 +171,6 @@ $(document).on('drop', '.statut', function (e) {
         }
     });
 });
+
+// Événement executé lors du chargement de la page 
+$(".active").click();

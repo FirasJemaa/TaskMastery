@@ -116,6 +116,8 @@ jQuery('#projetForm').submit(function (e) {
                         <a class="delete-projet" name="' + data.id + '"><i class="fa-solid fa-trash"></i></a>\
                     </div></li>'
                 );
+                //on execute un clique sur le projet créé
+                $('#' + data.id).click();
             } else {
                 const projetElement = $('div').find('#' + data.id);
                 projetElement.html(
@@ -125,6 +127,7 @@ jQuery('#projetForm').submit(function (e) {
                         <a class="delete-projet" name="' + data.id + '"><i class="fa-solid fa-trash"></i></a>\
                     </div>'
                 );
+                //$('#' + data.id).click();
             }
             // Réinitialiser le formulaire et fermer la fenêtre modale
             $('#projetForm')[0].reset();

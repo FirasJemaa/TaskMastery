@@ -2,7 +2,11 @@
 // Appel direct du contrôleur
 $projetController = app(\App\Http\Controllers\ProjetController::class);
 $projets = $projetController->index();
+//récupéré le contenu de la session de id_projet
+session_start();
+$idProjet = $_SESSION['id_projet'] ?? '';
 @endphp
+
 <div>
     <h2>Liste projets</h2>
     <a title="Créer un projet" id="creerProjet" onclick="ajouterProjet()">
@@ -16,11 +20,13 @@ $projets = $projetController->index();
 
 <ul id="listeProjets">
     @foreach ($projets as $projet)
-    <li id="{{ $projet->id }}">
+    <li id="{{ $projet->id }}" class="{{ $idProjet == $projet->id ? 'active' : '' }}">
         {{ $projet->designation }}
         <div>
-            <a class="update-projet" name="{{ $projet->id }}"><i class="fa-solid fa-pen"></i></a>
-            <a class="delete-projet" name="{{ $projet->id }}"><i class="fa-solid fa-trash"></i></a>
+            <a class="update-projet" name="{{ $projet->id }}">
+                <i class="fa-solid fa-pen"></i></a>
+            <a class="delete-projet" name="{{ $projet->id }}">
+                <i class="fa-solid fa-trash"></i></a>
         </div>
     </li>
     @endforeach

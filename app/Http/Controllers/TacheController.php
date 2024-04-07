@@ -31,12 +31,19 @@ class TacheController extends Controller
         //
     }
 
+    private function remplirSession($id_projet)
+    {
+        //enregistrer dans $_SESSION id projet pour qu'on reouvre celle ci dans le dashboard
+        session_start();
+        $_SESSION['id_projet'] = $id_projet;
+    }
+
     /**
      * Store a newly created resource in storage.
      */
     public function store($id, Request $request)
     {
-        if ($request->input('btn') === 'enregistrer') {//$request->input('action') === 'enregistrer'
+        if ($request->input('btn') === 'enregistrer') {
             $tache = Tache::find($id);
             // je veux voir le contenu de $tache
             $tache->update([
@@ -114,6 +121,7 @@ class TacheController extends Controller
                 $tache->delete();
             }
         }
+        $this->remplirSession($tache->id_projet);
 
         return redirect()->route('dashboard');
     }
@@ -131,7 +139,7 @@ class TacheController extends Controller
         return response()->json($taches);
     }
 
-    public function showPage($id) //Tache $tache
+    public function showPage($id)
     {
         $bProprietaire  = false;
         $tache          = Tache::find($id);
@@ -156,7 +164,8 @@ class TacheController extends Controller
             //renvoyer page 403
             $bProprietaire = true;
         }
-
+        
+        $this->remplirSession($tache->id_projet);
         return view("tache", compact("tache", "couleur", "statuts", "etiquettes", "taches", "checklists", "selectedDependances", "bProprietaire"));
     }
 
@@ -187,6 +196,7 @@ class TacheController extends Controller
         $selectedDependances = $taches->pluck('id_tache_2')->toArray();
 
         $bProprietaire = true;
+        $this->remplirSession($tache->id_projet);
 
         return view("tache", compact("tache", "couleur", "statuts", "etiquettes", "taches", "checklists", "selectedDependances", "bProprietaire"));
     }
