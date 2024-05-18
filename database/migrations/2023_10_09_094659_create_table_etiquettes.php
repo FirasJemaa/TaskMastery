@@ -14,6 +14,8 @@ return new class extends Migration
         Schema::create('etiquettes', function (Blueprint $table) {
             $table->id();
             $table->string('designation', 100)->nullable(false)->unique();
+            $table->unsignedBigInteger('id_user')->nullable(true);
+            $table->foreign('id_user')->references('id')->on('users');
             $table->timestamps();
         });
     }

@@ -24,12 +24,7 @@ return new class extends Migration
 
             $table->index('pseudo');
             $table->index(['name', 'surname']);
-            $table->index('email');
-
-
-
-
-            
+            $table->index('email');            
         });
     }
 

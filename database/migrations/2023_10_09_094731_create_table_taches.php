@@ -31,38 +31,6 @@ return new class extends Migration
             $table->foreign('id_statut')->references('id')->on('statuts');
             $table->timestamps();
         });
-
-        //un trigger lors d'une suppression d'une ligne dans la table tache
-        /*DB::unprepared('
-            DELIMITER //
-            CREATE TRIGGER taches_BEFORE_DELETE 
-            BEFORE DELETE ON taches 
-            FOR EACH ROW
-            BEGIN
-                -- Supprimer les dépendances
-                DELETE FROM dependances WHERE id_tache_1 = OLD.id OR id_tache_2 = OLD.id;
-
-                -- Supprimer les checklists
-                DELETE FROM checklists WHERE id_tache = OLD.id;
-
-                -- Supprimer la couleur
-                -- DELETE FROM couleurs WHERE id = OLD.id_couleur;
-
-                -- Récupérer l'id de la conversation
-                SET @id_conv = (SELECT id FROM conversations WHERE id_tache = OLD.id LIMIT 1);
-
-                -- Supprimer les messages liés à la conversation
-                DELETE FROM messages WHERE id_conversation = @id_conv;
-
-                -- Supprimer la conversation
-                DELETE FROM conversations WHERE id_tache = OLD.id;
-
-                -- Supprimer les pièces jointes
-                DELETE FROM attachements WHERE id_tache = OLD.id;
-            END;
-            //
-            DELIMITER ;
-        ');*/
     }
 
     /**
