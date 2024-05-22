@@ -20,14 +20,15 @@
 }
 
 .wrapper {
+    height: 95vh;
     display: grid;
-    grid-template-rows: repeat(8, 1fr);
+    grid-template-rows: repeat(10, 1fr);
     grid-template-columns: repeat(2, 1fr);
     gap: 10px;
 }
 
 .one {
-    grid-row: 1 / span 4;
+    grid-row: 1 / span 8;
     grid-column: 1;
     display: flex;
     flex-direction: column;
@@ -52,7 +53,7 @@
 }
 
 .two {
-    grid-row: 1 / span 4;
+    grid-row: 1 / span 8;
     grid-column: 2;
     display: flex;
     flex-direction: column;
@@ -110,10 +111,10 @@
 }
 
 .three {
-    grid-row: 5 / 8;
+    grid-row: 9 / 9;
     grid-column: 1 / span 2;
     border-radius: 15px;
-    padding: 15px;
+    padding: 5px 15px;
 }
 
 
@@ -198,7 +199,7 @@
 }
 
 .four {
-    grid-row: 8;
+    grid-row: 10;
     grid-column: 2;
     display: flex;
     flex-direction: row-reverse;
@@ -207,7 +208,8 @@
 
 .four button {
     border-radius: 10px;
-    margin: 20px 8px;
+    margin: 0px 8px;
+    padding: 10px;
     width: 120px;
     border: none;
     transition: all 0.3s ease-in-out;
@@ -231,7 +233,7 @@
 
 #contact {
     width: 30%;
-    height: 100%;
+    height: 90%;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -276,7 +278,7 @@
     /*justify-content: start;*/
     margin: 10px;
     width: 100%;
-    height: 80vh;
+    height: 70vh;
     background-color: var(--clr-black);
     border-radius: 10px;
     overflow-y: auto;

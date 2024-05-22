@@ -55,7 +55,7 @@
                     <p>Créer un projet, et insérer différente tâches</p>
                 </div>
                 <div class="box">
-                    <p>Ajouter quelqu'un au projet</p>
+                    <p>Ajouter quelqu'un à la tâche</p>
                 </div>
                 <div class="box">
                     <p>Modifier et communiqué avec vos amis</p>

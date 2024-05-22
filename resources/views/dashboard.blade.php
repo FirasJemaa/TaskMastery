@@ -3,10 +3,10 @@
 </x-app-layout>
 <div class="panel">
     <aside>
-        @include('projets.indexProjet')
+        @include('dashboard.aside')
     </aside>
     <section>
-        @include('projets.indexTache')
+        @include('dashboard.section')
     </section>
 </div>
 

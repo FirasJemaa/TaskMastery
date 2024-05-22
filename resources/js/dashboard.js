@@ -7,5 +7,5 @@ $(document).ready(function () {
     });
 });
 
-import './dashboards/aside.js';
-import './dashboards/section.js';
+import './dashboard/aside.js';
+import './dashboard/section.js';

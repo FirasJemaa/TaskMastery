@@ -176,7 +176,6 @@ class TacheController extends Controller
         $tache->id_projet = $id_projet;
         $tache->titre = "";
         $tache->designation = "";
-        $tache->priorite = 1;
         $tache->date_creation = date("Y-m-d");
         $tache->etat = false;
         $tache->id_couleur = 1;

@@ -27,6 +27,7 @@
                     <th>Designation</th>
                     <th>Statut</th>
                     <th>Ouvrir</th>
+                    <th>Quitter</th>
                 </tr>
             </thead>
             <tbody>
@@ -38,6 +39,7 @@
                     <td>{{ $tache->designation }}</td>
                     <td>{{ $tache->DS }}</td>
                     <td><a href="Tache/{{{ $tache->id }}}"><i class="fa-solid fa-magnifying-glass"></i></a></td>
+                    <td><a class="suppElement" name="{{{ $tache->id_attribution }}}"><i class="fa-solid fa-door-open"></i></a></td>   
                 </tr>
                 @endforeach
             </tbody>

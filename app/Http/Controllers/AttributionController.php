@@ -16,21 +16,31 @@ class AttributionController extends Controller
         ->join('users', 'attributions.id_inviter', 'users.id')
         ->join('users as u', 'attributions.id_utilisateur', 'u.id')
         ->join('statuts', 'statuts.id', 'taches.id_statut')
-            ->select('taches.*', 'statuts.designation as DS', 'attributions.id_inviter', 'u.pseudo')    
+            ->select('attributions.id as id_attribution','taches.*', 'statuts.designation as DS', 'attributions.id_inviter', 'u.pseudo')    
         ->where('attributions.id_inviter', '=', $user)
             ->get();
 
         return view('attribution', compact('taches'));
     }
 
-    public function show($id)
+    public function destroy($id)
     {
-        // Logique pour afficher un attribut spécifique
-    }
+        $attribution = Attribution::find($id);
 
-    public function create()
-    {
-        // Logique pour afficher le formulaire de création d'une attribution
+        if (!$attribution) {
+            return response()->json(['message' => 'L\'attribution n\'existe pas.'], 404);
+        }
+
+        $user = auth()->id();
+
+        if ($attribution->id_inviter != $user) {
+            return response()->json(['message' => 'Vous n\'êtes pas l\'inviteur de cette attribution.'], 403);
+        }
+
+        // Supprimer l'attribution
+        $attribution->delete();
+
+        return response()->json(['message' => 'Attribution supprimée avec succès.'], 200);
     }
 
     public function store(Request $request)

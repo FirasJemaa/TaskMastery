@@ -3,8 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Projet;
-use App\Models\Tache;
-use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -20,14 +18,6 @@ class ProjetController extends Controller
         $projets = Projet::where('id_user', '=', $userID)->get();
         //return view("projets.indexProjet", compact("projets"));
         return $projets;
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()//Tache $tache, Request $request)
-    {
-        //return view("dashboard");
     }
 
     /**
@@ -67,22 +57,6 @@ class ProjetController extends Controller
     {
         return view("projets.edit",compact('projet'));
     }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    /*public function update(Request $request)
-    {
-        return response()->json($request->id);
-        // Mettre à jour les champs du projet
-        $projet->update([
-            'designation' => $request->designation,
-            'description' => $request->description
-        ]);
-    
-        // Retourner la réponse JSON
-        return response()->json($projet);
-    }*/
 
     /**
      * Remove the specified resource from storage.

@@ -335,9 +335,10 @@ footer a {
         position: absolute;
         background: var(--clr-second);
         top: 100%;
+        z-index: 10;
         left: 0;
         transform: translate(-100%);
-        height: 100vh;
+        height: 25vh;
         padding: 15px 50px 15px 20px;
         border-right: 1px solid var(--clr-second);
         /*ligne horizontal*/
@@ -412,5 +413,16 @@ footer a {
     #avantage p {
         text-align: center;
         font-size: 18px;
+    }
+
+    .video-explain{
+        top: 29%;
+        left: 12%;
+        width: 190px;
+        height: 120px;
+    }
+    footer p {
+        font-size: 15px;
+        margin: 10px;
     }
 }

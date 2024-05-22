@@ -60,6 +60,7 @@ Route::middleware('auth')->group(function () {
     //Route::middleware('verifAppartenance')->group(function () {
     Route::POST('/ajouterContact', [AttributionController::class, 'store']);
     Route::GET('/indexAttribution', [AttributionController::class, 'index'])->name('indexAttribution');
+    Route::POST('/deleteAttribution/{n}', [AttributionController::class, 'destroy']);
     //});
 
     //Message
