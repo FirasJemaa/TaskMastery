@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 class StatutController extends Controller
 {
-    public function index()//:View
+    public function index()
     {
         $statuts = Statut::all()->sortBy("id");
         return view("projets.indexTache", compact("statuts"));
