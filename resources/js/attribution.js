@@ -3,9 +3,9 @@ document.addEventListener('DOMContentLoaded', function () {
     document.querySelectorAll('.suppElement').forEach(function (button) {
         button.addEventListener('click', function () {
             const id_attribution = this.getAttribute('name');
-            console.log(id_attribution);
-
+            
             const token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+            console.log(token);
 
             fetch(`/deleteAttribution/${id_attribution}`, {
                 method: 'POST',
@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', function () {
             .then(data => {
                 console.log(data.message);
                 // Supprimer l'élément de la page
-                this.parentNode.removeChild(this);
+                this.closest('tr').remove();
             })
             .catch(error => {
                 alert(error.message);

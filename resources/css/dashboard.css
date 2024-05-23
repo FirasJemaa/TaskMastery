@@ -1,6 +1,7 @@
 @import url(app.css);
 @import url(dashboards/aside.css);
 @import url(dashboards/section.css);
+@import url(attribution.css);
 
 .container-dashboard{
     margin : 10px;
@@ -37,7 +38,7 @@ header{
 
 .formulaire_profil input:focus{
     outline: none;
-    border-color: #3490dc; /* Couleur de soulignement lorsqu'en focus */
+    border-color: #3490dc;
 }
 
 .alignerInput{

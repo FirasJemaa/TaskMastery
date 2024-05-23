@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!--DOCTYPE html>
 <html lang="fr">
 
 <head>
@@ -11,12 +11,12 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     @vite(['resources/css/attribution.css', 'resources/js/attribution.js'])
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
-</head>
-
+</head>-->
+<x-app-layout>
+    <h1>Tâche partager</h1>
+</x-app-layout>
 <body>
-    <x-app-layout>
-        <h1>Tâche partager</h1>
-    </x-app-layout>
+    
     <main>
         <table class="table table-dark table-striped table-hover">
             <thead>

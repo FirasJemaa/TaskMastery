@@ -54,7 +54,7 @@ Route::middleware('auth')->group(function () {
     //Route::middleware('verifAppartenance')->group(function () {
     Route::POST('/ajouterContact', [AttributionController::class, 'store']);
     Route::GET('/indexAttribution', [AttributionController::class, 'index'])->name('indexAttribution');
-    Route::post('/deleteAttribution/{n}', [AttributionController::class, 'delete'])->name('delete.attribution');
+    Route::post('/deleteAttribution/{id}', [AttributionController::class, 'destroy'])->name('delete.attribution');
     //});
 
     //Message
