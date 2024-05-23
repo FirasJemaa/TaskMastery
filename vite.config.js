@@ -10,12 +10,12 @@ export default defineConfig({
                 'resources/css/identification.css',
                 'resources/css/attribution.css',
                 'resources/css/dashboard.css',
+                'resources/css/tache.css',
                 'resources/js/app.js',
                 'resources/js/accueil.js',
                 'resources/js/dashboard.js',
                 'resources/js/test.js',
                 'resources/js/tache.js',
-                'resources/js/tache.css',
                 'resources/js/attribution.js'
             ],
             refresh: true,

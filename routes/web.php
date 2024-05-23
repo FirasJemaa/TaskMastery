@@ -27,10 +27,6 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/session', function () {
-    return view('session');
-})->middleware(['auth', 'verified'])->name('session');
-
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
@@ -40,11 +36,9 @@ Route::middleware('auth')->group(function () {
     Route::post('/storeProjet', [ProjetController::class, 'store']);
 
     Route::middleware('verifAppartenance')->group(function () {
-        //Route::get('/projets/indexProjet', [ProjetController::class, 'index'])->name('projets.indexProjet');
         Route::post('/deleteProjet/{n}', [ProjetController::class, 'destroy']);
         Route::get('/showProjet/{n}', [ProjetController::class, 'show']);
         Route::get('/showTaches/{n}', [TacheController::class, 'show']);
-        //Déplacer ici car {n} dans l'url correspond à l'id du projet
         Route::get('/newTache/{n}', [TacheController::class, 'newPage'])->name('newTache');
     });
     
@@ -60,7 +54,7 @@ Route::middleware('auth')->group(function () {
     //Route::middleware('verifAppartenance')->group(function () {
     Route::POST('/ajouterContact', [AttributionController::class, 'store']);
     Route::GET('/indexAttribution', [AttributionController::class, 'index'])->name('indexAttribution');
-    Route::POST('/deleteAttribution/{n}', [AttributionController::class, 'destroy']);
+    Route::post('/deleteAttribution/{n}', [AttributionController::class, 'delete'])->name('delete.attribution');
     //});
 
     //Message
