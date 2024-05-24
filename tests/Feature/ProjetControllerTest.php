@@ -4,43 +4,33 @@ namespace Tests\Feature;
 
 use Tests\TestCase;
 use App\Models\Projet;
+use App\Models\User;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class ProjetControllerTest extends TestCase
 {    
+    use RefreshDatabase;
+    protected $user;
+
     public function testIndex()
     {
-
-        // Créer des projets pour l'utilisateur connecté
-        $projets = Projet::create(
-            [
-                'designation' => 'Projet 1',
-                'description' => 'Description du projet 1',
-                'id_user' => 1
-            ],
-            [
-                'designation' => 'Projet 2',
-                'description' => 'Description du projet 2',
-                'id_user' => 1
-            ]
-        );
-
         // Appeler la méthode index du contrôleur
         $response = $this->get('/projets');
 
         // Vérifier si la réponse contient les projets
         $response->assertStatus(200);
-
-        // Supprimer les projets
-        $projets->delete();
     }
 
     public function testShow()
     {
+        $this->user = User::factory()->create();
+        $this->actingAs($this->user);
+
         $projet = Projet::create(
             [
                 'designation' => 'Projet',
                 'description' => 'Description du projet',
-                'id_user' => 1
+                'id_user' => $this->user->id
             ]
         );
         //Route::get('/showProjet/{n}', [ProjetController::class, 'show']);
@@ -54,15 +44,18 @@ class ProjetControllerTest extends TestCase
 
     public function testDestroy()
     {
+        $this->user = User::factory()->create();
+        $this->actingAs($this->user);
+
         $projet = Projet::create(
             [
                 'designation' => 'Projet',
                 'description' => 'Description du projet',
-                'id_user' => 1
+                'id_user' => $this->user->id
             ]
         );
         $id = $projet->id;
-        $response = $this->post("/deleteProjet/{$id}");
+        $response = $this->post("/deleteProjet/$id");
         
         $response->assertStatus(200);
         // Vérifier si le projet a été supprimé
