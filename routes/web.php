@@ -33,11 +33,11 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     //Projet
-    Route::post('/storeProjet', [ProjetController::class, 'store']);
-
     Route::middleware('verifAppartenance')->group(function () {
+        Route::post('/storeProjet', [ProjetController::class, 'store']);
         Route::post('/deleteProjet/{n}', [ProjetController::class, 'destroy']);
         Route::get('/showProjet/{n}', [ProjetController::class, 'show']);
+        
         Route::get('/showTaches/{n}', [TacheController::class, 'show']);
         Route::get('/newTache/{n}', [TacheController::class, 'newPage'])->name('newTache');
     });
@@ -45,20 +45,17 @@ Route::middleware('auth')->group(function () {
     //Tache
     Route::middleware('tacheAppartenance')->group(function () {
         Route::get('/Tache/{n}', [TacheController::class, 'showPage']);
-        Route::post('/updateTaches/{n}', [TacheController::class, 'update']);
-        Route::post('/tache/store/{n}', [TacheController::class, 'store'])->name('tache.store');
+        Route::post('/updateTache/{n}', [TacheController::class, 'update']);
+        Route::post('/storeTache/{n}', [TacheController::class, 'store'])->name('tache.store');
         Route::post('/updateStatutTache/{n}', [TacheController::class, 'udpateStatut']);
     });
 
     //Attribution
-    //Route::middleware('verifAppartenance')->group(function () {
     Route::POST('/ajouterContact', [AttributionController::class, 'store']);
     Route::GET('/indexAttribution', [AttributionController::class, 'index'])->name('indexAttribution');
     Route::post('/deleteAttribution/{id}', [AttributionController::class, 'destroy'])->name('delete.attribution');
-    //});
 
     //Message
-    //Route::middleware('verifAppartenance')->group(function () {
     Route::POST('/ajouterMessage', [ConversationController::class, 'store']);
     Route::GET('/refreshConversation', [ConversationController::class, 'show']);
 });

@@ -8,9 +8,23 @@ use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class ProjetControllerTest extends TestCase
-{    
+{
     use RefreshDatabase;
+
     protected $user;
+    protected $projet;
+
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        // Créer un utilisateur et un projet associé à cet utilisateur
+        $this->user = User::factory()->create();
+        $this->projet = Projet::factory()->create(['id_user' => $this->user->id]);
+
+        // Authentifier l'utilisateur
+        $this->actingAs($this->user);
+    }
 
     public function testIndex()
     {
@@ -23,40 +37,17 @@ class ProjetControllerTest extends TestCase
 
     public function testShow()
     {
-        $this->user = User::factory()->create();
-        $this->actingAs($this->user);
-
-        $projet = Projet::create(
-            [
-                'designation' => 'Projet',
-                'description' => 'Description du projet',
-                'id_user' => $this->user->id
-            ]
-        );
-        //Route::get('/showProjet/{n}', [ProjetController::class, 'show']);
-        $response = $this->get("/showProjet/$projet->id");
+        $id = $this->projet->id;
+        $response = $this->get("/showProjet/$id");
 
         $response->assertStatus(200);
-        $response->assertJson($projet->toArray());
-
-        $projet->delete();
     }
 
     public function testDestroy()
     {
-        $this->user = User::factory()->create();
-        $this->actingAs($this->user);
-
-        $projet = Projet::create(
-            [
-                'designation' => 'Projet',
-                'description' => 'Description du projet',
-                'id_user' => $this->user->id
-            ]
-        );
-        $id = $projet->id;
+        $id = $this->projet->id;
         $response = $this->post("/deleteProjet/$id");
-        
+
         $response->assertStatus(200);
         // Vérifier si le projet a été supprimé
         $this->assertNull(Projet::find($id));

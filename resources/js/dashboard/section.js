@@ -106,7 +106,7 @@ function getAjax(projetId){
 function postAjax(tacheId, etat){
     $.ajax({
         type: 'POST',
-        url: "/updateTaches/" + tacheId,
+        url: "/updateTache/" + tacheId,
         data: { tacheId: tacheId, etat: etat },
         success: function (data) {
             //message de succès

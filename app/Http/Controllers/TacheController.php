@@ -6,7 +6,6 @@ use App\Models\Tache;
 use App\Models\Couleur;
 use App\Models\Statut;
 use App\Models\Etiquette;
-use App\Models\Projet;
 use App\Models\Checklist;
 use App\Models\Dependance;
 use Illuminate\Http\Request;
@@ -23,15 +22,7 @@ class TacheController extends Controller
         return view("tache", compact("taches"));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    private function remplirSession($id_projet)
+    public function remplirSession($id_projet)
     {
         //enregistrer dans $_SESSION id projet pour qu'on reouvre celle ci dans le dashboard
         session_start();
@@ -76,8 +67,7 @@ class TacheController extends Controller
             foreach ($dependances as $dependance) {
                 $dependance->delete();
             }
-            //creer les dependances recu dans request id_tache_1 correspond a la tache en cours et id_tache_2 correspond a la tache selectionner
-            //vérifier que le $request->input('dependances') n'est pas vide ou existe
+            
             if ($request->input('dependances')){
                 foreach ($request->input('dependances') as $dependance) {
                     Dependance::create([
@@ -107,8 +97,7 @@ class TacheController extends Controller
                     ]);
                 }
             }
-        } else{ //if ($request->input('action') === 'supprimer') {
-            //vérifier qu'il est le propriétaire de la tache
+        } else{
             $tache = Tache::join('projets', 'taches.id_projet', 'projets.id')
                 ->where('taches.id', '=', $id)
                 ->where('projets.id_user', '=', auth()->id())
@@ -201,14 +190,6 @@ class TacheController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Tache $tache)
-    {
-        //
-    }
-
-    /**
      * Update the specified resource in storage.
      */
     public function update(Request $request)
@@ -225,14 +206,6 @@ class TacheController extends Controller
         } else {
             return response()->json(['error' => 'La tâche ' . $bVal . ' n\'existe pas.'], 404);
         }
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Tache $tache)
-    {
-        //
     }
 
     public function udpateStatut(Request $request)

@@ -51,14 +51,6 @@ class ProjetController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Projet $projet)
-    {
-        return view("projets.edit",compact('projet'));
-    }
-
-    /**
      * Remove the specified resource from storage.
      */
     public function destroy($id)
