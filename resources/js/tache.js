@@ -182,10 +182,3 @@ setInterval(function () {
         }
     });
 }, 1000);
-
-setInterval(function () {
-    var MsgConteneur = $('.message');
-    var containerHeight = MsgConteneur.height();
-    var contentHeight = MsgConteneur[0].scrollHeight;
-    MsgConteneur.scrollTop(contentHeight - containerHeight);
-},5000);

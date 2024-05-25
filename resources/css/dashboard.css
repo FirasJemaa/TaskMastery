@@ -2,6 +2,7 @@
 @import url(dashboards/aside.css);
 @import url(dashboards/section.css);
 @import url(attribution.css);
+@import url(tache.css);
 
 .container-dashboard{
     margin : 10px;

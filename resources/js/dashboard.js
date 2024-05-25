@@ -10,3 +10,4 @@ $(document).ready(function () {
 import './dashboard/aside.js';
 import './dashboard/section.js';
 import './attribution.js';
+import './tache.js';

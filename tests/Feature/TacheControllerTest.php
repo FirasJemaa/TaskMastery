@@ -38,7 +38,7 @@ class TacheControllerTest extends TestCase
 
     public function testStore()
     {
-        //ajouter request
+        // Ajouter request
         $request = [
             'btn' => 'enregistrer',
             'titre' => 'titre',
@@ -48,7 +48,12 @@ class TacheControllerTest extends TestCase
         ];
 
         $id = $this->tache->id;
-        $response = $this->post("/storeTache/$id", $request);
+
+        // Simuler une session active
+        $response = $this->withSession(['id_projet' => $this->projet->id])
+            ->post("/storeTache/$id", $request);
+
+        // Vérifier le statut de la réponse
         $response->assertStatus(302);
     }
 
