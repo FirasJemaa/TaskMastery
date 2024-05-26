@@ -78,5 +78,4 @@ Route::fallback(function () {
     return view('error/403');
 });
 
-
 require __DIR__ . '/auth.php';
