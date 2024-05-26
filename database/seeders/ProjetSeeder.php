@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use App\Models\User;
 
 class ProjetSeeder extends Seeder
 {
@@ -13,17 +14,19 @@ class ProjetSeeder extends Seeder
     public function run(): void
     {
         DB::table('projets')->insert([
-            'id_user' => 1,
+            //Récup la première ligne de la table User
+            'id_user' => User::first()->id,
             'designation' => 'Projet 1',
             'description' => 'Description du projet 1'
         ]);
         DB::table('projets')->insert([
-            'id_user' => 1,
+            'id_user' => User::first()->id,
             'designation' => 'Projet 2',
             'description' => 'Description du projet 2'
         ]);
         DB::table('projets')->insert([
-            'id_user' => 2,
+            //Récup la deuxième ligne de la table User
+            'id_user' => User::skip(1)->first()->id,
             'designation' => 'Projet 1',
             'description' => 'Description du projet 1'
         ]);

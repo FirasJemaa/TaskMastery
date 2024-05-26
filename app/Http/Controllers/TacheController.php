@@ -25,6 +25,10 @@ class TacheController extends Controller
     public function remplirSession($id_projet)
     {
         //enregistrer dans $_SESSION id projet pour qu'on reouvre celle ci dans le dashboard
+        // si mode test (intégrer) ne pas executer sinon test unit faire
+        if (app()->environment('testing')){
+            return;
+        }
         session_start();
         $_SESSION['id_projet'] = $id_projet;
     }

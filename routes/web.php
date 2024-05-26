@@ -31,16 +31,17 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-    
+
     //Projet
     Route::post('/storeProjet', [ProjetController::class, 'store']);
-    Route::middleware('verifAppartenance')->group(function () {
-        Route::post('/deleteProjet/{n}', [ProjetController::class, 'destroy']);
-        Route::get('/showProjet/{n}', [ProjetController::class, 'show']);
-        Route::get('/showTaches/{n}', [TacheController::class, 'show']);
-        Route::get('/newTache/{n}', [TacheController::class, 'newPage'])->name('newTache');
-    });
+
     Route::middleware('VerifyCsrfToken')->group(function () {
+        Route::middleware('verifAppartenance')->group(function () {
+            Route::post('/deleteProjet/{n}', [ProjetController::class, 'destroy']);
+            Route::get('/showProjet/{n}', [ProjetController::class, 'show']);
+            Route::get('/showTaches/{n}', [TacheController::class, 'show']);
+            Route::get('/newTache/{n}', [TacheController::class, 'newPage'])->name('newTache');
+        });
 
         //Tache
         Route::middleware('tacheAppartenance')->group(function () {

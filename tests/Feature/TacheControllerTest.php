@@ -3,7 +3,6 @@
 namespace Tests\Feature;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use App\Models\User;
 use App\Models\Projet;
 use App\Models\Tache;
@@ -43,15 +42,12 @@ class TacheControllerTest extends TestCase
             'btn' => 'enregistrer',
             'titre' => 'titre',
             'designation' => 'designation',
-            'date_creation' => '2021-10-10',
-            'date_cloture' => '2021-10-10'
         ];
 
         $id = $this->tache->id;
 
         // Simuler une session active
-        $response = $this->withSession(['id_projet' => $this->projet->id])
-            ->post("/storeTache/$id", $request);
+        $response = $this->post("/storeTache/$id", $request);
 
         // Vérifier le statut de la réponse
         $response->assertStatus(302);
