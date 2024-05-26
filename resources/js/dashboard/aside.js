@@ -139,8 +139,8 @@ jQuery('#projetForm').submit(function (e) {
             $('#btn-save').attr("disabled", false);
         },
         error: function (data) {
-            if (data.status == 403) window.location.href = "/403";
             console.log(data.responseJSON.message);
+            if (data.status == 403) window.location.href = "/403";
         }
     });
 })

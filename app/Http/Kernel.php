@@ -69,5 +69,6 @@ class Kernel extends HttpKernel
         // Mes middlewares
         'verifAppartenance' => \App\Http\Middleware\VerifAppartenance::class,
         'tacheAppartenance' => \App\Http\Middleware\TacheAppartenance::class,
+        'VerifyCsrfToken' => \App\Http\Middleware\VerifyCsrfToken::class,
     ];    
 }

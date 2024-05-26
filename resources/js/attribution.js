@@ -3,10 +3,7 @@ document.addEventListener('DOMContentLoaded', function () {
     document.querySelectorAll('.suppElement').forEach(function (button) {
         button.addEventListener('click', function () {
             const id_attribution = this.getAttribute('name');
-            
             const token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
-            console.log(token);
-
             fetch(`/deleteAttribution/${id_attribution}`, {
                 method: 'POST',
                 headers: {

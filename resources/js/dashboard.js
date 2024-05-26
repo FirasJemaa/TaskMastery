@@ -7,7 +7,12 @@ $(document).ready(function () {
     });
 });
 
+// Appel des fichiers js
 import './dashboard/aside.js';
 import './dashboard/section.js';
 import './attribution.js';
-import './tache.js';
+
+//importer tache.js seulement si on est sur la page tache, voici un exemple url : http://localhost:8000/Tache/37
+if (window.location.href.includes("Tache")) {
+    import('./tache.js');
+}

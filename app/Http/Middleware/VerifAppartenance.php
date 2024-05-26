@@ -30,7 +30,7 @@ class VerifAppartenance
 
         // Récupérez la tâche avec l'ID $nID
         $projet = Projet::where('id', '=', $nID)->where('id_user', '=', $id_user)->first();
-
+        //dd($projet . ' ' . $id_user);
         if ($projet && $id_user === $projet->id_user) {
             return true;
         }
