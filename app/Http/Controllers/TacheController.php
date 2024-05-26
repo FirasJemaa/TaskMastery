@@ -139,15 +139,14 @@ class TacheController extends Controller
         $couleur        = Couleur::all()->where('id', $tache->id_couleur)->first();
         $statuts        = Statut::all()->sortBy('id');
         $etiquettes     = Etiquette::all()->sortBy('id');
-        $taches         = Tache::leftJoin('dependances', 'taches.id', '=', 'dependances.id_tache_2')
-            ->leftJoin('projets', 'projets.id', '=', 'taches.id_projet')
+        $taches         = Tache::leftJoin('projets', 'projets.id', '=', 'taches.id_projet')
             ->where('projets.id_user', '=', auth()->id())
             ->where('taches.id', '!=', $tache->id)
-            ->get(['taches.*', 'dependances.id_tache_1', 'dependances.id_tache_2']);
+            ->get(['taches.*']);
         $checklists     = Checklist::all()->where('id_tache', $id)->sortBy('id');
         //pluk permet de recuperer un tableau avec les id de la table et toArray permet de convertir en tableau
-        $selectedDependances = $taches->pluck('id_tache_2')->toArray();
-
+        //$selectedDependances = $taches->pluck('id_tache_2')->toArray();
+        $selectedDependances = Dependance::where('id_tache_1', $id)->get()->pluck('id_tache_2')->toArray();
         //voir s'il est le propriétaire de la tache
         $tacheControle = Tache::join('projets', 'taches.id_projet', 'projets.id')
             ->where('taches.id', '=', $id)
@@ -183,9 +182,10 @@ class TacheController extends Controller
             ->leftJoin('projets', 'projets.id', '=', 'taches.id_projet')
             ->where('projets.id_user', '=', auth()->id())
             ->where('taches.id', '!=', $tache->id)
+            ->orderBy('taches.id')
             ->get(['taches.*', 'dependances.id_tache_1', 'dependances.id_tache_2']);
         $checklists = Checklist::all()->where('id_tache', $tache->id)->sortBy('id');
-        $selectedDependances = $taches->pluck('id_tache_2')->toArray();
+        $selectedDependances = [];
 
         $bProprietaire = true;
         $this->remplirSession($tache->id_projet);

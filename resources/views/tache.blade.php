@@ -36,11 +36,9 @@
                     <label for="dependances">Sélectionnez vos dépendances :</label>
                     <select id="dependances" name="dependances[]" multiple="multiple">
                         @foreach($taches as $tacheDependance)
-                        @if($tacheDependance->id_tache_1 != $tacheDependance->id)
                         <option value="{{ $tacheDependance->id }}" @if(in_array($tacheDependance->id, $selectedDependances)) selected @endif>
                             {{ $tacheDependance->titre }}
                         </option>
-                        @endif
                         @endforeach
                     </select>
                 </div>
