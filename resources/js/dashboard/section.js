@@ -53,10 +53,10 @@ $(window).resize(function () {
 });
 
 //lorsque je double clique sur la balise div avec la class tache je récupère le name de la balise
-$(document).on('dblclick', '.taches', function () {
+/*$(document).on('dblclick', '.taches', function () {
     const tacheId = $(this).attr('name');
     window.location.href = '/Tache/' + tacheId;
-});
+});*/
 
 ///////////////////////////////////FUNCTION
 //renvoyer le code couleur en hexa
