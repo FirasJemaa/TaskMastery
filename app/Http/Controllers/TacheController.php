@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Tache;
+use App\Models\Projet;
 use App\Models\Couleur;
 use App\Models\Statut;
 use App\Models\Etiquette;
@@ -15,11 +16,11 @@ class TacheController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(Request $request)
+    public function index($id_projet)
     {
-        $id_tache = $request->input('tacheId');
-        $taches = Tache::all()->where("id", $id_tache)->sortBy("id");
-        return view("tache", compact("taches"));
+        $taches = Tache::all()->where("id_projet", $id_projet)->sortBy("id");
+        $projet = Projet::find($id_projet);
+        return view("taches", compact("taches", "projet"));
     }
 
     public function remplirSession($id_projet)

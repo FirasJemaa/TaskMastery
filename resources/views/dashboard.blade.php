@@ -1,13 +1,8 @@
 <x-app-layout>
-    <h1>Tableau de bord</h1>
+    <h1>Liste des projets</h1>
 </x-app-layout>
 <div class="panel">
-    <aside>
-        @include('dashboard.aside')
-    </aside>
-    <section>
-        @include('dashboard.section')
-    </section>
+    @include('projets')
 </div>
 
 <!-- Modal -->

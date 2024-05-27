@@ -33,6 +33,8 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     //Projet
+    //ajout de la route pour afficher les projets
+    Route::get('/projets', [ProjetController::class, 'index'])->name('projets'); 
     Route::post('/storeProjet', [ProjetController::class, 'store']);
 
     Route::middleware('VerifyCsrfToken')->group(function () {
@@ -40,12 +42,15 @@ Route::middleware('auth')->group(function () {
             Route::post('/deleteProjet/{n}', [ProjetController::class, 'destroy']);
             Route::get('/showProjet/{n}', [ProjetController::class, 'show']);
             Route::get('/showTaches/{n}', [TacheController::class, 'show']);
-            Route::get('/newTache/{n}', [TacheController::class, 'newPage'])->name('newTache');
         });
+        Route::get('/newTache/{n}', [TacheController::class, 'newPage'])->name('newTache');
 
         //Tache
+        Route::get('/indexTaches/{id}', [TacheController::class, 'index'])->name('indexTaches');
         Route::middleware('tacheAppartenance')->group(function () {
-            Route::get('/Tache/{n}', [TacheController::class, 'showPage']);
+            // afficher les taches d'un projet : <a href="{{ route('indexTaches', ['id' => $projet->id]) }}" class="btn btn-primary">Consulter</a>
+            
+            Route::get('/Tache/{n}', [TacheController::class, 'showPage'])->name('showTache');
             Route::post('/updateTache/{n}', [TacheController::class, 'update']);
 
             Route::post('/storeTache/{n}', [TacheController::class, 'store'])->name('tache.store');
